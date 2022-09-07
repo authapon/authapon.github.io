@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>Mercurial โปรแกรมสำหรับทำ control version แบบ distributed</h2>
+        <h3>Saturday, 22 January 2011</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในการพัฒนาโปรแกรมนั้น เราอาจจะเก็บ sourcecode ไว้ในเครื่องเราเอง ซึ่งบางที เราอาจจะมีการสำเนา sourcecode ของเราไปทำที่เครื่องอื่นบ้าง ซึ่งเมื่อเราพัฒนาโปรแกรมไปเรื่อย ๆ เราเองอาจจะสับสนว่า sourcecode ในเครื่องไหนเป็นรุ่นล่าสุดที่เราพัฒนาขึ้น หรืออาจจะมีการพัฒนาโปรแกรมกันเป็นทีม ทำให้เกิดปัญหาเรื่องการนำ sourcecode มารวมกัน หรือต้องการ sourcecode ในส่วนของผู้อื่นเพื่อมาทำการทดสอบ จะทำไม่ได้ เพราะ sourcecode ของแต่ละคนก็จะอยู่ในเครื่องของแต่ละคน การแก้ปัญหาแบบนี้สามารถทำได้โดยการใช้ระบบ control version ครับ โดยทำการเก็บ sourcecode ไว้ซักที่หนึ่งแล้วเวลามีใครต้องการแก้ไข sourcecode ของตัวเองก็ให้ดึงเอาจากระบบ control version ได้นั่นเอง ซึ่งระบบ control version จะมีหลายยี่ห้อมาก เช่น cvs, svn, <a href="http://git-scm.com/">git</a> และ <a href="https://www.mercurial-scm.org/">mercurial</a> เป็นต้น โดยระบบ control version ที่ผมจะแนะนำในครั้งนี้คือ mercurial ซึ่งเป็นระบบ control version แบบ distributed นั่นเองครับ</p>
+<p>สำหรับการใช้ mercurial นั้น เราต้องมี repository สำหรับเก็บ sourcecode ของเราก่อน และด้วยคุณสมบัติความเป็น distributed เราสามารถใช้เครื่องเราเองเป็น local repository ก็ได้ แต่คงไม่ต่างอะไรกับการเก็บ sourcecode ไว้ในเครื่องตัวเองอยู่ดี ฉะนั้นเราควรจะมี repository ภายนอก ซึ่งจะทำให้เราสามารถ share sourcecode กับผู้อื่นหรือเป็นที่เก็บ sourcecode กรณีที่เราย้ายเครื่องทำงาน ซึ่งเวบที่เป็น repository ดีดีนั้น ผมแนะนำ 2 ที่ครับ คือ bitbucket.org และ google code ครับ</p>
+<h4 id="1-เรมตนใช-mercurial">1. เริ่มต้นใช้ mercurial</h4>
+<p>สำหรับ ubuntu ในขั้นแรกเราต้องลงโปรแกรม mercurial client ก่อนดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นให้เราไปสร้างไฟล์ .hgrc เพื่อกำหนดข้อมูลของตัวเราเองภายในไฟล์ โดยให้นำไปใส่ไว้ในไดเรคเทอรี่ home ของตัวเอง โดยข้อมูลภายในไฟล์เป็นดังนี้ครับ</p>
+<p><strong>File : .hgrc</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตรงนี้จะเป็นการกำหนดว่า username สำหรับการอัพเดท sourcecode จะให้แสดงชื่ออะไร แต่ไม่ใช่ชื่อ user ของระบบใน repository นะครับ ตรงนี้เป็นเพียงข้อมูลธรรมดาของเราเท่านั้นครับ</p>
+<h4 id="2-สราง-local-repository">2. สร้าง local repository</h4>
+<p>สมมุติว่าเราได้ไปสร้าง repository จากเวบ <a href="https://bitbucket.org/">bitbucket.org</a> ไว้แล้วนะครับ โดยสมมุติว่ามี repository ชื่อว่า hello สำหรับตัวอย่างนะครับ ซึ่งเป็น repository ว่าง ๆ และเราจะเริ่มสร้าง sourcecode ตัวอย่างกัน ผมจะทำการสร้างโฟล์เดอร์สำหรับเก็บ sourcecode ชื่อ hello และสร้างไฟล์ที่ชื่อว่า hello.c ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตอนนี้เรามี sourcecode แรกที่จะทำการจัดเก็บเข้าสู่ repository แล้ว โดยในขั้นแรกสำหรับการจัดเก็บ sourcecode แรกจากโฟล์เดอร์ที่มีอยู่แล้วนั้น เมื่อเราอยู่ในโฟล์เดอร์ของ sourcecode แล้ว เราจะทำการ initiate sourcecode และเพิ่ม ไฟล์ sourcecode เข้าสู่ local repository ก่อน จากนั้นจึงทำการ commit ตัว sourcecode และสุดท้ายก็ทำการ push ตัว sourcecode นั้นเข้าสู่ repository ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>คำสั่ง hg init จะเป็นคำสั่งสำหรับการ initiate local repository ของเราก่อนครับ จากนั้นคำสั่ง hg add จะเป็นการนำไฟล์ทั้งหมดที่อยู่ในโฟล์เดอร์นั้นเข้าสู่ local repository ของเรา คำสั่ง hg commit เป็นคำสั่งให้ทำการยืนยันการเปลี่ยนแปลงของ sourcecode ของเราโดยจะมีพารามิเติอร์ -m เพื่อกำหนดข้อความอธิบายการเปลี่ยนแปลงเพื่อการ commit ของเราในครั้งนี้ และสุดท้ายคำสั่ง hg push เป็นคำสั่งสำหรับการนำการเปลี่ยนแปลงทั้งหมดใน local repository ของเราขึ้นไปเก็บไว้ใน repository ภายนอกของเราในกรณีคือ bitbucket.org นั่นเองครับ</p>
+<h4 id="3-การ-clone-repository-การตรวจสอบสถานะไฟล-การเพมไฟล-และการลบไฟล">3. การ clone repository, การตรวจสอบสถานะไฟล์, การเพิ่มไฟล์ และการลบไฟล์</h4>
+<p>คราวนี้เราสมมุติว่า เราได้ย้ายไปทำการแก้ไข sourcecode ที่เครื่องอื่น เราจะต้องทำการ clone repository มายังเครื่องที่เราทำงานก่อนดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>คำสั่ง hg clone จะเป็นคำสั่งให้ clone repository ที่ระบุมายังเครื่องของเรา และให้เก็บไว้ยังโฟล์เดอร์ hello นั่นเองครับ ต่อไปเราจะทำการเข้าไปในโฟล์เดอร์ hello เพื่อดูข้อมูล sourcecode ต่าง ๆ ของเราดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สมมุติว่าเราทำการแก้ไข sourcecode เพิ่มเติมดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในส่วนสีส้มคือส่วนที่เราได้ทำการแก้ไข sourcecode เพิ่มเข้าไป</p>
+<p>โดยขณะนี้ได้มี sourcecode บางส่วนได้ถูกแก้ไขแล้ว เราสามารถตรวจสอบได้ว่า ไฟล์ใดมีสถานะภาพอย่างไร ไฟล์ใดถูกแก้ไขไปแล้วบ้างได้ด้วยคำสั่ง hg status ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่ง hg status จะแสดงชื่อไฟล์ที่ถูกแก้ไข โดยหน้าชื่อไฟล์จะมีตัวอักษร M นำหน้า จะหมายถึง Modify นั่นเอง โดยสถานะของไฟล์นั้นจะมีหลากหลายเช่น ไฟล์โดนลบ หรือไฟล์ที่ยังไม่ได้ดึงเข้าระบบ local repository เป็นต้น โดยเราจะสมมุติว่าได้สร้างไฟล์ใหม่ชื่อ adding.c เพิ่มเข้ามาดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : adding.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อเราทำการตรวจสอบสถานะของไฟล์ sourcecode จะปรากฎดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่ามีชื่อไฟล์ adding.c ปรากฎขึ้นมา และมีตัวอักษร ? แสดงอยู่ด้านหน้า นั่นจะหมายถึงมีไฟล์ชื่อ adding.c เพิ่มเข้ามาและยังไม่ได้เพิ่มเข้ามายังระบบ local repository นั่นเอง โดยเราจะทำการเพิ่มไฟล์เข้าสู่ local repository ได้ด้วยคำสั่ง hg add ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อเราตรวจสอบสถานะอีกครั้งจะปรากฎดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าหน้าชื่อไฟล์ adding.c จะเปลี่ยนเป็น A ซึ่งหมายถึงเป็นไฟล์ใหม่ที่เพิ่งจะเพิ่มเข้ามานั่นเอง</p>
+<p>ขั้นต่อมาเมื่อเราแก้ไขทุกอย่างเสร็จแล้ว เราจะทำการ commit และทำการ push สิ่งที่แก้ไขไปเก็บใน repository ภายนอก ทำได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าในกรณีที่เราจะ push ไฟล์ที่เรา clone มากลับไปยัง repository ที่เรา clone มานั้น เราสามารถสั่ง hg push โดยไม่ต้องระบุ repository ก็ได้</p>
+<p>ในการลบไฟล์ออกจาก local reposity เราก็สามารถทำได้ ด้วยคำสั่ง hg rm ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าเราได้ลบไฟล์ adding.c ออกจาก local repository ด้วยคำสั่ง hg rm และเมื่อตรวจสอบสถานะไฟล์ด้วย hg status แล้ว จะปรากฎชื่อไฟล์ adding.c และมี R อยู่ด้านหน้า หมายถึง เราได้ทำการลบไฟล์ adding.c ออกจาก local repository แล้วนั่นเอง</p>
+<p>จากนั้นเราก็ทำการ commit ความเปลี่ยนแปลงที่เกิดขึ้น และ push ไปยัง repository ของเราต่อไป</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="4-การ-pull-และ-การ-update">4. การ pull และ การ update</h4>
+<p>สำหรับกรณีที่เราทำการแก้ไข sourcecode จากเครื่องคอมพิวเตอร์หลาย ๆ เครื่องนั้น เราจะเกิดปัญหาเรื่องความ update ของ sourcecode ที่เก็บในแต่ละเครื่อง ว่า sourcecode อันไหนอัพเดทกว่ากัน ในกรณีแบบนี้ mercurial สามารถแก้ไขปัญหาได้ด้วยการ pull &amp; update โดยเราสมมุติว่า ผมแก้ไข sourcecode จากเครื่องส่วนตัวโดยการ clone มาไว้ในโฟล์เดอร์ hello ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นสมมุติว่าผมแก้ไขเสร็จก็ commit และ push ไปเก็บยัง repository แล้ว ผมเกิดไปที่ทำงานและทำการแก้ไข sourcecode จากเครื่องที่ทำงาน ผมก็สามารถ clone มายังเครื่องที่ทำงานได้ ซึ่งผมสมมุติว่า clone ไปยังโฟล์เดอร์ hello2 และทำการแก้ไข sourcecode ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราได้แก้ไขไฟล์ hello.c เพิ่มเติมในส่วนที่เป็นสีส้ม จากนั้นเราก็ทำการ commit และ push ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นผมก็กลับมาที่บ้าน และต้องการแก้ไข sourcecode จากเครื่องคอมพิวเตอร์ส่วนตัว ซึ่งผมเคย clone ไว้แล้วที่โฟล์เดอร์ hello แต่ sourcecode ตัวนี้ไม่ใช่ตัวล่าสุดแล้ว ผมสามารถทำการ pull ความเปลี่ยนแปลงของ sourcecode ได้และทำการ update ความเปลี่ยนแปลงของ sourcecode ได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราได้ใช้คำสั่ง hg pull เพื่อดึงความเปลี่ยนแปลงที่เกิดขึ้นมายัง local repository ของเรา จะเห็นว่าจะมีข้อความแสดงว่า sourcecode มีความเปลี่ยนแปลงไปและแนะนำให้เราใช้คำสั่ง hg update เพื่อ update ความเปลี่ยนแปลงดังข้อความสีส้ม จากนั้นเราก็ใช้คำสั่ง hg update เพื่อ update ความเปลี่ยนแปลงและทำการแก้ไข sourcecode จากนั้นก็ทำการแก้ไข sourcecode และ commit และ push ต่อไปดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="5-การ-merge">5. การ merge</h4>
+<p>ในการพัฒนาซอฟท์แวร์เป็นทีมนั้น จะมีโปรแกรมเมอร์หลายคนกำลังทำงานกับ sourcecode เดียวกัน เพียงแต่อาจจะแก้ไข sourcecode กันคนละ module ซึ่งเมื่อมีการ push ไปยัง repository นั้นบางครั้งอาจจะต้องมีการ merge เกิดขึ้น เนื่องจาก sourcecode ที่ตนเอง clone มานั้น ไม่ได้เป็น sourcecode รุ่นล่าสุดแล้ว ระหว่างที่เราทำการแก้ไข sourcecode เรานั้น อาจจะมีโปรแกรมเมอร์คนอื่นได้ push ก่อนหน้าเราไปแล้ว ฉะนั้น เราจะต้องทำการ pull ความเปลี่ยนแปลงมาที่ local repository ก่อน แล้วจึงทำการ merge จากนั้นค่อย commit และ push ต่อไปได้</p>
+<p>สมมุติเหตุการณ์ว่ามีโปรแกรม A ได้ clone repository มาและทำการเพิ่มไฟล์ adding.c เข้ามาดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : adding.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ขณะเดียวกันโปรแกรมเมอร์ B ได้ทำการ clone repository มาเช่นเดียวกันและทำการเพิ่มไฟล์ sub.c ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : sub.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นโปรแกรมเมอร์ A ได้ทำการ commit และ push ตัว sourcecode เข้าสู่ repository ตามปกติดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หลังจากนั้น เมื่อโปรแกรมเมอร์ B จะทำการ commit และ push บ้างก็จะเกิดเหตุการณ์ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โปรแกรมเมอร์ B จะไม่สามารถ push ได้ เนื่องจาก sourcecode ใน repository นั้น ใหม่กว่า clone ของโปรแกรมเมอร์ B ดังนั้นโปรแกรมเมอร์ B จะต้องทำการ pull ความเปลี่ยนแปลงมาก่อน จากนั้นจึงต้องทำการ merge ความเปลี่ยนแปลงนั้นก่อน แล้วจึงทำการ commit และ push อีกครั้งดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="6-การ-tag">6. การ tag</h4>
+<p>ในการพัฒนาซอฟท์แวร์นั้นเมื่อทำไปจนถึงจุดนึงแล้ว อาจจะมีการตัดสินหมายเลขรุ่นหรือ version ขึ้น เราสามารถที่จะ tag จุดนั้นเอาไว้ว่าเป็น sourcecode รุ่นอะไร เผื่อว่าเมื่อเราพัฒนาไปเรื่อย ๆ แล้ว เราอาจจะอยากดู sourcecode รุ่นเก่า ๆ มาดูเพื่อเปรียบเทียบจุดประสงค์อื่นใดก็ได้ โดยการ tag ทำได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าเราใช้คำสั่ง hg tag แล้วตามด้วยข้อความที่เราต้องการ เพื่อทำการ tag จุดนี้ไว้ หลังจากนั้นจึงทำการ commit และ push ตามลำดับ</p>
+<p>เราสามารถทำการ update ไปยัง tag ใดก็ได้ ด้วยคำสั่งดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>และเราสามารถทำการลบ tag ได้ดังคำสั่งต่อไปนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="7-การ-branch">7. การ branch</h4>
+<p>เมื่อมีการพัฒนาซอฟท์แวร์ไปถึงจุดนึง อาจจะเกิดความต้องการเปลี่ยนแปลงโครงสร้างหรือแนวคิดบางอย่างขึ้น โดยบางครั้งเป็นเพียงการทดสอบแนวคิด จึงอาจจะมีการต้องการแยกพัฒนาซอฟท์แวร์แยกไปอีกทางนึงซึ่งมี sourcecode ไปในแนวทางอื่น แต่ต้องการเก็บตัว sourcecode ใหม่นี้ร่วมกับ sourcecode เดิม เช่น เราอาจจะพัฒนาโปรแกรมประมวลผลกีฬาซึ่งทำงานบนวินโดว์ แต่เราต้องการทำรุ่นสำหรับทำงานบนมือถือด้วย หรือทำงานบนลีนุกซ์ด้วย เป็นต้น โดยจะมี sourcecode ส่วนหนึ่งที่แตกต่างออกไปจากต้นฉบับ เราจะเรียกกรณีนี้ว่าการ branch นั่นเอง</p>
+<p>โดยการ branch นั้น sourcecode ทั้งสองชุด จะอยู่ใน repository เดียวกันได้ โดย sourcecode ต้นฉบับจะถือว่าอยู่ใน branch default ส่วน sourcecode ที่แยกไป จะสามารถตั้งชื่อ branch ได้ตามต้องการ</p>
+<p>สมมุติเหตุการณ์ว่าเราจะสร้าง branch ใหม่สำหรับ mobile version เราจะเริ่มด้วยการ clone repository เดิมมาก่อน จากนั้นจึงกำหนด branch ขึ้น แล้วทำการการ commit และ push &ndash;new-branch กลับไปยัง repository นั่นเอง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อเราทำงานยังเครื่องอื่น เราต้องการ clone branch ที่เราต้องการ เพื่อมาทำการแก้ไข sourcecode เราสามารถ clone branch ได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หากต้องการลบ branch ทิ้ง เราสามารถทำได้โดย การ clone นั้นมาก่อน หากยังไม่ได้ clone มา จากนั้นให้ commit &ndash;close-branch และ push ไปยัง repository ก็เป็นอันเรียบร้อยครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เอาล่ะครับ เขียนมาซะยืดยาว ทั้งหมดนี้เป็นเพียง guide เบื้องต้นให้พอเข้าใจและใช้งานได้เท่านั้นนะครับ หากจะใช้ให้ชำนาญต้องทดลองฝึกฝนและทดลองบ่อย ๆ ครับ ส่วนข้อมูลลึก ๆ หรือหลักการอื่น ๆ สามารถค้นหาได้จาก พี่ google นะคร้าบบบบ ;p</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

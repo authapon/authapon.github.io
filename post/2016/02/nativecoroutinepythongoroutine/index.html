@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>ทดลอง Native Coroutines ของ Python เมื่อนำมาเทียบกับ Goroutines ในภาษา Go</h2>
+        <h3>Monday, 8 February 2016</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/python')">python</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/golang')">golang</button> 
+        
+        <br><br><div><p>ในการพัฒนาระบบสารสนเทศในปัจจุบัน มีความต้องการความสามารถที่จะทำงานได้อย่างต่อเนื่อง หรือที่เรียกว่ามี Concurrent สูง ๆ ซึ่งเทคนิคที่นิยมใช้ในปัจจุบันคือการเขียนโปรแกรมแบบ Asynchronous ใน <a href="https://www.python.org/">Python</a> จะมีการเขียนโปรแกรมแบบ Asynchronous โดยการใช้ Coroutines ส่วนในภาษา <a href="https://golang.org/">Go</a> จะใช้สิ่งที่เรียกว่า Goroutines ซึ่งผมได้ทดลองเขียนโค้ดตัวอย่างเพื่อเปรียบเทียบ การเขียนโปรแกรมแบบ Asynchronous ของทั้งสองภาษาดังนี้ครับ</p>
+<h4 id="1-การทดลอง-coroutines-ใน-python">1. การทดลอง Coroutines ใน Python</h4>
+<p>ผมได้เขียนโปรแกรมให้มีการเรียกฟังก์ชั่นต่อ ๆ กันไปโดยจะไม่มีการรอผลลัพธ์ซึ่งกันและกัน และให้แต่ละฟังก์ชั่นมีการจบการทำงานไม่พร้อมกัน โดยโค้ดมีดังนี้ครับ</p>
+<p><strong>File : a.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">go1</span>():
+</span></span><span style="display:flex;"><span>    asyncio<span style="color:#f92672">.</span>gather(go2())
+</span></span><span style="display:flex;"><span>    asyncio<span style="color:#f92672">.</span>gather(go3())
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go1 running&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go1 stoping&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">go2</span>():
+</span></span><span style="display:flex;"><span>    asyncio<span style="color:#f92672">.</span>gather(go4())
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go2 running&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go2 stoping&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">go3</span>():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go3 running&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go3 stoping&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">go4</span>():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go4 running&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;go4 stoping&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>gather(go1())
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>run_until_complete(c)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>    loop<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><p>ส่วนผลลัพธ์จากการทำงานดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-การทดลอง-goroutines-ในภาษา-go">2. การทดลอง Goroutines ในภาษา Go</h4>
+<p>ตัวอย่างโค้ดดังนี้ครับ</p>
+<p><strong>File : a.go</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">go1</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">go2</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">go3</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go1 running\n&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">5</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go1 stoping\n&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">go2</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">go4</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go2 running\n&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">3</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go2 stoping\n&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">go3</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go3 running\n&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go3 stoping\n&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">go4</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go4 running\n&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;go4 stoping\n&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">go1</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">6</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>ส่วนผลลัพธ์จากการทำงานดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ถึงแม้จะมีการโค้ดที่ต่างภาษากัน แต่แนวคิดคล้ายกันมาก ๆ เลยครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

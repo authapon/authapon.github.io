@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>ตัวอย่าง Code สำหรับรัน WSGI Web Application ด้วย Gevent แบบ Multicore</h2>
+        <h3>Friday, 12 December 2014</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/python')">python</button> 
+        
+        <br><br><div><p>ผมได้ทดลองสร้างตัวอย่าง Code สำหรับรัน WSGI Web Application ด้วย Gevent ที่สามารถทำงานแบบ Multicore ได้ ดังนี้ครับ</p>
+<p><strong>File : run.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> app <span style="color:#f92672">import</span> app
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> multiprocessing <span style="color:#f92672">import</span> Process, cpu_count
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gevent <span style="color:#f92672">import</span> monkey; monkey<span style="color:#f92672">.</span>patch_all()
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gevent.wsgi <span style="color:#f92672">import</span> WSGIServer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gevent.server <span style="color:#f92672">import</span> _tcp_listener
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">serve</span>(port):
+</span></span><span style="display:flex;"><span>    listener <span style="color:#f92672">=</span> _tcp_listener((<span style="color:#e6db74">&#39;&#39;</span>, int(port)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">serve_forever</span>(listener):
+</span></span><span style="display:flex;"><span>        WSGIServer(listener, app)<span style="color:#f92672">.</span>serve_forever()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(cpu_count()):
+</span></span><span style="display:flex;"><span>        Process(target<span style="color:#f92672">=</span>serve_forever, args<span style="color:#f92672">=</span>(listener,))<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    serve_forever(listener)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    serve(int(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]))
+</span></span></code></pre></div></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

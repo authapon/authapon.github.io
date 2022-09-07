@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>Linux Kernel Installation</h2>
+        <h3>Wednesday, 19 April 2006</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>บทความนี้จะเป็นเรื่องเกี่ยวกับการติดตั้ง kernel ของ Linux ตัวใหม่เพื่อ upgrade linux kernel ในเครื่องเรา เพื่อให้สามารถรองรับฮาร์ดแวร์ใหม่ได้ โดยผมได้ทำการทดลองบน <a href="http://www.ubuntu.com/">UBUNTU</a> Linux ครับ</p>
+<p>ก่อนอื่นเราต้องติดตั้ง package ที่จำเป็นสำหรับการ compile และติดตั้งก่อนนะครับ โดย package ที่จำเป็นมีดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>อาจจะใช้คำสั่ง apt-get install xxx xxx โดย xxx จะเป็นชื่อ package ต่าง ๆ ที่กล่าวมาข้างต้น จากนั้นให้ดาวน์โหลด kernel แล้วทำการคลายไฟล์ไปยัง /usr/src ก่อนแล้วจึง cd เข้าไปในโฟลเดอร์ linux kernel นั้นแล้วต่อไปจะเป็นการปรับแต่งกำหนดค่าต่าง ๆ ใน kernel ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นก็ทำการ compile kernel ด้วยคำสั่งดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เสร็จแล้วเราจะได้ linux kernel image ใหม่แล้ว เราจะดูได้ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ก็จะเห็นว่าได้ image file เรียบร้อยแล้ว ขั้นตอนต่อไปให้เข้าไปในโฟลเดอร์
+/lib/modules แล้ว ls -l จะเห็นไฟล์ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นใช้คำสั่งต่อไปคือ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สุดท้ายก็แก้ไข grub เพื่อให้บูตด้วย kernel ใหม่ของเรา</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>แล้วก็บูตใหม่เป็นอันเรียบร้อย ถ้าเครื่อง hang ก็ตัวใครตัวมันนะคร้าบบบบบบ</p>
+<p><strong>ที่มา :</strong> <a href="http://thaiopensource.org/content/view/178/221/lang,/">ThaiOpenSource</a></p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on </title>
+    <link>https://authapon.github.io/tags/</link>
+    <description>Recent content in Tags on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Mar 2019 14:03:10 +0700</lastBuildDate><atom:link href="https://authapon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux</title>
+      <link>https://authapon.github.io/tags/linux/</link>
+      <pubDate>Sat, 02 Mar 2019 14:03:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>https://authapon.github.io/tags/network/</link>
+      <pubDate>Sat, 02 Mar 2019 14:03:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://authapon.github.io/tags/golang/</link>
+      <pubDate>Wed, 12 Oct 2016 14:03:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crystallang</title>
+      <link>https://authapon.github.io/tags/crystallang/</link>
+      <pubDate>Sun, 18 Sep 2016 15:20:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/crystallang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dlang</title>
+      <link>https://authapon.github.io/tags/dlang/</link>
+      <pubDate>Sun, 18 Sep 2016 15:20:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/dlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nimlang</title>
+      <link>https://authapon.github.io/tags/nimlang/</link>
+      <pubDate>Sun, 18 Sep 2016 15:20:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/nimlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rustlang</title>
+      <link>https://authapon.github.io/tags/rustlang/</link>
+      <pubDate>Sun, 18 Sep 2016 15:20:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/rustlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://authapon.github.io/tags/python/</link>
+      <pubDate>Mon, 08 Feb 2016 14:16:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://authapon.github.io/tags/php/</link>
+      <pubDate>Mon, 13 Apr 2015 17:56:26 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://authapon.github.io/tags/java/</link>
+      <pubDate>Mon, 12 Jun 2006 10:36:40 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

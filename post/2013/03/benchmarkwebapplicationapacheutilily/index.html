@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การวัด Benchmark ของ Web Application ด้วย Apache Utilily</h2>
+        <h3>Tuesday, 12 March 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>ในการพัฒนาระบบสารสนเทศนั้น การเลือกเทคโนโลยีมาใช้พัฒนานั้นเป็นสิ่งสำคัญ บางครั้งเราอยากจะรู้เทคโนโลยีที่เรานำมาใช้ทำ Web Application มีความสามารถในการตอบสนองการทำงานได้ดีหรือน้อยกว่ากัน อย่างเช่น งานแบบเดียวกัน ถ้าใช้ <a href="https://secure.php.net/">php</a>+<a href="https://httpd.apache.org/">apache2</a> แล้วจะสามารถรองรับได้กี่ request per second แต่ถ้าใช้ Bottle+Gevent จะสามารถรองรับ Request per second ได้ดีกว่าแค่ไหนนั้น เราสามารถทำการทดสอบได้ด้วยโปรแกรมชุดเอนกประสงค์ Apache Utility ได้ครับ โดยทำการทดลองใน <a href="http://www.ubuntu.com/">Ubuntu</a> ดังนี้ครับ</p>
+<h4 id="1-ตดตง-apache2-utils">1. ติดตั้ง apache2-utils</h4>
+<p>เริ่มต้นก็ต้องทำการติดตั้ง Package ที่ชื่อ apache2-utils ก่อนดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-การทดสอบเวบไซตดวยคำสง-ab">2. การทดสอบเวบไซต์ด้วยคำสั่ง ab</h4>
+<p>หลังจากติดตั้ง apache2-utils แล้ว เราสามารถทำ Benchmarking ตัว Web Application ได้ด้วยคำสั่ง ab ดังตัวอย่างต่อไปนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากตัวอย่างจะใช้คำสั่ง ab -n 1000 -c 20 <a href="http://edoc2.rmutsv.ac.th/">http://edoc2.rmutsv.ac.th/</a> โดย <strong>-n 1000</strong> หมายถึงให้สร้าง request 1000 ครั้ง โดย <strong>-c 20</strong> จะเป็นการกำหนด concurrency เท่ากับ 20 หรือหมายถึงให้สร้าง request แบบพร้อม ๆ กันในครั้งเดียวที่ละ 20 request นั่นเอง จากนั้นก็ตามด้วย เวบที่เราจะทำการทดสอบ โปรแกรมก็จะรายงานผลเป็นค่าต่าง ๆ ให้เราได้ทราบเพื่อนำไปเปรียบเทียบกับตัวอื่น ๆ ได้ครับ ปล. อย่าเอาไปใช้ยิงเวบใครเข้าละครับ มันผิดกฏหมายและผิดจรรยาบรรณนักคอมพิวเตอร์ ให้ใช้เพื่อทดสอบเวบของตัวเองเท่านั้นนะครับ ขอให้สนุกกับการพัฒนาระบบครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

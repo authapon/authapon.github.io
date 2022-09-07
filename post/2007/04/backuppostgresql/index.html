@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การ backup ฐานข้อมูลของ postgresql</h2>
+        <h3>Sunday, 22 April 2007</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ปัจจุบันมีฐานข้อมูลให้เลือกใช้หลายยี่ห้อให้เลือกใช้กัน โดยส่วนตัวผมได้เลือกใช้ <a href="http://www.postgresql.org/">postgresql</a> เป็นฐานข้อมูลที่ใช้ในการพัฒนาโปรแกรม เพราะเป็นฐานข้อมูลที่มีความเสถียรสูง และมี feature ที่ดีดีเยอะ แต่มีสิ่งสำคัญสิ่งหนึ่งสำหรับระบบฐานข้อมูลนั้นคือการ backup ฐานข้อมูลนั่นเอง ผมได้ไปพบ code ที่เป็น script สำหรับการ backup ฐานข้อมูลจาก postgresql ที่น่าสนใจตัวนึงเลยนำมา post เก็บไว้</p>
+<p>ให้เราเพิ่มบรรทัดในไฟล์ /etc/crontab ดังนี้ครับ</p>
+<p><strong>File : /etc/crontab</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>แล้วทำการสร้างไฟล์สคริป backup โดยมีโค้ดดังนี้ครับ แต่ทั้งนี้เครื่องของเราต้องมี ralation กับ host ของฐานข้อมูลแบบ trust นะครับ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># Location of the backup logfile.</span>
+</span></span><span style="display:flex;"><span>logfile<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/path/to/logfile.log&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Location to place backups.</span>
+</span></span><span style="display:flex;"><span>backup_dir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/directory/to/place/backups&#34;</span>
+</span></span><span style="display:flex;"><span>touch $logfile
+</span></span><span style="display:flex;"><span>timeslot<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date +%H-%M<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>databases<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>psql -h localhost -U postgres -q -c <span style="color:#e6db74">&#34;\l&#34;</span> | sed -n 4,/<span style="color:#ae81ff">\e</span>of/p | grep -v rows<span style="color:#ae81ff">\)</span> | awk <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;print $1&#39;</span><span style="color:#f92672">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in $databases; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>      timeinfo<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date <span style="color:#e6db74">&#39;+%T %x&#39;</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;Backup and Vacuum complete at </span>$timeinfo<span style="color:#e6db74"> for time slot </span>$timeslot<span style="color:#e6db74"> on database: </span>$i<span style="color:#e6db74"> &#34;</span> &gt;&gt; $logfile
+</span></span><span style="display:flex;"><span>      /server/pgsql/bin/vacuumdb -z -h localhost -U postgres $i &gt;/dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>      /server/pgsql/bin/pg_dump $i -h 127.0.0.1 | gzip &gt; <span style="color:#e6db74">&#34;</span>$backup_dir<span style="color:#e6db74">/postgresql-</span>$i<span style="color:#e6db74">-</span>$timeslot<span style="color:#e6db74">-database.gz&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>ถ้าหากต้องการทำการ backup เองด้วยมือ เราสามารถใช้คำสั่ง pg_dump ได้ดังตัวอย่างนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดยพารามิเตอร์<br>
+-h จะหมายถึง host ของฐานข้อมูลเรา พารามิเตอร์<br>
+-f จะหมายถึงไฟล์ที่จะเก็บฐานข้อมูลเรา และ<br>
+-U จะหมายถึงชื่อผู้ใช้ในฐานข้อมูล และ databasename จะหมายถึงชื่อของฐานข้อมูลครับ</p>
+<p>ส่วนการ restore เราสามารถทำได้ด้วยคำสั่ง psql ดังตัวอย่างนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ความหมายของพารามิเตอร์จะเหมือนกับคำสั่ง pg_dump นะครับ แต่ที่เพิ่มมาคือพารามิเตอร์ -d จะหมายถึงชื่อฐานข้อมูลครับ</p>
+<p>อืม&hellip;.ขอให้มีความสุขกับการดูแลฐานข้อมูลนะครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

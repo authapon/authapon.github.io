@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การใช้ qemu เพื่อทำ Virtualization บนระบบ Ubuntu 13.04</h2>
+        <h3>Saturday, 13 July 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ปัจจุบันเทคโนโลยี Virtualization นิยมนำมาใช้กันมากเพราะสามารถช่วยประหยัดทรัพยากรต่าง ๆ และง่ายต่อการบริหารจัดการ โดยเฉพาะในเรื่องของการพัฒนาระบบเครื่องแม่ข่ายต่าง ๆ ซึ่งในการพัฒนาระบบ Cloud นั้น ระบบ Virtualization จัดเป็นหัวใจสำคัญเลยทีเดียว ในระบบ <a href="http://www.ubuntu.com/">Ubuntu</a> 13.04 เราสามารถใช้ qemu เพื่อสร้าง Virtual Computer ได้ง่าย ๆ ดังนี้</p>
+<h4 id="1-ลง-package-ทเกยวของดงน">1. ลง package ที่เกี่ยวข้องดังนี้</h4>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดย qemu-kvm คือตัวระบบ Virtualization ของเรา bridge-utils จะเป็น package สำหรับการสร้าง Bridge Network Interface ให้กับระบบ Virtualization ของเรา และสุดท้าย spice-client จะเป็นโปรแกรมสำหรับทำ remote console เข้าไปยังระบบ Virtualization ของเรานั่นเองครับ</p>
+<h4 id="2-สราง-bridge-network-interface-ใหกบเครอง-host">2. สร้าง Bridge Network Interface ให้กับเครื่อง Host</h4>
+<p>ขั้นตอนต่อไปเราจะสร้าง Bridge Network Interface เพื่อใช้งานแทน eth0 เนื่องจากตัวระบบ Virtualization ของเราจะใช้ bridge เป็น Network Interface สำหรับติดต่อกับโลก Internet โดยเราสามารถแก้ไฟล์ /etc/network/interfaces เพื่อใช้ bridge ในกรณีที่ใช้ dhcp ได้ดังนี้</p>
+<p><strong>File : /etc/network/interfaces</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากตัวอย่างเป็นการนำ eth0 มาทำเป็น bridge ที่ชื่อ br0 และรับ config เครือข่ายทาง dhcp นั่นเอง แต่หากเราต้องการทำ static ip ทำได้ดังนี้ครับ</p>
+<p><strong>File : /etc/network/interfaces</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นทำการ restart ระบบ network ใหม่ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="3-สรางไฟลสำหรบจำลองเปน-harddisk-ของระบบ-virtualization">3. สร้างไฟล์สำหรับจำลองเป็น harddisk ของระบบ Virtualization</h4>
+<p>ต่อไปเราจะทำการสร้างไฟล์เพื่อจำลองเป็น harddisk สำหรับใช้งานในระบบ Virtualization ของเราโดยสมมุติว่าเราจะสร้างไฟล์ไว้ในโฟลเดอร์ /home/moo/virtual เราสามารถสร้างไฟล์จำลองได้ด้วยคำสั่ง qemu-img โดยผมจะทำการสร้างไฟล์ขนาด 10G โดยจะตั้งชื่อว่า hd1.img ผมจะสร้างได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="4-รนระบบ-virtualization-เพอตดตง-os">4. รันระบบ Virtualization เพื่อติดตั้ง OS</h4>
+<p>จากนั้นเราจะรันระบบ Virtualization ของเรา เพื่อทำการติดตั้ง OS โดยสมมุติว่าผมได้ดาวน์โหลดไฟล์ Ubuntu server 13.04 มาแล้วและอยู่ในโฟล์เดอร์เดียวกัน ผมจะสามารถรันระบบเพื่อติดตั้ง OS ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราจะใช้คำสั่ง qemu-system-x86_64 เพื่อรันระบบ Virtualization เนื่องจาก Host ของผมเป็น Ubuntu รุ่น 64 บิต แต่หากใช้ OS รุ่น 32 บิต ก็ให้ใช้คำสั่ง qemu-system-i386 โดยจะมีการใช้พารามิเตอร์ดังนี้ครับ</p>
+<p>-hda hd1.img หมายถึงระบบของเราจะมี harddisk ก้อนแรกที่เป็น hda คือไฟล์จำลองที่ชื่อว่า hd1.img ถ้าหากมี harddisk หลายก้อนก็สามารถใช้ hdb hdc และ hdd ต่อไปได้ครับ</p>
+<p>-cdrom ubuntu-13.04-server-amd64.iso จะเป็นการเชื่อมต่อไฟล์ iso ที่เป็นตัวติดตั้ง OS ของเรา ให้เชื่อมต่อเป็น cdrom นั่นเองครับ</p>
+<p>-m 512M เป็นการกำหนด RAM ให้กับระบบของเราขนาด 512M นั่นเองครับ</p>
+<p>-vga qxl เป็นการกำหนดชนิดของการ์ดจอของระบบเรา ซึ่งหากใช้ remote protocol แบบ spice ที่ผมใช้ก็ควรกำหนดเป็นชนิด qxl ครับ</p>
+<p>-boot d เป็นการกำหนดให้มีการบูตระบบจากไดร์ฟ d ซึ่งหมายถึง cdrom หรือไฟล์ติดตั้ง OS ของเรานั่นเอง</p>
+<p>-spice port=5900,addr=0.0.0.0,password=moo เป็นการกำหนดการ remote console โดยใช้ spice protocol โดยกำหนดให้เชื่อมต่อที่พอร์ต 5900 รอรับฟังจากทุก address และกำหนดรหัสผ่านคือ moo ครับ</p>
+<p>-net nic -net tap กำหนดให้มีระบบ network โดยจะมีการเชื่อมต่อกับภายนอกด้วย bridge ที่เราสร้างขึ้นมาครับ</p>
+<p>-smp 2 กำหนดให้ระบบมีจำนวน cpu เท่ากับ 2 ซีพียูครับ โดยในระบบ linux จะอนุญาตให้กำหนดได้สูงสุดแค่ 4 ซีพียูครับ</p>
+<h4 id="5-เปด-remote-console-ดวย-spicec">5. เปิด remote console ด้วย spicec</h4>
+<p>เมื่อเราทำการรันระบบ Virtualization แล้ว เราจะต้องใช้โปรแกรม remote console เพื่อทำการเปิดดูหน้าจอของระบบ Vitualization ของเรา โดยเราจะเปิด remote console ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราใช้คำสั่ง spicec เพื่อเปิดหน้า console ขึ้นมา โดยจะมีพารามิเตอร์ดังนี้ครับ</p>
+<p>-h 127.0.0.1 เป็นการกำหนด ip ของเครื่องที่เป็น host ให้กับระบบ Virtualization ของเราครับ</p>
+<p>-p 5900 เป็นการกำหนดหมายเลขพอร์ตที่ใช้ทำการเชื่อมต่อ</p>
+<p>-w moo เป็นการกำหนดรหัสผ่านเพื่อทำการเชื่อมต่อและเปิด console</p>
+<p>จากนั้นหน้าจอ console จะปรากฏขึ้นเพื่อให้เราใช้งาน โดยหากเราคลิ๊กเมาส์ที่หน้าจอ console จะเป็นการเข้าไปใช้งาน หากต้องการดึงเมาส์คืนเพื่อกลับมาให้กด shift+F12 หากต้องการให้แสดงผลแบบ Full Screen ให้กด shift+F11 ครับ ที่เหลือก็ทดลองปรับใช้ดูนะครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การกำหนด quota ใน debian</h2>
+        <h3>Saturday, 7 April 2007</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในการใช้งาน Linux แบบมีผู้ใช้หลาย ๆ คนนั้น ผู้ดูแลระบบมักจะเจอกับปัญหาการใช้เนื้อที่ฮาร์ดดิสก์ของผู้ใช้แต่ละคนแบบไม่บันยะบันยัง คือเอาอะไรต่อมิอะไรมายัดไว้ในระบบ เช่น ไฟล์หนัง หรือไปโหลดพวกเกมส์ขนาดยักษ์ ๆ มาใส่ไว้แล้วไม่ยอมลบ ทำให้เนื้อที่ของระบบมีการใช้งานที่ไม่คุ้มค่า ในระบบ Linux นั้น เราสามารถกำหนด quota (โควต้า) ในการใช้เนื้อที่ของฮาร์ดดิสก์ของผู้ใช้แต่ละคน หรือแต่ละกลุ่มได้ ผมเองได้ไปค้นหาวิธีการใช้งาน quota ในระบบ <a href="https://www.debian.org/">Debian</a> มาลง แต่ก็เชื่อว่าน่าจะใช้ได้กับ <a href="http://www.ubuntu.com/">Ubuntu</a> ด้วยเหมือนกัน เอาล่ะ มาเริ่มกัน</p>
+<p>เริ่มจากทำการลง package ที่ใช้ทำ quota ก่อนด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ต่อไปก็ทำการแก้ไฟล์ระบบที่ชื่อว่า /etc/fstab ซึ่งเป็นไฟล์ที่กำหนด
+การ mount พาติชั่นต่าง ๆ ของฮาร์ดดิสก์กับระบบของ Linux โดย
+ถ้าเราต้องกำหนด quota กับพาติชั่นใด ก็แก้เฉพาะพาติชั่นนั้น</p>
+<p><strong>File : /etc/fstab</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากข้างบนส่วนที่เป็นสีแดงคือส่วนที่เราเพิ่มเข้าไป โดยในที่นี้เราจะกำหนด quota ให้กับ /home นั่นเอง ต่อไปเราก็ทำการสร้างไฟล์ของระบบ quota ของ /home ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นเราก็รีบูตเครื่องใหม่ หรือถ้าไม่ต้องการรีบูตเครื่องใหม่ก็ต้องทำการ remount พาติชั่นใหม่และสั่งให้ระบบ quota ทำงาน</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หลังจากนี้เราก็สามารถกำหนด quota ได้แล้วครับ เช่น ถ้าเราต้องการกำหนด quota ให้กับผู้ใช้ชื่อ sky โดยมี soft limit ที่ 1000 blocks และ hard limit ที่ 1200 blocks เราสามารถทำได้ด้วยคำสั่งดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดย soft limit จะหมายถึงขอบเขตที่อนุญาตให้ชั่วคราว 7 วันและ hard limit หมายถึงขอบเขตที่ไม่สามารถผ่านไปได้ครับ และถ้าหากเราต้องการดูการใช้ quota ทั้งหมดเราสามารถดูได้ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เอาล่ะครับ ลองทำดูละกัน :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

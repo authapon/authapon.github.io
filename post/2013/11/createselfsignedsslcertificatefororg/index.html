@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การสร้าง Self-Signed SSL Certificate สำหรับการทดลองหรือใช้ภายในองค์กร</h2>
+        <h3>Sunday, 17 November 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>การพัฒนาระบบเวบแอปพลิเคชั่นที่ผ่านโปรโตคอล http นั้น ข้อมูลที่วิ่งในระบบจะไม่ถูกเข้ารหัส ทำให้อาจเกิดการดักจับข้อมูลหรืออื่น ๆ ซึ่งสร้างความไม่ปลอดภัยในการใช้งาน เพื่อความปลอดภัย เราควรให้เวบแอปพลิเคชั่นของเรา วิ่งบนโปรโตคอล https ซึ่งมีการเข้ารหัสข้อมูล และเราต้องใช้ SSL Certificate โดยต้องเสียตังให้กับองค์กรที่รับรองการออก SSL Certificate เหล่านี้ให้กับเรา แต่ถ้าเราอยากจะสร้าง SSL Certificate ของเราเอง เพื่อทดลองหรือใช้ภายในองค์กร เราก็สามารถทำได้ง่าย ๆ ในระบบ Ubuntu ด้วยคำสั่ง openssl ง่าย ๆ ดังนี้ครับ</p>
+<h4 id="1-สราง-private-key">1. สร้าง Private Key</h4>
+<p>ในขั้นนี้เราจะสร้าง Private Key ขึ้นมาโดยจะเข้ารหัสแบบ Triple-DES และมีขนาด 1024 บิต ด้วยคำสั่งดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในขั้นตอนนี้ ระบบจะให้เราใส่ pass phrase ด้วยนะครับ เมื่อเรากำหนด pass phrase เสร็จแล้วเราจะได้ไฟล์ server.key มาหนึ่งไฟล์ ซึ่งก็คือไฟล์ Private Key นั่นเองครับ</p>
+<h4 id="2-สราง-csr-certificate-signing-request">2. สร้าง CSR (Certificate Signing Request)</h4>
+<p>ในขั้นนี้เราจะสร้างไฟล์ CSR ขึ้น เมื่อเราสร้างแล้ว เราสามารถนำไฟล์ CSR และ Private Key เพื่อนำไปขอ SSL Certificate ได้ครับ หรือไม่ก็นำไปสร้าง self-signed SSL Certificate ของเราขึ้นมาเองเพื่อทดลองหรือใช้ภายในองค์กรได้ครับ โดยการสร้าง CSR ทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ระบบจะส่งคำถามต่าง ๆ มาให้เรา เราก็ตอบไปเรื่อย ๆ ครับ พอครบก็จะได้ไฟล์ server.csr มาครับ</p>
+<h4 id="3-เอา-pass-pharse-ออกจาก-private-key">3. เอา pass pharse ออกจาก Private Key</h4>
+<p>ในส่วนของ Private Key นั้นจะมี pass phrase อยู่ ซึ่งเมื่อเวลานำไปใช้งานจริง จะทำให้ Browser ทำการถาม pass phrase เพื่อเข้าเวบทุกครั้ง ซึ่งอาจจะไม่เหมาะสมกับความต้องการของเรา เพราะเราต้องการให้สามารถเข้าเวบได้ทันที โดยไม่ต้องถาม pass phrase ให้ยุ่งยาก เราก็สามารถนำ pass phrase ออกจาก Private Key ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราก็จะได้ไฟล์ server.key ที่ไม่มี pass phrase แล้วครับ</p>
+<h4 id="4-สราง-self-signed-certificate">4. สร้าง Self-Signed Certificate</h4>
+<p>ขั้นตอนสุดท้าย เราก็จะสร้าง Self-Signed Certificate ขึ้นมาดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราก็จะได้ไฟล์ server.crt เพิ่มมาอีกหนึ่งไฟล์ เวลานำไปใช้งาน ไฟล์ที่ใช้มี 2 ไฟล์ ซึ่งก็คือ server.crt และ server.key นั่นเองครับ สำหรับในบางระบบ เช่น apache2 หรือ pound อาจจะต้องการไฟล์ pem เราก็จะสามารถสร้างไฟล์ pem ได้ง่าย ๆ ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>แค่นี้เราก็ได้ไฟล์ pem มาใช้งานแล้วครับ</p>
+<p><strong>ที่มา :</strong> <a href="http://www.akadia.com/services/ssh_test_certificate.html">How to create a self-signed SSL Certificate &hellip;</a></p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>Network Time Protocol (NTP) สำหรับ Debian</h2>
+        <h3>Friday, 26 September 2008</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>ปัจจุบัน การดูแลระบบเครือข่ายซึ่งบางแห่งอาจจะมีจำนวน server มาก และ พรบ.การกระทำความผิดทางคอมพิวเตอร์มีผลบังคับใช้ ซึ่งมีประเด็นหนึ่งที่ต้องสนใจก็คือเรื่องของเวลามาตรฐาน เพราะ เวลา จะเป็นสิ่งหนึ่งที่ใช้อ้างอิงในระบบของการเก็บข้อมูลการจราจรทางคอมพิวเตอร์ เพราะฉะนั้น ผู้ดูแลเครือข่ายจึงมีความจำเป็นจะต้องดูแลระบบเวลาของเครื่อง server ให้มีความถูกต้อง เที่ยงตรง การทำให้เวลาในระบบเครือข่ายและ server ของเรามีความเที่ยงตรง เราสามารถใช้การตั้งเวลาผ่านอินเตอร์เน็ตได้ ซึ่งในอินเตอร์เน็ตก็จะมีเครื่อง server ที่ให้บริการเทียบเวลาอยู่จำนวนมาก โดยใช้โปรโตคอล NTP และผู้ดูแลเครือข่ายเองก็ควรจะตั้ง NTP Server ขึ้นมาใช้งานเองด้วยครับ เอาล่ะครับ ที่นี้เรามาดูวิธีการสร้างเครื่อง NTP Server ใน Debian กันครับ โดยขั้นตอนแรกให้ติดตั้ง Package ที่จำเป็นก่อนดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นให้เราแก้ไขไฟล์ /etc/ntp.conf โดยในเบื้องต้น Debian จะมี NTP Server ของ Debian ให้มาเป็น default อยู่แล้ว ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สำหรับในประเทศไทย เราจะมี NTP Server ที่ให้บริการเทียบเวลาอยู่หลายหน่วยงาน ซึ่งผมจะแนะนำคือ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ซึ่งเราอาจจะเพิ่มเข้าไปทั้งหมดก็ได้ครับ แต่อาจจะเปลือง traffic หน่อย ซึ่งเราอาจจะเลือกซัก 2-3 Server ก็ได้ โดยถ้าเราจะเพิ่มทั้งหมดก็จะเป็นดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>แค่นี้เราก็ได้ NTP Server แล้วครับ ส่วนเครื่อง Server เครื่องอื่นสามารถนำเวลาของ NTP Server ไปใช้ได้ด้วยคำสั่งดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดยชื่อ clock.myserver.net คือชื่อเครื่อง NTP Server ที่เราตั้งขึ้นมานั่นเอง เพียงแค่นี้เวลาในระบบเครือข่ายและ Server ของเราก็เป็นมาตรฐานแล้วครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

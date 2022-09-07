@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network on </title>
+    <link>https://authapon.github.io/tags/network/</link>
+    <description>Recent content in network on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Mar 2019 14:03:10 +0700</lastBuildDate><atom:link href="https://authapon.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>การสร้าง Socks Tunnelling ด้วย SSH ใน Linux</title>
+      <link>https://authapon.github.io/post/2019/03/sockstunnellingssh/</link>
+      <pubDate>Sat, 02 Mar 2019 14:03:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2019/03/sockstunnellingssh/</guid>
+      <description>&lt;p&gt;ในระบบ Linux จะมีโปรแกรมสำหรับการรีโมทเข้าใช้งานเครื่องอื่นในระยะไกลได้ ซึ่งโปรแกรมยอดนิยมจะเป็น SSH นั่นเอง โดยตัวโปรแกรม SSH นั้นจะมี feature ให้เราสามารถสร้าง Socks Tunnelling ได้ เพื่อเราจะสามารถใช้งานอินเตอร์เน็ตได้อย่างปลอดภัยมากขึ้น หากเราต้องต่อใช้งานในเครือข่ายที่ไม่ปลอดภัย โดยเราจะสามารถสร้างได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ตัวอย่าง nginx configuration ที่น่าสนใจ</title>
+      <link>https://authapon.github.io/post/2016/06/nginxexample/</link>
+      <pubDate>Fri, 17 Jun 2016 14:06:57 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/06/nginxexample/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://nginx.org/&#34;&gt;Nginx&lt;/a&gt; เป็นโปรแกรม web server ที่มีประสิทธิภาพสูง ผมเองก็เลือกใช้ nginx เป็น web server หลักของระบบสารสนเทศที่ผมได้พัฒนาเองเป็นหลัก ผมได้มีการใช้ reverse proxy, http redirect to https, https with let&amp;rsquo;s encrypt, http2, และการใช้ php-fpm เพื่อกันลืมผมเลยจะโพสตัวอย่าง nginx configuration เก็บไว้ เผื่อไว้กลับมาดูในวันข้างหน้า ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>cURL คำสั่งสำหรับทดสอบส่งข้อมูลใน Protocol ต่าง ๆ แบบเบื้องต้น</title>
+      <link>https://authapon.github.io/post/2016/06/curlbegin/</link>
+      <pubDate>Mon, 13 Jun 2016 14:44:50 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/06/curlbegin/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศที่เป็น web service อาจจะต้องการการทดลองรับส่งข้อมูลตามเงื่อนไขต่าง ๆ ซึ่งในระบบ &lt;a href=&#34;https://www.archlinux.org/&#34;&gt;Archlinux&lt;/a&gt; จะมีคำสั่ง curl สำหรับใช้ทดลองส่งข้อมูลต่าง ๆ ที่รองรับ protocol ได้หลากหลาย เช่น http, ftp, ldap เป็นต้น แต่ในบทความนี้จะสาธิตการทดลองส่งข้อมูลผ่าน http ในเบื้องต้น โดยจะทดลองส่งผ่าน method ต่าง ๆ เช่น get หรือ post เป็นต้น โดยสามารถทำได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเพิ่มขีดจำกัดในการเปิด Socket Connection ใน Ubuntu</title>
+      <link>https://authapon.github.io/post/2013/11/solvelimitsocketconnectionubuntu/</link>
+      <pubDate>Tue, 19 Nov 2013 16:27:56 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/solvelimitsocketconnectionubuntu/</guid>
+      <description>&lt;p&gt;ผมได้พัฒนาระบบตัวหนึ่ง ซึ่งจะต้องรองรับการเปิด Socket จำนวนมาก แล้วก็เจอปัญหาว่า &lt;strong&gt;error: [Errno 24] Too many open files&lt;/strong&gt; เนื่องจากระบบได้จำกัดจำนวนการเปิดไฟล์จำนวนมาก ซึ่งรวมไปถึงการเปิด Socket ด้วยครับ ดังตัวอย่างนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การสร้าง Self-Signed SSL Certificate สำหรับการทดลองหรือใช้ภายในองค์กร</title>
+      <link>https://authapon.github.io/post/2013/11/createselfsignedsslcertificatefororg/</link>
+      <pubDate>Sun, 17 Nov 2013 14:00:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/createselfsignedsslcertificatefororg/</guid>
+      <description>&lt;p&gt;การพัฒนาระบบเวบแอปพลิเคชั่นที่ผ่านโปรโตคอล http นั้น ข้อมูลที่วิ่งในระบบจะไม่ถูกเข้ารหัส ทำให้อาจเกิดการดักจับข้อมูลหรืออื่น ๆ ซึ่งสร้างความไม่ปลอดภัยในการใช้งาน เพื่อความปลอดภัย เราควรให้เวบแอปพลิเคชั่นของเรา วิ่งบนโปรโตคอล https ซึ่งมีการเข้ารหัสข้อมูล และเราต้องใช้ SSL Certificate โดยต้องเสียตังให้กับองค์กรที่รับรองการออก SSL Certificate เหล่านี้ให้กับเรา แต่ถ้าเราอยากจะสร้าง SSL Certificate ของเราเอง เพื่อทดลองหรือใช้ภายในองค์กร เราก็สามารถทำได้ง่าย ๆ ในระบบ Ubuntu ด้วยคำสั่ง openssl ง่าย ๆ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การกำหนด Proxy ให้กับ Ubuntu Server</title>
+      <link>https://authapon.github.io/post/2013/11/setproxyubuntuserver/</link>
+      <pubDate>Wed, 13 Nov 2013 07:40:25 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/setproxyubuntuserver/</guid>
+      <description>&lt;p&gt;ในการใช้งาน Server บางครั้ง เราก็ต้องการให้ดาวน์โหลดข้อมูลต่าง ๆ โดยผ่าน Proxy เพื่อประโยชน์ในเรื่องของการ Caching ข้อมูล และประหยัด Bandwidth ของอินเตอร์เน็ต โดยใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; Server นั้นเราสามารถกำหนด Proxy ได้โดยการแก้ไขไฟล์ /etc/environment ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การแก้ไขให้ Ubuntu Server กลับมาใช้ระบบเครือข่ายได้ หลังจากเปลี่ยน Network Card</title>
+      <link>https://authapon.github.io/post/2013/11/solveubuntuservernetworkcardrestore/</link>
+      <pubDate>Sat, 09 Nov 2013 15:11:41 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/solveubuntuservernetworkcardrestore/</guid>
+      <description>&lt;p&gt;ผมได้ลงระบบ &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; Server ในระบบ KVM แล้วได้มีการเปลี่ยนค่า Mac Address เพื่อความสะดวกบางประการ ซึ่งเปรียบเสมือนการเปลี่ยน Network Card ทำให้เมื่อบูตระบบแล้ว ตัว Ubuntu Server อาจจะไม่เห็นหรือใช้งาน Network Card นั้นไม่ได้ แต่เรามีวิธีแก้ไข โดยทำการแก้ไขไฟล์ /etc/udev/rules.d/70-persistent-net.rules ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>โปรแกรมเก็บ Proxy Log แบบใช้ Multiprocessing Pool</title>
+      <link>https://authapon.github.io/post/2013/10/proxylogmultiprocessingpool/</link>
+      <pubDate>Sat, 26 Oct 2013 11:39:04 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/10/proxylogmultiprocessingpool/</guid>
+      <description>&lt;p&gt;คราวก่อนผมได้ทดลองสร้างโปรแกรมเก็บ Proxy Log ด้วย &lt;a href=&#34;https://www.python.org/&#34;&gt;Python&lt;/a&gt; ซึ่งใช้เทคนิคการสร้าง Process มารับงานแล้วสร้าง Thread มารับงานต่อ (บทความคราวก่อน) ครั้งนี้ผมได้ทดลองสร้าง Proxy Log ใหม่ด้วยเทคนิคการสร้าง Process Pool เลยอยากโพสเก็บไว้ดูวันหลังอีกดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทดลองสร้างโปรแกรมเก็บ Proxy Log ของ Squid 3.3.8 ลง MySQL ด้วย Python</title>
+      <link>https://authapon.github.io/post/2013/10/createproxylogsquid338mysqlpython/</link>
+      <pubDate>Wed, 23 Oct 2013 15:17:01 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/10/createproxylogsquid338mysqlpython/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองทำ Proxy Server ใหม่ด้วย &lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;Squid&lt;/a&gt; 3.3.8 และให้ส่ง Access Log ไปเก็บที่ Log Server ด้วย udp โดยใน Log Server ผมได้สร้างโปรแกรมที่ทำการรับ log จาก udp มาเก็บใน &lt;a href=&#34;https://www.mysql.com/&#34;&gt;MySQL&lt;/a&gt; เพื่อความสะดวกในการดูแล ค้นหา และ สกัด log โดยรายละเอียดมีดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การวัด Benchmark ของ Web Application ด้วย Apache Utilily</title>
+      <link>https://authapon.github.io/post/2013/03/benchmarkwebapplicationapacheutilily/</link>
+      <pubDate>Tue, 12 Mar 2013 22:22:02 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/03/benchmarkwebapplicationapacheutilily/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศนั้น การเลือกเทคโนโลยีมาใช้พัฒนานั้นเป็นสิ่งสำคัญ บางครั้งเราอยากจะรู้เทคโนโลยีที่เรานำมาใช้ทำ Web Application มีความสามารถในการตอบสนองการทำงานได้ดีหรือน้อยกว่ากัน อย่างเช่น งานแบบเดียวกัน ถ้าใช้ &lt;a href=&#34;https://secure.php.net/&#34;&gt;php&lt;/a&gt;+&lt;a href=&#34;https://httpd.apache.org/&#34;&gt;apache2&lt;/a&gt; แล้วจะสามารถรองรับได้กี่ request per second แต่ถ้าใช้ Bottle+Gevent จะสามารถรองรับ Request per second ได้ดีกว่าแค่ไหนนั้น เราสามารถทำการทดสอบได้ด้วยโปรแกรมชุดเอนกประสงค์ Apache Utility ได้ครับ โดยทำการทดลองใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>POUND Reverse-Proxy and Load-Balancer อันแข็งแกร่งและความเร็วเหนือนรก</title>
+      <link>https://authapon.github.io/post/2013/03/poundreverseproxyandloadbalancer/</link>
+      <pubDate>Mon, 11 Mar 2013 18:49:53 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/03/poundreverseproxyandloadbalancer/</guid>
+      <description>&lt;p&gt;ในการพัฒนา Web Application ด้วยเทคโนโลยี WSGIServer นั้น โดยปกติมักจะมี Front-end Webserver เพื่อเป็นตัวกระจายโหลด โดยในบทความอื่น ๆ ของผม จะมีการนำ &lt;a href=&#34;https://httpd.apache.org/&#34;&gt;Apache Web Server&lt;/a&gt; มาทำเป็นตัวกระจายโหลด ซึ่งตัว Apache นั้นจะเป็น Web Server แบบหนักและมีความสามารถอื่น ๆ มากมาย แต่เราเอามาใช้เพียงเป็นตัวกระจายโหลด จึงเหมือนกับขี่ช้างจับตั๊กแตน ทำให้การรองรับโหลดของระบบเราไม่สูงเท่าที่ควร ผมจึงแนะนำ &lt;a href=&#34;http://www.apsis.ch/pound/&#34;&gt;POUND&lt;/a&gt; ซึ่งเป็น Reverse Proxy และ Load Balancer มาทำเป็น Front-end ให้กับ WSGIServer ซึ่งจะทำให้ระบบของเรารองรับโหลดได้ดียิ่งขึ้น โดยการใช้งานใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; นั้น มีขั้นตอนดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การปรับแต่ง Squid3 ให้มีประสิทธิภาพมากขึ้นสำหรับงาน Caching Server</title>
+      <link>https://authapon.github.io/post/2008/12/setupsquid3cachingserver/</link>
+      <pubDate>Tue, 23 Dec 2008 17:49:11 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/12/setupsquid3cachingserver/</guid>
+      <description>&lt;p&gt;ระบบ Proxy หรือ Caching system เป็นระบบที่มีความสำคัญสำหรับการช่วยเร่งความเร็วในการเปิดเวบไซต์ต่าง ๆ
+สำหรับองค์กรที่มีผู้ใช้เครือข่ายจำนวนมาก มีโปรแกรม opensource ที่นิยมนำมาทำเป็น proxy server คือ โปรแกรม
+&lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid3&lt;/a&gt; ซึ่งเมื่อนำโปรแกรม squid มาลงแล้วนั้นอาจจะต้องมีการปรับแต่งค่าต่าง ๆ ให้เหมาะสมกับฮาร์ดแวร์ของเรา
+เพื่อให้มีประสิทธิภาพมากที่สุด โดยการปรับแต่งระบบสำหรับการทำ proxy นั้นมีการปรับค่าต่าง ๆ ซึ่งผมให้ความสนใจ
+ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Network Time Protocol (NTP) สำหรับ Debian</title>
+      <link>https://authapon.github.io/post/2008/09/networktimeprotocolntpdebian/</link>
+      <pubDate>Fri, 26 Sep 2008 15:57:50 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/09/networktimeprotocolntpdebian/</guid>
+      <description>&lt;p&gt;ปัจจุบัน การดูแลระบบเครือข่ายซึ่งบางแห่งอาจจะมีจำนวน server มาก และ พรบ.การกระทำความผิดทางคอมพิวเตอร์มีผลบังคับใช้ ซึ่งมีประเด็นหนึ่งที่ต้องสนใจก็คือเรื่องของเวลามาตรฐาน เพราะ เวลา จะเป็นสิ่งหนึ่งที่ใช้อ้างอิงในระบบของการเก็บข้อมูลการจราจรทางคอมพิวเตอร์ เพราะฉะนั้น ผู้ดูแลเครือข่ายจึงมีความจำเป็นจะต้องดูแลระบบเวลาของเครื่อง server ให้มีความถูกต้อง เที่ยงตรง การทำให้เวลาในระบบเครือข่ายและ server ของเรามีความเที่ยงตรง เราสามารถใช้การตั้งเวลาผ่านอินเตอร์เน็ตได้ ซึ่งในอินเตอร์เน็ตก็จะมีเครื่อง server ที่ให้บริการเทียบเวลาอยู่จำนวนมาก โดยใช้โปรโตคอล NTP และผู้ดูแลเครือข่ายเองก็ควรจะตั้ง NTP Server ขึ้นมาใช้งานเองด้วยครับ เอาล่ะครับ ที่นี้เรามาดูวิธีการสร้างเครื่อง NTP Server ใน Debian กันครับ โดยขั้นตอนแรกให้ติดตั้ง Package ที่จำเป็นก่อนดังนี้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Network File System (nfs) บน Linux (debian/ubuntu)</title>
+      <link>https://authapon.github.io/post/2008/09/networkfilesystemnfslinuxdebianubuntu/</link>
+      <pubDate>Mon, 22 Sep 2008 11:46:39 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/09/networkfilesystemnfslinuxdebianubuntu/</guid>
+      <description>&lt;p&gt;nfs เป็นระบบ file system ที่ share ผ่านเครือข่ายของระบบปฏิบัติการ Linux ซึ่งทำให้เราสามารถ
+ทำการ share ไฟล์ให้กันได้บนระบบปฏิบัติการ Linux โดยขั้นตอนทั้งหมดผมเอามาจากลิ้งนี้นะครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>เช็คค่า page rank ของเวบเพจด้วย SEOpen กันเถอะ</title>
+      <link>https://authapon.github.io/post/2008/08/pagerankseopen/</link>
+      <pubDate>Sat, 02 Aug 2008 01:43:09 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/08/pagerankseopen/</guid>
+      <description>&lt;p&gt;ในระบบ search engine เช่น google นั้นจะมีการจัดลำดับของความน่าเชื่อถือของเวบไซต์ โดยการใช้ page rank ซึ่งตัว page rank นั้นจะคำนวณจากการที่มีเวบไซต์อื่น ๆ ได้ทำการอ้างอิงถึงเวบไซต์ของเรา ถ้ามีการอ้างอิงมาก เค้าก็ตีความว่า เวบไซต์ของเรามีความน่าเชื่อถือมาก ทำให้เวลาเราค้นหาเวบไซต์ใน google จะทำให้เวบไซต์ของเราขึ้นมาในอันดับต้น ๆ ได้นั่นเอง โดย page rank นั้นจะมีค่าตั้งแต่ 1 - 10 โดยถ้าหากค่า page rank ได้คะแนนตั้งแต่ 4 ขึ้นไป ถือว่าเป็นเวบที่มีคุณภาพแล้ว เอาล่ะ !! เรามาเช็คค่า page rank ของเวบไซต์ของเรากันเถอะ เข้าไปที่เวบไซต์นี้เลยครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การทดสอบขนาด bandwidth ด้วยคำสั่ง iperf</title>
+      <link>https://authapon.github.io/post/2007/11/testbandwidthwithiperf/</link>
+      <pubDate>Mon, 19 Nov 2007 13:04:34 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2007/11/testbandwidthwithiperf/</guid>
+      <description>&lt;p&gt;เนื่องจากช่วงนี้ผมมารับงานด้านเครือข่าย ต้องมีการตรวจสอบขนาดของ bandwidth ของจุดเชื่อมต่อ ต่าง ๆ ในเครือข่าย ซึ่งผมได้ใช้คำสั่ง iperf ในการจำลองการส่งข้อมูลผ่านกันระหว่างเครื่องคอมพิวเตอร์สองเครื่อง
+ที่เชื่อมโยงในเครือข่าย โดยเครื่องแรกจะทำตัวเป็นตัวรอรับสัญญาณหรือเป็น server ก็ให้ใช้คำสั่ง&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

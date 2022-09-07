@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nimlang on </title>
+    <link>https://authapon.github.io/tags/nimlang/</link>
+    <description>Recent content in nimlang on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Sep 2016 15:20:15 +0700</lastBuildDate><atom:link href="https://authapon.github.io/tags/nimlang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>การเปรียบเทียบประสิทธิภาพ web service แบบง่าย ๆ ระหว่าง Rust, Crystal, Dlang, Nim และ Golang</title>
+      <link>https://authapon.github.io/post/2016/09/comparewebservice/</link>
+      <pubDate>Sun, 18 Sep 2016 15:20:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/09/comparewebservice/</guid>
+      <description>&lt;p&gt;เนื่องจากได้เริ่มศึกษาภาษารุ่นใหม่เข้าตัวนึงคือ &lt;a href=&#34;https://crystal-lang.org/&#34;&gt;Crystal&lt;/a&gt; ซึ่งเป็นภาษาที่ได้แรงบันดาลใจในด้าน syntax จากภาษา &lt;a href=&#34;https://www.ruby-lang.org/en/&#34;&gt;Ruby&lt;/a&gt; ที่มีรูปแบบภาษาที่น่าใช้ อ่านง่าย และแรงบันดาลใจด้าน concurrency แบบ &lt;a href=&#34;https://en.wikipedia.org/wiki/Communicating_sequential_processes&#34;&gt;CSP&lt;/a&gt; จากภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; กระนั้นแล้ว ขอทำการทดลองนิด ๆ หน่อย ๆ เพื่อดูว่าภาษา Crystal นี่ ประสิทธิภาพเจ๋งแค่ไหน โดยผมได้นำภาษา &lt;a href=&#34;https://www.rust-lang.org/en-US/&#34;&gt;Rust&lt;/a&gt;, ภาษา &lt;a href=&#34;https://dlang.org/&#34;&gt;D&lt;/a&gt; และภาษา &lt;a href=&#34;http://nim-lang.org/&#34;&gt;Nim&lt;/a&gt; เข้าร่วมทดสอบด้วย โดยมีการทดลองดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

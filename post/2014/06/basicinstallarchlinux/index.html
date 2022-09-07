@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การลง Archlinux แบบเบื้องต้น</h2>
+        <h3>Saturday, 7 June 2014</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ผมได้ทดลองติดตั้งระบบ Linux ตัวหนึ่งที่น่าสนใจมากคือ <a href="https://www.archlinux.org/">Arch Linux</a> ซึ่งเป็น Linux ที่มีการอัพเดทโปรแกรมให้ใหม่สุดเสมอ และเป็น linux ที่ปรับแต่งได้มากมายสุดแท้แต่ฝีมือของแต่ละคน และมีวิธีการติดตั้งไม่ง่ายนัก จึงจัดทำขั้นตอนการติดตั้งเบื้องต้นดังนี้ครับ</p>
+<h4 id="1-ดาวนโหลดไฟล-archlinux-มาเขยนลงซดเพอตดตง">1. ดาวน์โหลดไฟล์ Archlinux มาเขียนลงซีดีเพื่อติดตั้ง</h4>
+<p>เราสามารถดาวน์โหลดไฟล์ Archlinux ซึ่งเป็นไฟล์ ISO ให้นำมาเขียนลงแผ่นซีดีเพื่อเป็นแผ่นบูตและติดตั้ง โดยสามารถดาวน์โหลดได้ที่นี่ครับ</p>
+<pre><code>https://www.archlinux.org/download/
+</code></pre>
+<h4 id="2-ทำการจดการฮารดดสเพอตดตง">2. ทำการจัดการฮาร์ดดิสเพื่อติดตั้ง</h4>
+<p>เมื่อบูตด้วยแผ่น Archlinux แล้ว จะแสดงเมนูให้เราเลือกบูตว่าจะเป็นระบบ 64 บิต หรือ 32 บิต ก็เลือกตามความต้องการ แล้วระบบจะเข้าสู่ command prompt เราก็ดำเนินการกำหนดพาติชั่นฮาร์ดดิสด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราสามารถใช้คำสั่ง n เพื่อสร้างพาติชั่น คำสั่ง d เพื่อลบพาติชั่น และ w เพื่อบันทึกการกระทำทั้งหมดครับ</p>
+<p>จากนั้นเราก็ทำการฟอร์แมตพาติชั้นต่าง ๆ ให้เป็นระบบไฟล์ที่เราต้องการ เช่น</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเป็นตัวอย่างการฟอร์แมทพาติชั่น sda1 ให้เป็น ext4 ครับ</p>
+<h4 id="3-ทำการลงระบบพนฐาน">3. ทำการลงระบบพื้นฐาน</h4>
+<p>เมื่อเราฟอร์แมทพาติชั่นแล้ว เราก็ทำการ mount พาติชั่นที่เราต้องการให้เป็น / โดยในตัวอย่างผมกำหนดให้ /dev/sda1 เป็น / ของผมครับ โดยเราจะ mount ไปที่ /mnt เพื่อทำงานครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นจึงทำการลงระบบพื้นฐานดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="4-ปรบแตงระบบพนฐานตาง-ๆ">4. ปรับแต่งระบบพื้นฐานต่าง ๆ</h4>
+<p>เมื่อเราทำการติดตั้งระบบพื้นฐานแล้ว เราก็มีการปรับแต่งระบบที่จำเป็น โดยเราจะสร้างไฟล์ fstab ขึ้นมา เพื่อใช้ในการ mount กับฮาร์ดดิสของเราเมื่อบูตเครื่องดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นทำการย้ายเข้าสู่ root ของระบบใหม่ เพื่อดำเนินการปรับแต่งระบบอื่น ๆ ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตอนนี้เราเข้าสู่ root ของระบบใหม่แล้ว ต่อไปเราจะตั้งชื่อเครื่องด้วยการแก้ไขไฟล์ /etc/hostname ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ขั้นตอนต่อไป ทำการสร้าง locale และกำหนด localtime โดยการกำหนด localtime ให้เป็นที่ กรุงเทพ ประเทศไทย ทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นไปแก้ไฟล์ /etc/locale.gen ให้แก้ comment ในส่วนของภาษาไทยดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : /etc/locale.gen</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นให้เรียกคำสั่งเพื่อสร้าง locale ที่เราต้องการดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ขั้นตอนต่อไปคือแก้ไขไฟล์ /etc/locale.conf เพื่อให้ระบบมีการกำหนดใช้ locale ของเรา</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : /etc/locale.conf</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นเราจะทำการปรับแต่งระบบ linux ของเรา ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สุดท้ายก็ทำการตั้งรหัสผ่านให้กับ root ใหม่ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="5-ตดตงตว-boot-loader">5. ติดตั้งตัว boot loader</h4>
+<p>ขั้นตอนต่อไปเราจะทำการติดตั้งตัว boot loader โดยเราจะต้องลง grub ก่อนดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นก็ทำการลง boot loader ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สุดท้ายก็จะเป็นการสร้างไฟล์ปรับแต่งเพื่อการบูตระบบครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จบแล้วครับ สุดท้ายก็ทำการออกจากระบบ และบูตเครื่องครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ทั้งหมดนี้เป็นเพียงขั้นตอนเบื้องต้นในการติดตั้งนะครับ ในบางกรณีอาจจะต้องมีการปรับเปลี่ยนขั้นตอนบ้างขึ้นอยู่กับกรณีนะครับ เช่น ถ้าไม่มี dhcp ให้ เราก็ต้องตั้ง ip ให้กับแผ่น archlinux ของเราเป็นต้นครับ ขอให้ลองใช้กันดูนะครับ แรก ๆ จะรู้สึกว่ายาก แต่เมื่อคล่องแล้วจะรักเลยครับ ;)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

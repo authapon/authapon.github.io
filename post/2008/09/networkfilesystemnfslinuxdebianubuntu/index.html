@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>Network File System (nfs) บน Linux (debian/ubuntu)</h2>
+        <h3>Monday, 22 September 2008</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>nfs เป็นระบบ file system ที่ share ผ่านเครือข่ายของระบบปฏิบัติการ Linux ซึ่งทำให้เราสามารถ
+ทำการ share ไฟล์ให้กันได้บนระบบปฏิบัติการ Linux โดยขั้นตอนทั้งหมดผมเอามาจากลิ้งนี้นะครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ขั้นแรกเราต้องติดตั้ง package ที่จำเป็นสำหรับ nfs ก่อนนะครับ ซึ่งจะมี 2 ส่วนคือ สำหรับเครื่องที่เป็น client ต้องติดตั้ง package ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สำหรับเครื่องที่เป็น server ซึ่งทำการเปิด share ให้คนอื่นมาใช้ ให้ลง package ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นในส่วนของ server เราสามารถทำการ config ให้ทำการ share ไฟล์ได้จากไฟล์ /etc/exports</p>
+<p><strong>File : /etc/exports</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดยหมายถึงให้ share ไดเรคทอรี่ /home ให้แก่เครื่อง 195.12.32.2 ให้สามารถอ่านและเขียนได้(rw)
+และ no_root_squash จะหมายถึง root ในเคร่อง client จะมีสิทธิ์เท่ากับ root ในเครื่อง server ในการ
+อ่านไฟล์ แต่ถ้าเป็น root_squash จะทำให้ไฟล์ที่เขียนลงไปเป็น user ที่ชื่อ nobody แทน หลังจากนั้น
+ทำการประกาศ share ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เป็นอันเรียบร้อยในส่วนของ server ต่อมาในส่วนของ client เราจะทำการต่อกับไดเร็คทอรี่ที่ server
+ได้ทำการ share ไว้ด้วยคำสั่ง mount ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะหมายถึงเชื่อมต่อไดเรคทอรี่ /home ของเครื่อง files.first.com เข้ากับไดเร็คทอรี่ /mnt/nfs ของเรา
+เป็นอันเรียบร้อยครับ แต่ถ้าหากเราต้องการให้มีการเชื่อมต่อทุกครั้งที่บูตเครื่องก็ให้แก้ที่ไฟล์ /etc/fstab</p>
+<p><strong>File : /etc/fstab</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เรียบร้อยโรงเรียนไทย อิอิ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

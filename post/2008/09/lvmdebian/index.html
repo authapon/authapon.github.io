@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>LVM ใน Debian</h2>
+        <h3>Thursday, 11 September 2008</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>LVM เป็นระบบพาติชั่นแบบ logical ซึ่งมีความสามารถในการลดขนาดหรือเพิ่มขนาดของพาติชั่น
+ได้อย่างง่ายดาย และที่สำคัญเราสามารถนำฮาร์ดดิสก์หลาย ๆ ก้อนมาต่อกันแล้วสร้างเป็นพาติชั่น
+เดียวกันได้ ทำให้การใช้งานและการบริหารพื้นที่เก็บข้อมูลของเครื่อง server มีความคล่องตัวและ
+ยืดหยุ่นมาก เอาล่ะเรามาดูกันนะครับว่า เราต้องทำอย่างไรบ้าง ข้อมูลทั้งหมดผมเอามาจากลิ้งค์
+ข้างล่างนี้นะครับ ถ้าใครเก่งภาษาอังกฤษก็สามารถอ่านเพิ่มเติมเองได้นะครับ :)</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เริ่มแรกสำหรับ debian เราต้องลง package ของ LVM2 ก่อนดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ต่อมาเราจะสร้างพาติชั่นเรามาดูองค์ประกอบของ LVM กันก่อนนะครับว่ามีอะไรบ้าง โดยสิ่งแรก
+ที่เราต้องรู้จักคือ Physical volume (PV) ซึ่งหมายถึง ตัวพื้นที่ที่เป็นฮาร์ดแวร์ เช่น ฮาร์ดดิสก์
+หรือพาติชั่นจริง ๆ ในฮาร์ดดิสก์ โดยเราจะมีคำสั่งในการกำหนด pv ขึ้นในระบบด้วยคำสั่งดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่งข้างต้นจะเป็นการกำหนดพาติชั่น hdb1 และ hdb2 ให้เป็น pv เราสามารถดูว่าในระบบ
+ของเราได้มีการกำหนด pv ไว้แล้วหรืออย่างไร เราสามารถดู pv ในระบบได้ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หลังจากนั้นเราก็ต้องสร้าง Volume group (VG) โดยถ้าเราจะเปรียบเทียบกัน vg ก็เป็นดิสก์
+จำลองนั่นเอง โดยเราสร้างดิสก์จำลองโดยเอาพื้นที่จาก pv ที่เราได้กำหนดไว้แล้ว โดยการสร้าง
+vg นั้นเราสามารถสร้างได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่งข้างต้นจะเป็นการสร้าง vg ที่ชื่อ myvol โดยใช้พื้นที่จาก hdb1 และ hdb2 นั่นเอง
+ซึ่งเราสามารถดู vg ที่ถูกสร้างในระบบได้ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หลังจากนั้นเราก็ต้องทำการ activate vg ที่เราสร้างขึ้นได้คำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในกรณีที่เราต้องการเพิ่ม pv เข้าใน vg ที่เราได้สร้างไว้ก่อนแล้ว เราสามารถทำได้ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่งข้างต้นเป็นการนำ pv ที่กำหนดจาก hdb3 มาเพิ่มเข้าไปใน vg ที่ชื่อ myvol นั่นเอง
+และถ้าหากเราต้องการนำ pv ที่กำหนดไว้ใน vg แล้วนั้นออกจาก vg นั้น ๆ เราสามารถ
+ทำได้ด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่งข้างต้นจะเป็นการนำ pv ที่กำหนดจาก /dev/hdb3 ออกจาก vg ที่ชื่อ myvol จะเห็นว่า
+เราสามารถปรับเพิ่มหรือลดขนาดของดิสก์จำลองของเราได้ง่ายดายโดยการนำ pv เข้าหรือออก
+จาก vg ได้ตลอด แต่ในทางปฏิบัติการนำ pv เข้า vg จะไม่มีปัญหาอะไรแต่ในกรณีที่นำ pv ออก
+จาก vg นั้น จริง ๆ จะมีขั้นตอนที่ต้องทำมากกว่านี้ ซึ่งเราจะมาดูกันภายหลัง และเมื่อเราต้องการ
+ลบ vg ออกจากระบบเราทำได้ โดยการ Deactivate vg นั้นก่อนด้วยคำสั่ง vgchange หลังจาก
+นั้นก็ลบ vg ด้วยคำสั่ง vgremove ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หลังจากที่เราได้สร้าง vg แล้ว ขั้นตอนต่อมาก็คือการสร้าง Logical volume (LV) จาก vg ซึ่งเรา
+จะเปรียบเทียบได้คือ lv ก็คือพาติชั่นที่อยู่ใน vg หรือดิสก์จำลองนั่นเอง โดยเราสามารถสร้าง lv
+ได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่งข้างต้นจะเป็นการสร้าง lv ขนาด 1500Mb และมีชื่อ lv คือ par1 และสร้างจาก vg
+ที่ชื่อ myvol นั่นเอง โดยเราจะได้พาติชั่นใหม่ในชื่อ /dev/myvol/par1 นั่นเอง ที่เหลือเรา
+ก็ทำการ format พาติชั่นด้วยคำสั่ง mkfs.ext3 และ mount พาติชั่น lv นี้ด้วยคำสั่ง mount
+ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในกรณีที่ต้องการลบ lv ออก เราทำได้โดยการ umount ก่อนหลังจากก็ลบ lv ด้วย lvremove</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เอาล่ะ&hellip;.เราได้รู้ถึงคำสั่งพื้นฐานในการทำ LVM แล้วนะครับ โดยเริ่มจากการกำหนด pv
+หลังจากนั้นก็สร้าง vg และ lv ทีนี้เรามาดูในส่วนของการจัดการในเรื่องของการเพิ่มขนาด
+lv และลดขนาดของ lv กันนะครับ เรามาเริ่มที่การเพิ่มขนาดของ lv กันก่อนนะครับ
+ในการเพิ่มขนาดของ lv ที่มีการใช้งานอยู่แล้วนั้น เราสามารถเพิ่มได้โดยเราต้องเพิ่ม pv
+ใน vg ก่อน จากนั้นเราก็ใช้คำสั่ง lvextend ในการเพิ่มขนาดของ lv จากนั้นจึงปรับขนาด
+ของ file system ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ส่วนในการลดขนาดของ lv นั้นค่อนข้างอันตรายกว่าเพราะข้อมูลอาจจะมีการเสียหายได้
+จึงควรทำการสำรองข้อมูลก่อนนะครับ โดยขั้นตอนคือ umount lv นั้นออกจากระบบก่อน
+จากนั้นจึงทำการปรับขนาดของ file system สุดท้ายจึงลดขนาดของ lv ด้วย lvreduce</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เท่านี้เราก็สามารถลดขนาดของ lv ได้แล้วครับ ส่วน config ทั้งหมดของ lvm จะอยู่ใน</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>บางครั้งเวลาเครื่องมีการ reboot ใหม่หรือเกิดเหตุขัดข้องทำให้ lvm partition หายไปเรา
+อาจจะกู้กลับมาได้ด้วยคำสั่งดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ทั้งหมดนี้เป็นเพียงข้อมูลสำหรับการเริ่มต้นใช้งาน lvm นะครับ ก่อนจะใช้งานจริง ขอให้ทำการ
+ศึกษาทดลองให้เข้าใจอย่างถ่องแท้ก่อนนะครับ เพราะการใช้งาน lvm อาจจะมีข้อผิดพลาด
+ที่อ่อนไหวอยู่เหมือนกัน และข้อมูลของเราก็มีความสำคัญ ขอให้สนุกกับ lvm นะครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

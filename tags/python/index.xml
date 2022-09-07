@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on </title>
+    <link>https://authapon.github.io/tags/python/</link>
+    <description>Recent content in python on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Feb 2016 14:16:20 +0700</lastBuildDate><atom:link href="https://authapon.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ทดลอง Native Coroutines ของ Python เมื่อนำมาเทียบกับ Goroutines ในภาษา Go</title>
+      <link>https://authapon.github.io/post/2016/02/nativecoroutinepythongoroutine/</link>
+      <pubDate>Mon, 08 Feb 2016 14:16:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/02/nativecoroutinepythongoroutine/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศในปัจจุบัน มีความต้องการความสามารถที่จะทำงานได้อย่างต่อเนื่อง หรือที่เรียกว่ามี Concurrent สูง ๆ ซึ่งเทคนิคที่นิยมใช้ในปัจจุบันคือการเขียนโปรแกรมแบบ Asynchronous ใน &lt;a href=&#34;https://www.python.org/&#34;&gt;Python&lt;/a&gt; จะมีการเขียนโปรแกรมแบบ Asynchronous โดยการใช้ Coroutines ส่วนในภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; จะใช้สิ่งที่เรียกว่า Goroutines ซึ่งผมได้ทดลองเขียนโค้ดตัวอย่างเพื่อเปรียบเทียบ การเขียนโปรแกรมแบบ Asynchronous ของทั้งสองภาษาดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ตัวอย่าง Code สำหรับรัน WSGI Web Application ด้วย Gevent แบบ Multicore</title>
+      <link>https://authapon.github.io/post/2014/12/codewsgiwebapplicationgeventmulticore/</link>
+      <pubDate>Fri, 12 Dec 2014 22:30:30 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/12/codewsgiwebapplicationgeventmulticore/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองสร้างตัวอย่าง Code สำหรับรัน WSGI Web Application ด้วย Gevent ที่สามารถทำงานแบบ Multicore ได้ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>โปรแกรมเก็บ Proxy Log แบบใช้ Multiprocessing Pool</title>
+      <link>https://authapon.github.io/post/2013/10/proxylogmultiprocessingpool/</link>
+      <pubDate>Sat, 26 Oct 2013 11:39:04 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/10/proxylogmultiprocessingpool/</guid>
+      <description>&lt;p&gt;คราวก่อนผมได้ทดลองสร้างโปรแกรมเก็บ Proxy Log ด้วย &lt;a href=&#34;https://www.python.org/&#34;&gt;Python&lt;/a&gt; ซึ่งใช้เทคนิคการสร้าง Process มารับงานแล้วสร้าง Thread มารับงานต่อ (บทความคราวก่อน) ครั้งนี้ผมได้ทดลองสร้าง Proxy Log ใหม่ด้วยเทคนิคการสร้าง Process Pool เลยอยากโพสเก็บไว้ดูวันหลังอีกดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทดลองสร้างโปรแกรมเก็บ Proxy Log ของ Squid 3.3.8 ลง MySQL ด้วย Python</title>
+      <link>https://authapon.github.io/post/2013/10/createproxylogsquid338mysqlpython/</link>
+      <pubDate>Wed, 23 Oct 2013 15:17:01 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/10/createproxylogsquid338mysqlpython/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองทำ Proxy Server ใหม่ด้วย &lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;Squid&lt;/a&gt; 3.3.8 และให้ส่ง Access Log ไปเก็บที่ Log Server ด้วย udp โดยใน Log Server ผมได้สร้างโปรแกรมที่ทำการรับ log จาก udp มาเก็บใน &lt;a href=&#34;https://www.mysql.com/&#34;&gt;MySQL&lt;/a&gt; เพื่อความสะดวกในการดูแล ค้นหา และ สกัด log โดยรายละเอียดมีดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การ Deploy Web Application ที่พัฒนาด้วย Bottle ใน Apache2&#43;Gevent ใน Ubuntu 12.04</title>
+      <link>https://authapon.github.io/post/2013/02/deploywebapplicationbottleapache2geventubuntu/</link>
+      <pubDate>Mon, 18 Feb 2013 12:49:43 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/02/deploywebapplicationbottleapache2geventubuntu/</guid>
+      <description>&lt;p&gt;คราวที่แล้วผมได้เขียนบทความเกี่ยวการพัฒนาระบบสารสนเทศด้วย &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;Flask&lt;/a&gt; กับ &lt;a href=&#34;http://gunicorn.org/&#34;&gt;Gunicorn&lt;/a&gt; ซึ่งผมได้ทำการศึกษาเกี่ยวกับ Framework ในภาษา &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; เพิ่มเติม ก็พบว่ามี Framework ตัวนึงที่น่าสนใจมาก ๆ ซึ่งมีประสิทธิภาพสูงและมีเสถียรภาพมาก ๆ นั้นก็คือ &lt;a href=&#34;http://bottlepy.org/&#34;&gt;Bottle&lt;/a&gt; ครับและเมื่อนำมาใช้คู่กับ WSGI Server อย่าง &lt;a href=&#34;http://www.gevent.org/&#34;&gt;Gevent&lt;/a&gt; แล้ว จะสามารถรองรับงานได้อย่างมหาศาลเลยทีเดียว โดยมีขั้นตอนดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PyDev plugin สำหรับการเขียน Python บน Eclipse ใน Ubuntu</title>
+      <link>https://authapon.github.io/post/2013/01/pydevpluginpythoneclipseubuntu/</link>
+      <pubDate>Fri, 25 Jan 2013 22:27:39 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/01/pydevpluginpythoneclipseubuntu/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศนั้น เราจำเป็นต้องมีเครื่องมือสำหรับการพัฒนาระบบ ซึ่งเครื่องมือชนิดหนึ่งที่จำเป็นและขาดไม่ได้คือ Integrated Development Environment (IDE) ซึ่งก็คือชุดรวมเครื่องมือที่จำเป็น เช่น Editor, Complier, Debugging หรือแม้่เป็น Control Version Repository ด้วย ไว้ด้วยกัน โดยเครื่องมือที่ตัวผมนิยมใช้คือ Eclipse ซึ่งเป็นเครื่องมือพัฒนาระบบที่สามารถทำงานได้ในหลาย ๆ แพลตฟอร์ม เช่น วินโดว์ และ ลินุกซ์ เป็นต้น ซึ่งตัว &lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; จะเป็นที่นิยมในการพัฒนาโปรแกรมภาษา &lt;a href=&#34;http://java.com/en/&#34;&gt;Java&lt;/a&gt; แต่กระนั้นก็สามารถใช้พัฒนาโปรแกรมภาษาอื่น ๆ ได้ เช่น C, &lt;a href=&#34;http://www.php.net/&#34;&gt;PHP&lt;/a&gt; หรือ &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; ได้ โดยผ่าน plugin โดยในบทความนี้จะแนะนำวิธีการลง &lt;a href=&#34;http://pydev.org/&#34;&gt;PyDev&lt;/a&gt; ซึ่งเป็น plugin สำหรับการพัฒนาโปรแกรมภาษา Python บน Eclipse ใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การ Deploy Web Application ที่พัฒนาด้วย Flask ใน Apache2&#43;Gunicorn ใน Ubuntu 12.04</title>
+      <link>https://authapon.github.io/post/2013/01/deploywebapplicationflaskapache2gunicornubuntu/</link>
+      <pubDate>Mon, 14 Jan 2013 19:35:04 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/01/deploywebapplicationflaskapache2gunicornubuntu/</guid>
+      <description>&lt;p&gt;ช่วงนี้ผมอยู่ในระหว่างการพัฒนาระบบสารสนเทศตัวใหม่ ซึ่งผมใช้ &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;Flask&lt;/a&gt; เป็น Framework ในการพัฒนา และทำการ Deploy โดยใช้ &lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache2&lt;/a&gt; เป็น Front-end Web Server และใช้ &lt;a href=&#34;http://gunicorn.org/&#34;&gt;Gunicorn&lt;/a&gt; เป็น WSGI Server ซึ่งต้องมีการปรับแต่งค่าต่าง ๆ เพื่อให้สามารถใช้งานได้ โดยมีขั้นตอนดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

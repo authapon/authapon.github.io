@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=KoHo:400,400i,700,700i&display=swap&subset=latin-ext,thai');
+
+html, body, p {
+    color: #e4e2e0;
+    background-color: #000000;
+    padding: 0px;
+    margin: 0;
+	font-family: 'KoHo', sans-serif; 
+    font-size: 12pt;
+    font-weight: 400;
+}
+
+@media (orientation: portrait) and (min-width: 801px) {
+	html, body {
+		font-size: 22pt;
+	}
+}
+
+.main-contain {
+    display: flex;
+    max-width: 1700px;
+    height: 100vh;
+}
+.main-contain .main-pic {
+    background-image: url("pic/moonano.jpg"); 
+    background-position: left center;
+    background-size: cover;
+	flex-basis: 700px;
+	flex-shrink: 1;
+	min-width: 200px;
+    height: 100vh;
+}
+.main-contain .main-content {
+	flex-basis: 1000px;
+	min-width: 600px;
+	flex-shrink: 1;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+@media (orientation: portrait),(max-width: 800px) {
+	.main-contain {
+   		display: flex;
+   		flex-wrap: wrap;
+   		height: auto;
+	}
+	.main-contain .main-pic {
+    	background-image: url("pic/moonano.jpg"); 
+    	background-position: left center;
+    	background-size: cover;
+    	flex-basis: 100%;
+    	flex-shrink: 1;
+    	min-width: 100px;
+    	height: 70vh;
+	}
+	.main-contain .main-content {
+		flex-basis: 100%;
+		flex-shrink: 1;
+		min-width: 100px;
+    	height: auto;
+	}
+}
+
+@media print {
+	.main-contain .main-pic {
+		display: none;
+	}
+}
+
+.main-contain .main-content .block-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-contain .main-content .block-content .list-content {
+    min-width: 10rem;
+    padding: 0px 3rem 0px 0px;
+}
+
+a {
+    text-decoration: none;
+    color: #99d8d0;
+}
+
+a:hover {
+	color: #00b8ff;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+h3, h4 {
+    font-size: 1rem;
+    font-weight: 700; 
+}
+
+h1,h2,h3,h4 {
+    color: #cdb76b;
+}
+
+pre, code {
+  background-color: #cdb76b;
+  color: #000000;
+  padding: 1rem;
+  font-size: 1rem;
+  overflow: scroll;
+}
+
+.tagsbt {
+    background-color: #cdb76b;
+    color: #000000;
+    font-size: 1rem;
+}

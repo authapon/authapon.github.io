@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on </title>
+    <link>https://authapon.github.io/post/</link>
+    <description>Recent content in Posts on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Mar 2019 14:03:10 +0700</lastBuildDate><atom:link href="https://authapon.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>การสร้าง Socks Tunnelling ด้วย SSH ใน Linux</title>
+      <link>https://authapon.github.io/post/2019/03/sockstunnellingssh/</link>
+      <pubDate>Sat, 02 Mar 2019 14:03:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2019/03/sockstunnellingssh/</guid>
+      <description>&lt;p&gt;ในระบบ Linux จะมีโปรแกรมสำหรับการรีโมทเข้าใช้งานเครื่องอื่นในระยะไกลได้ ซึ่งโปรแกรมยอดนิยมจะเป็น SSH นั่นเอง โดยตัวโปรแกรม SSH นั้นจะมี feature ให้เราสามารถสร้าง Socks Tunnelling ได้ เพื่อเราจะสามารถใช้งานอินเตอร์เน็ตได้อย่างปลอดภัยมากขึ้น หากเราต้องต่อใช้งานในเครือข่ายที่ไม่ปลอดภัย โดยเราจะสามารถสร้างได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การสร้าง Iterator Function ด้วย Channel ใน Golang</title>
+      <link>https://authapon.github.io/post/2016/10/golangiterator/</link>
+      <pubDate>Wed, 12 Oct 2016 14:03:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/10/golangiterator/</guid>
+      <description>&lt;p&gt;ในภาษารุ่นใหม่ มักจะมีคุณสมบัติในการสร้าง Iterator Function หรือในบางภาษาจะเรียกว่า Generator เพื่อใช้สำหรับการเข้าถึงข้อมูลเป็นชุดด้วยการวนลูปและประมวลผล ใน &lt;a href=&#34;https://golang.org/&#34;&gt;Golang&lt;/a&gt; ก็สามารถสร้าง Iterator Function ได้ แต่ต้องมีการใช้ Channel มาช่วยในการผลิต Iterator โดยผมได้เขียน code ตัวอย่างไว้ สำหรับผู้ที่สนใจดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเปรียบเทียบประสิทธิภาพ web service แบบง่าย ๆ ระหว่าง Rust, Crystal, Dlang, Nim และ Golang</title>
+      <link>https://authapon.github.io/post/2016/09/comparewebservice/</link>
+      <pubDate>Sun, 18 Sep 2016 15:20:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/09/comparewebservice/</guid>
+      <description>&lt;p&gt;เนื่องจากได้เริ่มศึกษาภาษารุ่นใหม่เข้าตัวนึงคือ &lt;a href=&#34;https://crystal-lang.org/&#34;&gt;Crystal&lt;/a&gt; ซึ่งเป็นภาษาที่ได้แรงบันดาลใจในด้าน syntax จากภาษา &lt;a href=&#34;https://www.ruby-lang.org/en/&#34;&gt;Ruby&lt;/a&gt; ที่มีรูปแบบภาษาที่น่าใช้ อ่านง่าย และแรงบันดาลใจด้าน concurrency แบบ &lt;a href=&#34;https://en.wikipedia.org/wiki/Communicating_sequential_processes&#34;&gt;CSP&lt;/a&gt; จากภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; กระนั้นแล้ว ขอทำการทดลองนิด ๆ หน่อย ๆ เพื่อดูว่าภาษา Crystal นี่ ประสิทธิภาพเจ๋งแค่ไหน โดยผมได้นำภาษา &lt;a href=&#34;https://www.rust-lang.org/en-US/&#34;&gt;Rust&lt;/a&gt;, ภาษา &lt;a href=&#34;https://dlang.org/&#34;&gt;D&lt;/a&gt; และภาษา &lt;a href=&#34;http://nim-lang.org/&#34;&gt;Nim&lt;/a&gt; เข้าร่วมทดสอบด้วย โดยมีการทดลองดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ตัวอย่าง nginx configuration ที่น่าสนใจ</title>
+      <link>https://authapon.github.io/post/2016/06/nginxexample/</link>
+      <pubDate>Fri, 17 Jun 2016 14:06:57 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/06/nginxexample/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://nginx.org/&#34;&gt;Nginx&lt;/a&gt; เป็นโปรแกรม web server ที่มีประสิทธิภาพสูง ผมเองก็เลือกใช้ nginx เป็น web server หลักของระบบสารสนเทศที่ผมได้พัฒนาเองเป็นหลัก ผมได้มีการใช้ reverse proxy, http redirect to https, https with let&amp;rsquo;s encrypt, http2, และการใช้ php-fpm เพื่อกันลืมผมเลยจะโพสตัวอย่าง nginx configuration เก็บไว้ เผื่อไว้กลับมาดูในวันข้างหน้า ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>cURL คำสั่งสำหรับทดสอบส่งข้อมูลใน Protocol ต่าง ๆ แบบเบื้องต้น</title>
+      <link>https://authapon.github.io/post/2016/06/curlbegin/</link>
+      <pubDate>Mon, 13 Jun 2016 14:44:50 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/06/curlbegin/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศที่เป็น web service อาจจะต้องการการทดลองรับส่งข้อมูลตามเงื่อนไขต่าง ๆ ซึ่งในระบบ &lt;a href=&#34;https://www.archlinux.org/&#34;&gt;Archlinux&lt;/a&gt; จะมีคำสั่ง curl สำหรับใช้ทดลองส่งข้อมูลต่าง ๆ ที่รองรับ protocol ได้หลากหลาย เช่น http, ftp, ldap เป็นต้น แต่ในบทความนี้จะสาธิตการทดลองส่งข้อมูลผ่าน http ในเบื้องต้น โดยจะทดลองส่งผ่าน method ต่าง ๆ เช่น get หรือ post เป็นต้น โดยสามารถทำได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทดลอง Native Coroutines ของ Python เมื่อนำมาเทียบกับ Goroutines ในภาษา Go</title>
+      <link>https://authapon.github.io/post/2016/02/nativecoroutinepythongoroutine/</link>
+      <pubDate>Mon, 08 Feb 2016 14:16:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/02/nativecoroutinepythongoroutine/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศในปัจจุบัน มีความต้องการความสามารถที่จะทำงานได้อย่างต่อเนื่อง หรือที่เรียกว่ามี Concurrent สูง ๆ ซึ่งเทคนิคที่นิยมใช้ในปัจจุบันคือการเขียนโปรแกรมแบบ Asynchronous ใน &lt;a href=&#34;https://www.python.org/&#34;&gt;Python&lt;/a&gt; จะมีการเขียนโปรแกรมแบบ Asynchronous โดยการใช้ Coroutines ส่วนในภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; จะใช้สิ่งที่เรียกว่า Goroutines ซึ่งผมได้ทดลองเขียนโค้ดตัวอย่างเพื่อเปรียบเทียบ การเขียนโปรแกรมแบบ Asynchronous ของทั้งสองภาษาดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การสร้าง service unit file สำหรับกำหนด deamon ง่าย ๆ ใน systemd</title>
+      <link>https://authapon.github.io/post/2016/01/serviceunitfiledeamonsystemd/</link>
+      <pubDate>Thu, 21 Jan 2016 14:21:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/01/serviceunitfiledeamonsystemd/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศที่ใช้ภาษาพวก static type มักจะต้อง compile แล้วสั่ง run จาก command line ซึ่งเวลาจะใช้งานจริงที่อาจจะต้องมีการ stop, start หรือ restart ระบบ อาจจะค่อนข้างยุ่งยาก เพราะเราต้องทำการ kill process และทำการ run ใหม่อีกครั้ง ใน Linux ที่ใช้ systemd เราสามารถสร้าง service unit file ให้กับงานของเราได้ และสามารถทำการ stop, start หรือ restart ผ่านคำสั่ง systemctl แบบง่าย ๆ ได้ โดยมีขั้นตอนดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การทดลองใช้ Goroutine และ Channel ใน Golang</title>
+      <link>https://authapon.github.io/post/2015/11/goroutinechannelgolang/</link>
+      <pubDate>Sun, 29 Nov 2015 17:12:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2015/11/goroutinechannelgolang/</guid>
+      <description>&lt;p&gt;วันนี้ผมได้ทดลองเกี่ยวกับความสามารถด้าน Concurrency ในภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Golang&lt;/a&gt; ที่ออกแบบการทำงานในลักษณะคล้าย ๆ Thread แต่มีความง่ายและเบากว่า Thread ปกติ ที่เรียกว่า Goroutine และมีการสื่อสารกันผ่านสิ่งที่เรียกว่า Channel ผมเลยตั้งโจทย์ให้สร้าง Goroutine ขึ้นมาซัก 10 Goroutine ให้ผลิตข้อมูลตัวเลข 0 - 999 แบบสุ่ม แล้วส่งให้โปรแกรมหลักนำมาแสดงผล ซึ่ง code โปรแกรมมีดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทดสอบการใช้ Cookie Session ใน Negroni</title>
+      <link>https://authapon.github.io/post/2015/07/cookiesessionnegroni/</link>
+      <pubDate>Fri, 17 Jul 2015 12:44:05 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2015/07/cookiesessionnegroni/</guid>
+      <description>&lt;p&gt;การใช้ Cookie ในเวบแอป เป็นเรื่องที่ปกติมาก ๆ และใช้บ่อย ๆ เลยอยากเขียนตัวอย่างการใช้งาน Cookie Session แบบง่าย ๆ ที่ใช้ร่วมกับ &lt;a href=&#34;https://github.com/codegangsta/negroni&#34;&gt;Negroni&lt;/a&gt; ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเปรียบเทียบประสิทธิภาพเวบระหว่าง PHP, D lang และ Go lang</title>
+      <link>https://authapon.github.io/post/2015/04/comparephpdlanggolang/</link>
+      <pubDate>Mon, 13 Apr 2015 17:56:26 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2015/04/comparephpdlanggolang/</guid>
+      <description>&lt;p&gt;ช่วงนี้อยู่ในช่วงพัฒนาระบบใหม่ ๆ จึงอยากจะหาภาษาใหม่ ๆ ที่มีประสิทธิภาพสูง ๆ รองรับงานใหญ่ ๆ ได้ จึงได้ทำการทดลองสร้างเวบที่หาค่า Fibonucci(20) แล้วแสดงผลออกมา และวัดประสิทธิภาพในการทำงานออกมา โดยผมได้ทดลองกับภาษายอดนิยม &lt;a href=&#34;https://secure.php.net/&#34;&gt;PHP&lt;/a&gt; กับภาษาเกิดใหม่ที่น่าสนใจคือ ภาษา &lt;a href=&#34;http://dlang.org/&#34;&gt;D&lt;/a&gt; และภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; โดยมีการทดลองดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ตัวอย่าง Code สำหรับรัน WSGI Web Application ด้วย Gevent แบบ Multicore</title>
+      <link>https://authapon.github.io/post/2014/12/codewsgiwebapplicationgeventmulticore/</link>
+      <pubDate>Fri, 12 Dec 2014 22:30:30 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/12/codewsgiwebapplicationgeventmulticore/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองสร้างตัวอย่าง Code สำหรับรัน WSGI Web Application ด้วย Gevent ที่สามารถทำงานแบบ Multicore ได้ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Script สำหรับการดาวน์โหลด Package เพื่อสร้าง Repository ส่วนตัวของ Arch Linux</title>
+      <link>https://authapon.github.io/post/2014/12/scriptpackagerepositoryarchlinux/</link>
+      <pubDate>Tue, 09 Dec 2014 11:08:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/12/scriptpackagerepositoryarchlinux/</guid>
+      <description>&lt;p&gt;ผมได้สร้าง Script สำหรับการดาวน์โหลด Package ต่าง ๆ เพื่อสร้าง Repository ส่วนตัวของ &lt;a href=&#34;https://www.archlinux.org/&#34;&gt;Arch Linux&lt;/a&gt; โดยจะมี ทั้งหมด 3 Repository คือ Core, Extra, Community โดยการใช้งานจะเรียกผ่าน Cron โดยอาจจะให้ทำงานทุก 3-4 ชั่วโมง โดยไฟล์ทั้งสามมีดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเพิ่มประสิทธิภาพ Disk I/O ด้วยระบบ EnhanceIO</title>
+      <link>https://authapon.github.io/post/2014/11/boostspeeddiskwithenhanceio/</link>
+      <pubDate>Wed, 26 Nov 2014 22:34:12 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/11/boostspeeddiskwithenhanceio/</guid>
+      <description>&lt;p&gt;ในการใช้งาน Linux เป็น Desktop หรือ เป็นพวก Database Server นั้น จะมีการติดต่อกับ Disk I/O (Hard Disk) ค่อนข้างมาก ทำให้ระบบมีการทำงานที่ช้าลง แต่เราสามารถเพิ่มประสิทธิภาพของ Disk I/O ได้ด้วยการทำ Disk Cache โดยอาจจะใช้ พวก SSD หรือแม้กระทั่ง Ramdisk มาใช้เป็น Disk Cache เพื่อให้ Hard Disk มีการทำงานที่ดีขึ้นได้ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การแปลงไฟล์เสียง Flac ไปเป็น MP3 แบบคุณภาพสูง</title>
+      <link>https://authapon.github.io/post/2014/11/covertflactomp3/</link>
+      <pubDate>Wed, 19 Nov 2014 10:44:48 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/11/covertflactomp3/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองแปลงไฟล์เสียงคุณภาพสูง Flac ไปเป็น MP3 แบบคุณภาพสูงในระบบ &lt;a href=&#34;https://www.archlinux.org/&#34;&gt;Archlinux&lt;/a&gt; แบบง่าย ๆ โดยสามารถทำได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การแก้ปัญหา swap limit capabilities ใน Docker</title>
+      <link>https://authapon.github.io/post/2014/10/solveswaplimitcapabilitiesdocker/</link>
+      <pubDate>Sat, 11 Oct 2014 09:49:36 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/10/solveswaplimitcapabilitiesdocker/</guid>
+      <description>&lt;p&gt;ในการสั่ง &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; run นั้น จะมีพารามิเตอร์ -m เพื่อกำหนด limit ของ memory ให้กับ Container นั้น โดยปกติ Kernel จะต้องรองรับ cgroup swap limit ด้วย แต่โดยปกติแล้ว Kernel จะไม่ได้กำหนดให้รองรับไว้แต่แรกทำให้เมื่อรัน Container แบบ limit memory แล้ว จะได้รับคำเตือนว่า
+&amp;ldquo;WARNING: Your kernel does not support swap limit capabilities. Limitation discarded.&amp;rdquo; แต่เราสามารถแก้ไขได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การขยาย Storage ของ Docker Container</title>
+      <link>https://authapon.github.io/post/2014/09/expandstoragedockercontainer/</link>
+      <pubDate>Thu, 11 Sep 2014 12:31:29 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/09/expandstoragedockercontainer/</guid>
+      <description>&lt;p&gt;ในการใช้งาน OS-Level Virtualization อย่าง &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; นั้น เมื่อเราสร้าง Container แล้ว ตัว Container จะมีขนาดของ Storage ตั้งต้นที่ 10G ซึ่งพอเพียงกับการใช้งานปกติ แต่หากมีความต้องการใช้ Storage ที่มากกว่านั้น เราสามารถขยายขนาดของ Container ได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker ระบบ OS-Level Virtualization บนระบบ Linux</title>
+      <link>https://authapon.github.io/post/2014/09/dockeroslevelvirtualizationlinux/</link>
+      <pubDate>Wed, 03 Sep 2014 15:54:29 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/09/dockeroslevelvirtualizationlinux/</guid>
+      <description>&lt;p&gt;ในการใช้งานระบบ Virtualization นั้นจะมีหลายเทคโนโลยีให้เลือกใช้ เช่น VMWare Xen KVM OpenVZ เป็นต้น ซึ่งระบบ Vitualization ที่ผมเคยแนะนำไปส่วนใหญ่จะเป็นแบบ Full Virtualization คือการจำลองทั้งระบบคอมพิวเตอร์ แต่มีระบบ Virtualization แบบที่น่าสนใจอยู่แบบนึงคือ OS-Level Virtualization ซึ่งเป็นการจำลองเครื่องโดยจำลองแค่บางส่วน แต่ในส่วนของ Kernel จะใช้ร่วมกับ Host นั่นเอง ซึ่งระบบนี้จะมี overhead ต่ำมาก กินทรัพยากรน้อย แต่ข้อเสียคือจะใช้ได้แต่กับระบบปฏิบัติการเดียวกับ Host เท่านั้น เช่น Host เป็น Linux ทำให้สร้าง Guest ได้ที่เป็น Linux เท่านั้นแต่อาจจะมี Distro ต่างกันไปได้ครับ โดยเทคโนโลยีที่ผมจะแนะนำครั้งนี้คือ &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; ครับ และจะทดลองบน &lt;a href=&#34;https://www.archlinux.org/&#34;&gt;Arch Linux&lt;/a&gt; ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การลงระบบ X Windows และ Cinnamon Desktop ใน Archlinux</title>
+      <link>https://authapon.github.io/post/2014/08/installxwindowscinnamondesktoparchlinux/</link>
+      <pubDate>Sun, 24 Aug 2014 14:07:39 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/08/installxwindowscinnamondesktoparchlinux/</guid>
+      <description>&lt;p&gt;ในระบบ Linux นั้นจะมี Desktop ให้เลือกใช้มากมาย แต่วันนี้ผมจะมาแนะนำ Desktop ที่ผมชอบ ซึ่งก็คือ &lt;a href=&#34;http://cinnamon.linuxmint.com/&#34;&gt;Cinnamon&lt;/a&gt; เนื่องจากเป็น Desktop ที่เรียบง่าย ปรับแต่งความสวยงามได้ตามความชอบ โดยเริ่มง่าย ๆ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>เล็ก ๆ น้อย กับการเซ็ทอัพ Start up script</title>
+      <link>https://authapon.github.io/post/2014/07/somethingwithstartupscript/</link>
+      <pubDate>Wed, 23 Jul 2014 14:02:42 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/07/somethingwithstartupscript/</guid>
+      <description>&lt;p&gt;ในการใช้งาน Linux เมื่อเปิด terminal หรือรันโปรเซส จะมีการทำงานของ start up script เพื่อเตรียมสิ่งแวดล้อมต่าง ๆ ให้กับระบบก่อน ซึ่งไฟล์ script จะแตกต่างกันไปตาม shell ที่ใช้ และที่ผมใช้อยู่คือ bash และผมได้มีการปรับแต่ง script เพื่อการแสดงผลที่สวยงานและงานบางอย่างเอาไว้ เลยจะขอโพสไว้เพื่อไว้ใช้งานในคราวต่อ ๆ ไป&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทำ prompt เก๋ ๆ บน Linux Terminal</title>
+      <link>https://authapon.github.io/post/2014/06/makepromptlinuxterminal/</link>
+      <pubDate>Thu, 26 Jun 2014 19:03:50 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/06/makepromptlinuxterminal/</guid>
+      <description>&lt;p&gt;ในการใช้งานบน Linux Terminal ซึ่งเป็นโหมดตัวอักษรหรือที่เรียกว่า Command Line จะเห็นสัญลักษณ์แสดง Prompt เพื่อรอรับคำสั่งจากผู้ใช้ ซึ่งในเริ่มแรก Prompt ที่ระบบจัดให้ มันอาจจะดูจืดชืดไปหน่อย ผมเลยแนะนำการแต่ Prompt ในสไตล์ของผม โดให้แสดงชื่อผู้ใช้ ชื่อเครื่อง path ที่ใช้งานอยู่ ซึ่งจะแยกเป็นสี ๆ ไป และมีการแสดงเวลาใน Prompt ด้วย เราทำได้ง่าย ๆ โดยไปแก้ที่ไฟล์ .bashrc หรือหากไม่มีไฟล์ดังกล่าวก็ไปแก้ที่ /etc/bash.bashrc แล้วเพิ่มข้อมูลดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การสร้างไฟล์ /etc/rc.local บน Archlinux</title>
+      <link>https://authapon.github.io/post/2014/06/makeetcrclocalarchlinux/</link>
+      <pubDate>Thu, 12 Jun 2014 10:29:49 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/06/makeetcrclocalarchlinux/</guid>
+      <description>&lt;p&gt;ใน &lt;a href=&#34;https://www.archlinux.org/&#34;&gt;Arch Linux&lt;/a&gt; นั้น ไม่ได้ใช้ ระบบ init ในการเริ่มการทำงาน แต่ใช้ระบบ systemd ซึ่งใหม่กว่า แต่สำหรับผู้ใช้ linux บางคนอาจจะมีการใช้ startup file ที่ค้นเคยคือ /etc/rc.local เพื่อดำเนินการบางอย่างให้เราในตอน startup แต่ในระบบ systemd มันไม่มี /etc/rc.local ให้หน่ะซิ แต่ไม่ต้องกลัวครับ เราสามารถสร้างได้ง่าย ๆ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การลง Archlinux แบบเบื้องต้น</title>
+      <link>https://authapon.github.io/post/2014/06/basicinstallarchlinux/</link>
+      <pubDate>Sat, 07 Jun 2014 17:09:04 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2014/06/basicinstallarchlinux/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองติดตั้งระบบ Linux ตัวหนึ่งที่น่าสนใจมากคือ &lt;a href=&#34;https://www.archlinux.org/&#34;&gt;Arch Linux&lt;/a&gt; ซึ่งเป็น Linux ที่มีการอัพเดทโปรแกรมให้ใหม่สุดเสมอ และเป็น linux ที่ปรับแต่งได้มากมายสุดแท้แต่ฝีมือของแต่ละคน และมีวิธีการติดตั้งไม่ง่ายนัก จึงจัดทำขั้นตอนการติดตั้งเบื้องต้นดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การสร้าง Ram Disk ในระบบ Ubuntu</title>
+      <link>https://authapon.github.io/post/2013/11/createramdiskubuntu/</link>
+      <pubDate>Mon, 25 Nov 2013 08:12:01 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/createramdiskubuntu/</guid>
+      <description>&lt;p&gt;Ram Disk คือการนำหน่วยความจำหลัก ซึ่งก็คือ Ram มาสร้างหรือจำลองให้เป็นหน่วยความสำรอง หรือ Disk Drive นั่นเอง ซึ่งประโยชน์ก็เพื่อใช้เป็นที่พักข้อมูลหรือใช้เป็นส่วนการ caching ของระบบบางอย่าง ซึ่งการใช้ Ram มาสร้างเป็น Ram Disk นั้นจะให้ความเร็วในการอ่านเขียนไฟล์ข้อมูลได้อย่างรวดเร็วชนิดที่ผียังหลอกไม่ทันกันเลยทีเดียว ซึ่งในระบบ &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; หรือ Linux ทั่วไปก็สามารถสร้าง Ram Disk ได้อย่างง่ายดาย โดยในการสร้าง Ram Disk จะมี 2 แบบ ให้เลือก คือ ramfs และ tmpfs โดยความแตกต่างกันนั้นคือ ramfs จะสร้าง Ram Disk โดยข้อมูลจะอยู่ใน Ram เท่านั้น และไม่สามารถกำหนดขอบเขตของ Ram Disk ได้ ซึ่งหากมีการเขียนข้อมูลเกินขนาดของ Ram แล้ว ระบบจะค้างและล่มไปเลยครับ ส่วน tmpfs นั้น จะเป็น Ram Disk ที่ข้อมูลจะอยู่ใน Ram เช่นกัน แต่หาก Ram มีการใช้งานไม่พอ อาจจะทำให้ข้อมูลย้ายจาก Ram ไปอยู่ใน Swap Memory ได้ และ tmpfs จะสามารถกำหนดขนาดของ Ram Disk ได้ครับ ซึ่งวิธีการสร้างนั้นก็ง่ายมาก ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเพิ่มขีดจำกัดในการเปิด Socket Connection ใน Ubuntu</title>
+      <link>https://authapon.github.io/post/2013/11/solvelimitsocketconnectionubuntu/</link>
+      <pubDate>Tue, 19 Nov 2013 16:27:56 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/solvelimitsocketconnectionubuntu/</guid>
+      <description>&lt;p&gt;ผมได้พัฒนาระบบตัวหนึ่ง ซึ่งจะต้องรองรับการเปิด Socket จำนวนมาก แล้วก็เจอปัญหาว่า &lt;strong&gt;error: [Errno 24] Too many open files&lt;/strong&gt; เนื่องจากระบบได้จำกัดจำนวนการเปิดไฟล์จำนวนมาก ซึ่งรวมไปถึงการเปิด Socket ด้วยครับ ดังตัวอย่างนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การสร้าง Self-Signed SSL Certificate สำหรับการทดลองหรือใช้ภายในองค์กร</title>
+      <link>https://authapon.github.io/post/2013/11/createselfsignedsslcertificatefororg/</link>
+      <pubDate>Sun, 17 Nov 2013 14:00:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/createselfsignedsslcertificatefororg/</guid>
+      <description>&lt;p&gt;การพัฒนาระบบเวบแอปพลิเคชั่นที่ผ่านโปรโตคอล http นั้น ข้อมูลที่วิ่งในระบบจะไม่ถูกเข้ารหัส ทำให้อาจเกิดการดักจับข้อมูลหรืออื่น ๆ ซึ่งสร้างความไม่ปลอดภัยในการใช้งาน เพื่อความปลอดภัย เราควรให้เวบแอปพลิเคชั่นของเรา วิ่งบนโปรโตคอล https ซึ่งมีการเข้ารหัสข้อมูล และเราต้องใช้ SSL Certificate โดยต้องเสียตังให้กับองค์กรที่รับรองการออก SSL Certificate เหล่านี้ให้กับเรา แต่ถ้าเราอยากจะสร้าง SSL Certificate ของเราเอง เพื่อทดลองหรือใช้ภายในองค์กร เราก็สามารถทำได้ง่าย ๆ ในระบบ Ubuntu ด้วยคำสั่ง openssl ง่าย ๆ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การกำหนด Proxy ให้กับ Ubuntu Server</title>
+      <link>https://authapon.github.io/post/2013/11/setproxyubuntuserver/</link>
+      <pubDate>Wed, 13 Nov 2013 07:40:25 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/setproxyubuntuserver/</guid>
+      <description>&lt;p&gt;ในการใช้งาน Server บางครั้ง เราก็ต้องการให้ดาวน์โหลดข้อมูลต่าง ๆ โดยผ่าน Proxy เพื่อประโยชน์ในเรื่องของการ Caching ข้อมูล และประหยัด Bandwidth ของอินเตอร์เน็ต โดยใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; Server นั้นเราสามารถกำหนด Proxy ได้โดยการแก้ไขไฟล์ /etc/environment ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การแก้ไขให้ Ubuntu Server กลับมาใช้ระบบเครือข่ายได้ หลังจากเปลี่ยน Network Card</title>
+      <link>https://authapon.github.io/post/2013/11/solveubuntuservernetworkcardrestore/</link>
+      <pubDate>Sat, 09 Nov 2013 15:11:41 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/11/solveubuntuservernetworkcardrestore/</guid>
+      <description>&lt;p&gt;ผมได้ลงระบบ &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; Server ในระบบ KVM แล้วได้มีการเปลี่ยนค่า Mac Address เพื่อความสะดวกบางประการ ซึ่งเปรียบเสมือนการเปลี่ยน Network Card ทำให้เมื่อบูตระบบแล้ว ตัว Ubuntu Server อาจจะไม่เห็นหรือใช้งาน Network Card นั้นไม่ได้ แต่เรามีวิธีแก้ไข โดยทำการแก้ไขไฟล์ /etc/udev/rules.d/70-persistent-net.rules ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>โปรแกรมเก็บ Proxy Log แบบใช้ Multiprocessing Pool</title>
+      <link>https://authapon.github.io/post/2013/10/proxylogmultiprocessingpool/</link>
+      <pubDate>Sat, 26 Oct 2013 11:39:04 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/10/proxylogmultiprocessingpool/</guid>
+      <description>&lt;p&gt;คราวก่อนผมได้ทดลองสร้างโปรแกรมเก็บ Proxy Log ด้วย &lt;a href=&#34;https://www.python.org/&#34;&gt;Python&lt;/a&gt; ซึ่งใช้เทคนิคการสร้าง Process มารับงานแล้วสร้าง Thread มารับงานต่อ (บทความคราวก่อน) ครั้งนี้ผมได้ทดลองสร้าง Proxy Log ใหม่ด้วยเทคนิคการสร้าง Process Pool เลยอยากโพสเก็บไว้ดูวันหลังอีกดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทดลองสร้างโปรแกรมเก็บ Proxy Log ของ Squid 3.3.8 ลง MySQL ด้วย Python</title>
+      <link>https://authapon.github.io/post/2013/10/createproxylogsquid338mysqlpython/</link>
+      <pubDate>Wed, 23 Oct 2013 15:17:01 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/10/createproxylogsquid338mysqlpython/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองทำ Proxy Server ใหม่ด้วย &lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;Squid&lt;/a&gt; 3.3.8 และให้ส่ง Access Log ไปเก็บที่ Log Server ด้วย udp โดยใน Log Server ผมได้สร้างโปรแกรมที่ทำการรับ log จาก udp มาเก็บใน &lt;a href=&#34;https://www.mysql.com/&#34;&gt;MySQL&lt;/a&gt; เพื่อความสะดวกในการดูแล ค้นหา และ สกัด log โดยรายละเอียดมีดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การแก้ปัญหา Setting locale failed ใน Ubuntu เมื่อกำหนดการติดตั้งในประเทศไทย</title>
+      <link>https://authapon.github.io/post/2013/10/solvesettinglocalefailedubuntu/</link>
+      <pubDate>Sat, 19 Oct 2013 13:31:29 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/10/solvesettinglocalefailedubuntu/</guid>
+      <description>&lt;p&gt;ในการใช้งาน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; ซึ่งในตอนติดตั้งจะมีการสอบถามถึง location ที่ตั้งของคอมพิวเตอร์ของเรา เราก็จะกำหนดให้ระบบทราบว่า เราติดตั้งระบบในประเทศไทยเพื่อให้ระบบได้ติดตั้งพวก keyboard layout และระบบแสดงเวลาต่าง ๆ ให้ถูกต้อง แต่ก็จะเจอปัญหาเรื่องของการกำหนด locale ที่ผิดพลาด โดยในการติดตั้ง package ใหม่ก็จะเจอปัญหาดังนี้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การทำ Vitualization แบบ HVM ด้วย Xen บน Ubuntu 13.04</title>
+      <link>https://authapon.github.io/post/2013/09/vitualizationhvmxenubuntu/</link>
+      <pubDate>Sat, 14 Sep 2013 19:24:13 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/09/vitualizationhvmxenubuntu/</guid>
+      <description>&lt;p&gt;ในการทำ Virtualization (VM) นั้นมีหลายเทคโนโลยีและหลายค่าย แต่คราวนี้ผมจะแนะนำ Xen ซึ่งสามารถทำ VM ที่มีประสิทธิภาพด้วย Hardware-assisted Virtualization (HVM) ที่มีประสิทธิภาพ โดยจะทำ HVM ได้นั้นอาจจะต้องมีการปรับแต่งค่าใน bios ให้มีการ enable ความสามารถในส่วนนี้ก่อนนะครับ จึงจะสามารถทำ VM แบบ HVM ได้ โดยในครั้งนี้ผมจะแสดงวิธีการทำ VM บนระบบ &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 13.04 นะครับโดยมีขั้นตอนต่าง ๆ ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเซ็ท Keyboard Layout และการใช้ Multiple Screen ในระบบ Lightweight Desktop Environment Linux (Xfce, Lxde, openbox)</title>
+      <link>https://authapon.github.io/post/2013/08/settingkeyboardlayoutmultiplescreenlightweightdesktopenvironmentlinuxxfcelxdeopenbox/</link>
+      <pubDate>Sun, 25 Aug 2013 18:44:45 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/08/settingkeyboardlayoutmultiplescreenlightweightdesktopenvironmentlinuxxfcelxdeopenbox/</guid>
+      <description>&lt;p&gt;ในการใช้งาน Desktop Linux บางระบบที่เป็นแบบ Lightweight เช่น Xfce, Lxde หรือ Openbox จะประสบปัญหาในเรื่องของการเซ็ท Keyboard layout เพื่อเปลี่ยนภาษา เช่น ภาษาอังกฤษ-&amp;gt;ภาษาไทย เพราะไม่มีเมนูปรับแต่งให้สามารถทำได้ รวมทั้งการใช้งานที่เป็นระบบหลายหน้าจอ เช่น 2 จอ เป็นต้น ก็จะเป็นปัญหาในการใช้งานได้ แต่เรามีวิธีการแก้ปัญหาได้ง่ายกว่าที่เราคิด โดยมีวิธีการดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>คำสั่ง screen สำหรับจำลอง Terminal บน Ubuntu 13.04</title>
+      <link>https://authapon.github.io/post/2013/07/screenterminalubuntu/</link>
+      <pubDate>Tue, 16 Jul 2013 13:34:29 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/07/screenterminalubuntu/</guid>
+      <description>&lt;p&gt;ในการทำงานบางอย่างบนระบบ Linux ซึ่งต้องทำบน command line นั้น บางคำสั่งอาจจะมีการทำงานค้างไว้แต่หากเป็นการ remote อยู่ก็จะเกิดปัญหาว่า หากปิด terminal ที่ remote อยู่จะทำให้โปรเซสนั้นถูก kill ไปด้วย แต่ถ้าเราใช้คำสั่ง screen ซึ่งจะจำลอง terminal ไว้ แล้วเราสามารถ detach ออกจาก terminal เมื่อไหร่ก็ได้ โดยที่โปรเซสนั้นจะไม่ถูก kill และเราสามารถที่จะ resume เข้าสู่ terminal เมื่อไหร่ก้ได้เช่นกัน โดยการใช้งานเราสามารถทำได้ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การใช้ qemu เพื่อทำ Virtualization บนระบบ Ubuntu 13.04</title>
+      <link>https://authapon.github.io/post/2013/07/qemuvirtualizationubuntu/</link>
+      <pubDate>Sat, 13 Jul 2013 17:52:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/07/qemuvirtualizationubuntu/</guid>
+      <description>&lt;p&gt;ปัจจุบันเทคโนโลยี Virtualization นิยมนำมาใช้กันมากเพราะสามารถช่วยประหยัดทรัพยากรต่าง ๆ และง่ายต่อการบริหารจัดการ โดยเฉพาะในเรื่องของการพัฒนาระบบเครื่องแม่ข่ายต่าง ๆ ซึ่งในการพัฒนาระบบ Cloud นั้น ระบบ Virtualization จัดเป็นหัวใจสำคัญเลยทีเดียว ในระบบ &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; 13.04 เราสามารถใช้ qemu เพื่อสร้าง Virtual Computer ได้ง่าย ๆ ดังนี้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเรียกคำสั่งด้วย user อื่นใน /etc/rc.local บน Ubuntu</title>
+      <link>https://authapon.github.io/post/2013/06/useotheruserinetcrclocalubuntu/</link>
+      <pubDate>Tue, 11 Jun 2013 11:00:02 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/06/useotheruserinetcrclocalubuntu/</guid>
+      <description>&lt;p&gt;ในระบบปฏิบัติการ &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; จะมี script ตัวนึงซึ่งจะถูกเรียกขึ้นมาทำงานเมื่อมีการบูตระบบครั้งแรก ก็คือ /etc/rc.local โดยเราอยากให้ระบบมีการเรียกคำสั่งอื่นใดขึ้นมาทำงานบางอย่างก่อนเราก็จะใส่คำสั่งใน script นี้ แต่ทุกคำสั่งที่ทำงานใน /etc/rc.local นี้จะทำงานด้วย user ที่เป็น root แต่หากเราต้องการให้บางคำสั่งทำงานด้วย user อื่น เราสามารถใช้คำสั่ง su ช่วยได้ โดยมีรูปแบบดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การวัด Benchmark ของ Web Application ด้วย Apache Utilily</title>
+      <link>https://authapon.github.io/post/2013/03/benchmarkwebapplicationapacheutilily/</link>
+      <pubDate>Tue, 12 Mar 2013 22:22:02 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/03/benchmarkwebapplicationapacheutilily/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศนั้น การเลือกเทคโนโลยีมาใช้พัฒนานั้นเป็นสิ่งสำคัญ บางครั้งเราอยากจะรู้เทคโนโลยีที่เรานำมาใช้ทำ Web Application มีความสามารถในการตอบสนองการทำงานได้ดีหรือน้อยกว่ากัน อย่างเช่น งานแบบเดียวกัน ถ้าใช้ &lt;a href=&#34;https://secure.php.net/&#34;&gt;php&lt;/a&gt;+&lt;a href=&#34;https://httpd.apache.org/&#34;&gt;apache2&lt;/a&gt; แล้วจะสามารถรองรับได้กี่ request per second แต่ถ้าใช้ Bottle+Gevent จะสามารถรองรับ Request per second ได้ดีกว่าแค่ไหนนั้น เราสามารถทำการทดสอบได้ด้วยโปรแกรมชุดเอนกประสงค์ Apache Utility ได้ครับ โดยทำการทดลองใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>POUND Reverse-Proxy and Load-Balancer อันแข็งแกร่งและความเร็วเหนือนรก</title>
+      <link>https://authapon.github.io/post/2013/03/poundreverseproxyandloadbalancer/</link>
+      <pubDate>Mon, 11 Mar 2013 18:49:53 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/03/poundreverseproxyandloadbalancer/</guid>
+      <description>&lt;p&gt;ในการพัฒนา Web Application ด้วยเทคโนโลยี WSGIServer นั้น โดยปกติมักจะมี Front-end Webserver เพื่อเป็นตัวกระจายโหลด โดยในบทความอื่น ๆ ของผม จะมีการนำ &lt;a href=&#34;https://httpd.apache.org/&#34;&gt;Apache Web Server&lt;/a&gt; มาทำเป็นตัวกระจายโหลด ซึ่งตัว Apache นั้นจะเป็น Web Server แบบหนักและมีความสามารถอื่น ๆ มากมาย แต่เราเอามาใช้เพียงเป็นตัวกระจายโหลด จึงเหมือนกับขี่ช้างจับตั๊กแตน ทำให้การรองรับโหลดของระบบเราไม่สูงเท่าที่ควร ผมจึงแนะนำ &lt;a href=&#34;http://www.apsis.ch/pound/&#34;&gt;POUND&lt;/a&gt; ซึ่งเป็น Reverse Proxy และ Load Balancer มาทำเป็น Front-end ให้กับ WSGIServer ซึ่งจะทำให้ระบบของเรารองรับโหลดได้ดียิ่งขึ้น โดยการใช้งานใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; นั้น มีขั้นตอนดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git โปรแกรมสำหรับทำ control version แบบ distributed อันทรงพลัง</title>
+      <link>https://authapon.github.io/post/2013/02/gitcontrolversiondistributed/</link>
+      <pubDate>Wed, 27 Feb 2013 15:07:08 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/02/gitcontrolversiondistributed/</guid>
+      <description>&lt;p&gt;ในการพัฒนาซอฟท์แวร์ในลักษณะที่เป็นทีมเวิร์คหรือพัฒนาเดี่ยวก็ตาม ควรจะต้องมีระบบสำหรับเก็บตัว sourcecode ที่เราได้พัฒนาขึ้น ซึ่งสามารถที่จะปรับปรุง sourcecode ในลักษณะเป็น revision ได้ รวมทั้งมีคุณสมบัติในการรวม sourcecode จากนักพัฒนาหลาย ๆ คนมาเป็น sourcecode หนึ่งเดียวกันได้ ซึ่งระบบที่ตอบโจทย์เหล่านี้ได้คือระบบ control version นั่นเอง โดยระบบ control version ที่นิยมกันก็จะมี cvs, svn, &lt;a href=&#34;https://www.mercurial-scm.org/&#34;&gt;mercurial&lt;/a&gt;, &lt;a href=&#34;http://bazaar.canonical.com/en/&#34;&gt;bazaar&lt;/a&gt; รวมทั้ง &lt;a href=&#34;https://git-scm.com/&#34;&gt;git&lt;/a&gt; ซึ่งเป็นระบบที่ผมจะกล่าวถึงในบทความนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การ Deploy Web Application ที่พัฒนาด้วย Bottle ใน Apache2&#43;Gevent ใน Ubuntu 12.04</title>
+      <link>https://authapon.github.io/post/2013/02/deploywebapplicationbottleapache2geventubuntu/</link>
+      <pubDate>Mon, 18 Feb 2013 12:49:43 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/02/deploywebapplicationbottleapache2geventubuntu/</guid>
+      <description>&lt;p&gt;คราวที่แล้วผมได้เขียนบทความเกี่ยวการพัฒนาระบบสารสนเทศด้วย &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;Flask&lt;/a&gt; กับ &lt;a href=&#34;http://gunicorn.org/&#34;&gt;Gunicorn&lt;/a&gt; ซึ่งผมได้ทำการศึกษาเกี่ยวกับ Framework ในภาษา &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; เพิ่มเติม ก็พบว่ามี Framework ตัวนึงที่น่าสนใจมาก ๆ ซึ่งมีประสิทธิภาพสูงและมีเสถียรภาพมาก ๆ นั้นก็คือ &lt;a href=&#34;http://bottlepy.org/&#34;&gt;Bottle&lt;/a&gt; ครับและเมื่อนำมาใช้คู่กับ WSGI Server อย่าง &lt;a href=&#34;http://www.gevent.org/&#34;&gt;Gevent&lt;/a&gt; แล้ว จะสามารถรองรับงานได้อย่างมหาศาลเลยทีเดียว โดยมีขั้นตอนดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PyDev plugin สำหรับการเขียน Python บน Eclipse ใน Ubuntu</title>
+      <link>https://authapon.github.io/post/2013/01/pydevpluginpythoneclipseubuntu/</link>
+      <pubDate>Fri, 25 Jan 2013 22:27:39 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/01/pydevpluginpythoneclipseubuntu/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศนั้น เราจำเป็นต้องมีเครื่องมือสำหรับการพัฒนาระบบ ซึ่งเครื่องมือชนิดหนึ่งที่จำเป็นและขาดไม่ได้คือ Integrated Development Environment (IDE) ซึ่งก็คือชุดรวมเครื่องมือที่จำเป็น เช่น Editor, Complier, Debugging หรือแม้่เป็น Control Version Repository ด้วย ไว้ด้วยกัน โดยเครื่องมือที่ตัวผมนิยมใช้คือ Eclipse ซึ่งเป็นเครื่องมือพัฒนาระบบที่สามารถทำงานได้ในหลาย ๆ แพลตฟอร์ม เช่น วินโดว์ และ ลินุกซ์ เป็นต้น ซึ่งตัว &lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; จะเป็นที่นิยมในการพัฒนาโปรแกรมภาษา &lt;a href=&#34;http://java.com/en/&#34;&gt;Java&lt;/a&gt; แต่กระนั้นก็สามารถใช้พัฒนาโปรแกรมภาษาอื่น ๆ ได้ เช่น C, &lt;a href=&#34;http://www.php.net/&#34;&gt;PHP&lt;/a&gt; หรือ &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; ได้ โดยผ่าน plugin โดยในบทความนี้จะแนะนำวิธีการลง &lt;a href=&#34;http://pydev.org/&#34;&gt;PyDev&lt;/a&gt; ซึ่งเป็น plugin สำหรับการพัฒนาโปรแกรมภาษา Python บน Eclipse ใน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การ Deploy Web Application ที่พัฒนาด้วย Flask ใน Apache2&#43;Gunicorn ใน Ubuntu 12.04</title>
+      <link>https://authapon.github.io/post/2013/01/deploywebapplicationflaskapache2gunicornubuntu/</link>
+      <pubDate>Mon, 14 Jan 2013 19:35:04 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2013/01/deploywebapplicationflaskapache2gunicornubuntu/</guid>
+      <description>&lt;p&gt;ช่วงนี้ผมอยู่ในระหว่างการพัฒนาระบบสารสนเทศตัวใหม่ ซึ่งผมใช้ &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;Flask&lt;/a&gt; เป็น Framework ในการพัฒนา และทำการ Deploy โดยใช้ &lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache2&lt;/a&gt; เป็น Front-end Web Server และใช้ &lt;a href=&#34;http://gunicorn.org/&#34;&gt;Gunicorn&lt;/a&gt; เป็น WSGI Server ซึ่งต้องมีการปรับแต่งค่าต่าง ๆ เพื่อให้สามารถใช้งานได้ โดยมีขั้นตอนดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mercurial โปรแกรมสำหรับทำ control version แบบ distributed</title>
+      <link>https://authapon.github.io/post/2011/01/mercurialcontrolversiondistributed/</link>
+      <pubDate>Sat, 22 Jan 2011 18:36:34 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2011/01/mercurialcontrolversiondistributed/</guid>
+      <description>&lt;p&gt;ในการพัฒนาโปรแกรมนั้น เราอาจจะเก็บ sourcecode ไว้ในเครื่องเราเอง ซึ่งบางที เราอาจจะมีการสำเนา sourcecode ของเราไปทำที่เครื่องอื่นบ้าง ซึ่งเมื่อเราพัฒนาโปรแกรมไปเรื่อย ๆ เราเองอาจจะสับสนว่า sourcecode ในเครื่องไหนเป็นรุ่นล่าสุดที่เราพัฒนาขึ้น หรืออาจจะมีการพัฒนาโปรแกรมกันเป็นทีม ทำให้เกิดปัญหาเรื่องการนำ sourcecode มารวมกัน หรือต้องการ sourcecode ในส่วนของผู้อื่นเพื่อมาทำการทดสอบ จะทำไม่ได้ เพราะ sourcecode ของแต่ละคนก็จะอยู่ในเครื่องของแต่ละคน การแก้ปัญหาแบบนี้สามารถทำได้โดยการใช้ระบบ control version ครับ โดยทำการเก็บ sourcecode ไว้ซักที่หนึ่งแล้วเวลามีใครต้องการแก้ไข sourcecode ของตัวเองก็ให้ดึงเอาจากระบบ control version ได้นั่นเอง ซึ่งระบบ control version จะมีหลายยี่ห้อมาก เช่น cvs, svn, &lt;a href=&#34;http://git-scm.com/&#34;&gt;git&lt;/a&gt; และ &lt;a href=&#34;https://www.mercurial-scm.org/&#34;&gt;mercurial&lt;/a&gt; เป็นต้น โดยระบบ control version ที่ผมจะแนะนำในครั้งนี้คือ mercurial ซึ่งเป็นระบบ control version แบบ distributed นั่นเองครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การปรับแต่ง Squid3 ให้มีประสิทธิภาพมากขึ้นสำหรับงาน Caching Server</title>
+      <link>https://authapon.github.io/post/2008/12/setupsquid3cachingserver/</link>
+      <pubDate>Tue, 23 Dec 2008 17:49:11 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/12/setupsquid3cachingserver/</guid>
+      <description>&lt;p&gt;ระบบ Proxy หรือ Caching system เป็นระบบที่มีความสำคัญสำหรับการช่วยเร่งความเร็วในการเปิดเวบไซต์ต่าง ๆ
+สำหรับองค์กรที่มีผู้ใช้เครือข่ายจำนวนมาก มีโปรแกรม opensource ที่นิยมนำมาทำเป็น proxy server คือ โปรแกรม
+&lt;a href=&#34;http://www.squid-cache.org/&#34;&gt;squid3&lt;/a&gt; ซึ่งเมื่อนำโปรแกรม squid มาลงแล้วนั้นอาจจะต้องมีการปรับแต่งค่าต่าง ๆ ให้เหมาะสมกับฮาร์ดแวร์ของเรา
+เพื่อให้มีประสิทธิภาพมากที่สุด โดยการปรับแต่งระบบสำหรับการทำ proxy นั้นมีการปรับค่าต่าง ๆ ซึ่งผมให้ความสนใจ
+ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL Backup ใน Linux (Debian)</title>
+      <link>https://authapon.github.io/post/2008/09/mysqlbackuplinuxdebian/</link>
+      <pubDate>Tue, 30 Sep 2008 15:02:25 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/09/mysqlbackuplinuxdebian/</guid>
+      <description>&lt;p&gt;การทำสำรองข้อมูลของฐานข้อมูลถือว่าเป็นงานที่สำคัญสำหรับผู้ดูแลระบบเครือข่ายที่จะต้องรับผิดชอบในการรักษาข้อมูลของหน่วยงาน การสำรองข้อมูลของ &lt;a href=&#34;https://www.mysql.com/&#34;&gt;MySQL&lt;/a&gt; นั้นจะมีคำสั่งง่าย ๆ ในการ สำรองข้อมูลดังนี้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Network Time Protocol (NTP) สำหรับ Debian</title>
+      <link>https://authapon.github.io/post/2008/09/networktimeprotocolntpdebian/</link>
+      <pubDate>Fri, 26 Sep 2008 15:57:50 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/09/networktimeprotocolntpdebian/</guid>
+      <description>&lt;p&gt;ปัจจุบัน การดูแลระบบเครือข่ายซึ่งบางแห่งอาจจะมีจำนวน server มาก และ พรบ.การกระทำความผิดทางคอมพิวเตอร์มีผลบังคับใช้ ซึ่งมีประเด็นหนึ่งที่ต้องสนใจก็คือเรื่องของเวลามาตรฐาน เพราะ เวลา จะเป็นสิ่งหนึ่งที่ใช้อ้างอิงในระบบของการเก็บข้อมูลการจราจรทางคอมพิวเตอร์ เพราะฉะนั้น ผู้ดูแลเครือข่ายจึงมีความจำเป็นจะต้องดูแลระบบเวลาของเครื่อง server ให้มีความถูกต้อง เที่ยงตรง การทำให้เวลาในระบบเครือข่ายและ server ของเรามีความเที่ยงตรง เราสามารถใช้การตั้งเวลาผ่านอินเตอร์เน็ตได้ ซึ่งในอินเตอร์เน็ตก็จะมีเครื่อง server ที่ให้บริการเทียบเวลาอยู่จำนวนมาก โดยใช้โปรโตคอล NTP และผู้ดูแลเครือข่ายเองก็ควรจะตั้ง NTP Server ขึ้นมาใช้งานเองด้วยครับ เอาล่ะครับ ที่นี้เรามาดูวิธีการสร้างเครื่อง NTP Server ใน Debian กันครับ โดยขั้นตอนแรกให้ติดตั้ง Package ที่จำเป็นก่อนดังนี้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Network File System (nfs) บน Linux (debian/ubuntu)</title>
+      <link>https://authapon.github.io/post/2008/09/networkfilesystemnfslinuxdebianubuntu/</link>
+      <pubDate>Mon, 22 Sep 2008 11:46:39 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/09/networkfilesystemnfslinuxdebianubuntu/</guid>
+      <description>&lt;p&gt;nfs เป็นระบบ file system ที่ share ผ่านเครือข่ายของระบบปฏิบัติการ Linux ซึ่งทำให้เราสามารถ
+ทำการ share ไฟล์ให้กันได้บนระบบปฏิบัติการ Linux โดยขั้นตอนทั้งหมดผมเอามาจากลิ้งนี้นะครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LVM ใน Debian</title>
+      <link>https://authapon.github.io/post/2008/09/lvmdebian/</link>
+      <pubDate>Thu, 11 Sep 2008 13:58:32 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/09/lvmdebian/</guid>
+      <description>&lt;p&gt;LVM เป็นระบบพาติชั่นแบบ logical ซึ่งมีความสามารถในการลดขนาดหรือเพิ่มขนาดของพาติชั่น
+ได้อย่างง่ายดาย และที่สำคัญเราสามารถนำฮาร์ดดิสก์หลาย ๆ ก้อนมาต่อกันแล้วสร้างเป็นพาติชั่น
+เดียวกันได้ ทำให้การใช้งานและการบริหารพื้นที่เก็บข้อมูลของเครื่อง server มีความคล่องตัวและ
+ยืดหยุ่นมาก เอาล่ะเรามาดูกันนะครับว่า เราต้องทำอย่างไรบ้าง ข้อมูลทั้งหมดผมเอามาจากลิ้งค์
+ข้างล่างนี้นะครับ ถ้าใครเก่งภาษาอังกฤษก็สามารถอ่านเพิ่มเติมเองได้นะครับ :)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>เช็คค่า page rank ของเวบเพจด้วย SEOpen กันเถอะ</title>
+      <link>https://authapon.github.io/post/2008/08/pagerankseopen/</link>
+      <pubDate>Sat, 02 Aug 2008 01:43:09 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2008/08/pagerankseopen/</guid>
+      <description>&lt;p&gt;ในระบบ search engine เช่น google นั้นจะมีการจัดลำดับของความน่าเชื่อถือของเวบไซต์ โดยการใช้ page rank ซึ่งตัว page rank นั้นจะคำนวณจากการที่มีเวบไซต์อื่น ๆ ได้ทำการอ้างอิงถึงเวบไซต์ของเรา ถ้ามีการอ้างอิงมาก เค้าก็ตีความว่า เวบไซต์ของเรามีความน่าเชื่อถือมาก ทำให้เวลาเราค้นหาเวบไซต์ใน google จะทำให้เวบไซต์ของเราขึ้นมาในอันดับต้น ๆ ได้นั่นเอง โดย page rank นั้นจะมีค่าตั้งแต่ 1 - 10 โดยถ้าหากค่า page rank ได้คะแนนตั้งแต่ 4 ขึ้นไป ถือว่าเป็นเวบที่มีคุณภาพแล้ว เอาล่ะ !! เรามาเช็คค่า page rank ของเวบไซต์ของเรากันเถอะ เข้าไปที่เวบไซต์นี้เลยครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การทดสอบขนาด bandwidth ด้วยคำสั่ง iperf</title>
+      <link>https://authapon.github.io/post/2007/11/testbandwidthwithiperf/</link>
+      <pubDate>Mon, 19 Nov 2007 13:04:34 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2007/11/testbandwidthwithiperf/</guid>
+      <description>&lt;p&gt;เนื่องจากช่วงนี้ผมมารับงานด้านเครือข่าย ต้องมีการตรวจสอบขนาดของ bandwidth ของจุดเชื่อมต่อ ต่าง ๆ ในเครือข่าย ซึ่งผมได้ใช้คำสั่ง iperf ในการจำลองการส่งข้อมูลผ่านกันระหว่างเครื่องคอมพิวเตอร์สองเครื่อง
+ที่เชื่อมโยงในเครือข่าย โดยเครื่องแรกจะทำตัวเป็นตัวรอรับสัญญาณหรือเป็น server ก็ให้ใช้คำสั่ง&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การ backup ฐานข้อมูลของ postgresql</title>
+      <link>https://authapon.github.io/post/2007/04/backuppostgresql/</link>
+      <pubDate>Sun, 22 Apr 2007 12:16:24 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2007/04/backuppostgresql/</guid>
+      <description>&lt;p&gt;ปัจจุบันมีฐานข้อมูลให้เลือกใช้หลายยี่ห้อให้เลือกใช้กัน โดยส่วนตัวผมได้เลือกใช้ &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;postgresql&lt;/a&gt; เป็นฐานข้อมูลที่ใช้ในการพัฒนาโปรแกรม เพราะเป็นฐานข้อมูลที่มีความเสถียรสูง และมี feature ที่ดีดีเยอะ แต่มีสิ่งสำคัญสิ่งหนึ่งสำหรับระบบฐานข้อมูลนั้นคือการ backup ฐานข้อมูลนั่นเอง ผมได้ไปพบ code ที่เป็น script สำหรับการ backup ฐานข้อมูลจาก postgresql ที่น่าสนใจตัวนึงเลยนำมา post เก็บไว้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การดูข้อมูลต่าง ๆ ของเครื่องในระบบ Linux</title>
+      <link>https://authapon.github.io/post/2007/04/checkinformationinlinux/</link>
+      <pubDate>Tue, 10 Apr 2007 21:50:21 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2007/04/checkinformationinlinux/</guid>
+      <description>&lt;p&gt;ในการจะดูข้อมูลต่าง ๆ ของเครื่อง เช่น CPU อะไร หรือ RAM มีขนาดเท่าไหร่ รวมทั้งมีการ์ดอะไรอยู่ในระบบของเราบ้างใน Linux นั้นจะมีคำสั่งที่ใช้ดูข้อมูลต่าง ๆ ของเครื่องดังนี้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การกำหนด quota ใน debian</title>
+      <link>https://authapon.github.io/post/2007/04/setupquotaindebian/</link>
+      <pubDate>Sat, 07 Apr 2007 12:17:57 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2007/04/setupquotaindebian/</guid>
+      <description>&lt;p&gt;ในการใช้งาน Linux แบบมีผู้ใช้หลาย ๆ คนนั้น ผู้ดูแลระบบมักจะเจอกับปัญหาการใช้เนื้อที่ฮาร์ดดิสก์ของผู้ใช้แต่ละคนแบบไม่บันยะบันยัง คือเอาอะไรต่อมิอะไรมายัดไว้ในระบบ เช่น ไฟล์หนัง หรือไปโหลดพวกเกมส์ขนาดยักษ์ ๆ มาใส่ไว้แล้วไม่ยอมลบ ทำให้เนื้อที่ของระบบมีการใช้งานที่ไม่คุ้มค่า ในระบบ Linux นั้น เราสามารถกำหนด quota (โควต้า) ในการใช้เนื้อที่ของฮาร์ดดิสก์ของผู้ใช้แต่ละคน หรือแต่ละกลุ่มได้ ผมเองได้ไปค้นหาวิธีการใช้งาน quota ในระบบ &lt;a href=&#34;https://www.debian.org/&#34;&gt;Debian&lt;/a&gt; มาลง แต่ก็เชื่อว่าน่าจะใช้ได้กับ &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; ด้วยเหมือนกัน เอาล่ะ มาเริ่มกัน&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mRPCxe string communication in Moblie Version</title>
+      <link>https://authapon.github.io/post/2006/06/mrpcxestringcommunicationinmoblieversion/</link>
+      <pubDate>Mon, 12 Jun 2006 10:36:40 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2006/06/mrpcxestringcommunicationinmoblieversion/</guid>
+      <description>&lt;p&gt;ผมได้ทดลองเขียนโปรแกรม Java บนมือถือ โดยได้มีการติดต่อสื่อสารกับ Server ผ่านทาง GPRS ซึ่งจะมีการเขียนโปรแกรมผ่าน Socket ผมจึงได้นำโปรแกรมส่ง string ที่ผมเคยเขียนไว้คือ mRPCxe มาแก้ไขให้เป็น Mobile version จึงนำมา post เก็บไว้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>เล็ก ๆ น้อย ๆ กับการเซ็ต vim</title>
+      <link>https://authapon.github.io/post/2006/05/settingupvim/</link>
+      <pubDate>Wed, 03 May 2006 19:57:37 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2006/05/settingupvim/</guid>
+      <description>&lt;p&gt;การใช้โปรแกรม vim ซึ่งเป็น editor พื้นฐานตัวนึงใน linux จะมีการเซ็ตเล็กน้อย ๆ ให้โปรแกรม editor ตัวนี้น่าใช้ยิ่งขึ้น เช่นการเซ็ตให้มีสีสัน หรือการมีหมายเลขบรรทัดนั้น เราสามารถทำได้โดยการสร้างไฟล์ config ของ vim ขึ้นมาใน home ของตัวเอง ซึ่งไฟล์นั้นชื่อ .vimrc และข้อมูลในไฟล์ที่จะนำมาปรับแต่ง vim ของเราอย่างคร่าว ๆ มีดังนี้&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux Kernel Installation</title>
+      <link>https://authapon.github.io/post/2006/04/linuxkernelinstallation/</link>
+      <pubDate>Wed, 19 Apr 2006 17:16:11 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2006/04/linuxkernelinstallation/</guid>
+      <description>&lt;p&gt;บทความนี้จะเป็นเรื่องเกี่ยวกับการติดตั้ง kernel ของ Linux ตัวใหม่เพื่อ upgrade linux kernel ในเครื่องเรา เพื่อให้สามารถรองรับฮาร์ดแวร์ใหม่ได้ โดยผมได้ทำการทดลองบน &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;UBUNTU&lt;/a&gt; Linux ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mRPCxe string communication</title>
+      <link>https://authapon.github.io/post/2006/03/mrpcxestringcommunication/</link>
+      <pubDate>Mon, 13 Mar 2006 18:54:16 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2006/03/mrpcxestringcommunication/</guid>
+      <description>&lt;p&gt;ผมได้เขียนโปรแกรมที่ใช้สำหรับส่งข้อมูล String ที่มีความยาวไม่จำกัดเพื่อใช้ในโปรแกรมงานวิจัยผม ก็เลยเอา source มาลงไว้หน่อย เผื่อวันหลังได้เอามาใช้ใหม่&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

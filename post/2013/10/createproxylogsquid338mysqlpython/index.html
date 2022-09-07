@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>ทดลองสร้างโปรแกรมเก็บ Proxy Log ของ Squid 3.3.8 ลง MySQL ด้วย Python</h2>
+        <h3>Wednesday, 23 October 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/python')">python</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>ผมได้ทดลองทำ Proxy Server ใหม่ด้วย <a href="http://www.squid-cache.org/">Squid</a> 3.3.8 และให้ส่ง Access Log ไปเก็บที่ Log Server ด้วย udp โดยใน Log Server ผมได้สร้างโปรแกรมที่ทำการรับ log จาก udp มาเก็บใน <a href="https://www.mysql.com/">MySQL</a> เพื่อความสะดวกในการดูแล ค้นหา และ สกัด log โดยรายละเอียดมีดังนี้ครับ</p>
+<h4 id="1-สรางฐานขอมล">1. สร้างฐานข้อมูล</h4>
+<p>ผมได้ทำการสร้างฐานข้อมูลที่ชื่อ proxy ซึ่งประกอบด้วยตารางเพียงตารางเดียวชื่อ log ซึ่งตาราง log นี้จะมีเพียง 3 คอลัมน์ ซึ่งรายละเอียดตามนี้ครับ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>log<span style="color:#f92672">`</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>proxy<span style="color:#f92672">`</span> varchar(<span style="color:#ae81ff">200</span>) <span style="color:#66d9ef">COLLATE</span> utf8_bin <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>epoch<span style="color:#f92672">`</span> decimal(<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>log<span style="color:#f92672">`</span> varchar(<span style="color:#ae81ff">1000</span>) <span style="color:#66d9ef">COLLATE</span> utf8_bin <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+</span></span><span style="display:flex;"><span>) ENGINE<span style="color:#f92672">=</span>MyISAM <span style="color:#66d9ef">DEFAULT</span> CHARSET<span style="color:#f92672">=</span>utf8 <span style="color:#66d9ef">COLLATE</span><span style="color:#f92672">=</span>utf8_bin;
+</span></span></code></pre></div><h4 id="2-โปรแกรม-proxylog">2. โปรแกรม ProxyLog</h4>
+<p>โปรแกรมที่สร้างขึ้นจะ ทำงานโดยจะมีโปรแกรมหลักจะทำหน้าที่รับข้อมูล log จาก udp และนำข้อมูลนั้นส่งต่อให้กับโปรแกรมลูก โดยเมื่อโปรแกรมลูกรับข้อมูลมาแล้วจะทำการสร้าง Thread เพื่อรับข้อมูล log ไปเก็บไว้ที่ฐานข้อมูล MySQL อีกทีหนึ่งครับ โดยรายละเอียดโปรแกรมมีดังนี้ครับ</p>
+<p><strong>File : proxylog.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> prctl
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> MySQLdb <span style="color:#66d9ef">as</span> mdb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> threading <span style="color:#f92672">import</span> Thread
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> multiprocessing <span style="color:#f92672">import</span> Process, Queue, cpu_count
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;172.16.9.100&#34;</span>
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">8899</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dbHost <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;172.16.9.100&#34;</span>
+</span></span><span style="display:flex;"><span>dbUser <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proxy&#34;</span>
+</span></span><span style="display:flex;"><span>dbPasswd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proxy-secret-password&#34;</span>
+</span></span><span style="display:flex;"><span>dbName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proxy&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">log</span>(cur, data, addr):
+</span></span><span style="display:flex;"><span>  dat <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>split()
+</span></span><span style="display:flex;"><span>  query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;insert into log (`proxy`,`epoch`,`log`) values (&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;)&#34;</span> <span style="color:#f92672">%</span> (addr, dat[<span style="color:#ae81ff">0</span>], data,)
+</span></span><span style="display:flex;"><span>  cur<span style="color:#f92672">.</span>execute(query)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tworker</span>(data, addr):
+</span></span><span style="display:flex;"><span>  dd <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>decode(encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;UTF-8&#39;</span>)
+</span></span><span style="display:flex;"><span>  d <span style="color:#f92672">=</span> dd<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>  con <span style="color:#f92672">=</span> mdb<span style="color:#f92672">.</span>connect(dbHost, dbUser, dbPasswd, dbName, charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf8&#39;</span>, use_unicode<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>  cur <span style="color:#f92672">=</span> con<span style="color:#f92672">.</span>cursor(mdb<span style="color:#f92672">.</span>cursors<span style="color:#f92672">.</span>DictCursor)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> d:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    log(cur, i, addr)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  con<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker</span>(q):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    (data, addr) <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>get()
+</span></span><span style="display:flex;"><span>    Thread(target<span style="color:#f92672">=</span>tworker, args<span style="color:#f92672">=</span>(data, addr, ))<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">serve</span>():
+</span></span><span style="display:flex;"><span>  cpu <span style="color:#f92672">=</span> cpu_count()
+</span></span><span style="display:flex;"><span>  cpu <span style="color:#f92672">=</span> cpu<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  q <span style="color:#f92672">=</span> Queue()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  prctl<span style="color:#f92672">.</span>set_proctitle(<span style="color:#e6db74">&#34;ProxyLog&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(cpu):
+</span></span><span style="display:flex;"><span>    Process(target<span style="color:#f92672">=</span>worker, args<span style="color:#f92672">=</span>(q,))<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_DGRAM)
+</span></span><span style="display:flex;"><span>  s<span style="color:#f92672">.</span>bind((ip,port))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    data, addr <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>recvfrom(<span style="color:#ae81ff">10000</span>)
+</span></span><span style="display:flex;"><span>    q<span style="color:#f92672">.</span>put((data, addr[<span style="color:#ae81ff">0</span>], ))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>fork()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> p <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>  serve()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Fork pid = </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> p)
+</span></span></code></pre></div><p>จากนั้นทำการรันโปรแกรมดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="3-ปรบแตงให-squid-38-สง-log-ผาน-upd">3. ปรับแต่งให้ Squid 3.8 ส่ง log ผ่าน upd</h4>
+<p>เราสามารถกำหนดให้ Squid 3.8 ทำการส่ง log ผ่าน udp ได้โดยการปรับแต่งไฟล์ /etc/squid3/squid.conf ดังนี้ครับ</p>
+<p><strong>File : /etc/squid3/squid.conf</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นทำการสั่งให้ Squid นำการปรับแต่งตัวเองใหม่และทำงานดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<blockquote>
+</blockquote></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

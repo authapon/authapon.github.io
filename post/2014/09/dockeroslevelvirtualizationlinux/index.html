@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>Docker ระบบ OS-Level Virtualization บนระบบ Linux</h2>
+        <h3>Wednesday, 3 September 2014</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในการใช้งานระบบ Virtualization นั้นจะมีหลายเทคโนโลยีให้เลือกใช้ เช่น VMWare Xen KVM OpenVZ เป็นต้น ซึ่งระบบ Vitualization ที่ผมเคยแนะนำไปส่วนใหญ่จะเป็นแบบ Full Virtualization คือการจำลองทั้งระบบคอมพิวเตอร์ แต่มีระบบ Virtualization แบบที่น่าสนใจอยู่แบบนึงคือ OS-Level Virtualization ซึ่งเป็นการจำลองเครื่องโดยจำลองแค่บางส่วน แต่ในส่วนของ Kernel จะใช้ร่วมกับ Host นั่นเอง ซึ่งระบบนี้จะมี overhead ต่ำมาก กินทรัพยากรน้อย แต่ข้อเสียคือจะใช้ได้แต่กับระบบปฏิบัติการเดียวกับ Host เท่านั้น เช่น Host เป็น Linux ทำให้สร้าง Guest ได้ที่เป็น Linux เท่านั้นแต่อาจจะมี Distro ต่างกันไปได้ครับ โดยเทคโนโลยีที่ผมจะแนะนำครั้งนี้คือ <a href="https://www.docker.com/">Docker</a> ครับ และจะทดลองบน <a href="https://www.archlinux.org/">Arch Linux</a> ครับ</p>
+<h4 id="1-ลง-package-ทเกยวของ">1. ลง package ที่เกี่ยวข้อง</h4>
+<p>ขั้นแรกเราก็ต้องลง package ที่เกี่ยวข้องดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-start-ระบบ-daemon-ของ-docker">2. start ระบบ daemon ของ docker</h4>
+<p>ขั้นตอนต่อมาก่อนใช้งานเราก็ต้องทำการ start ระบบ daemon ของ docker ให้ทำงานก่อนใช้งานดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ถ้าหากต้องการให้ docker daemon ทำงานทุกครั้งเริ่มระบบให้ทำดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="3-ดง-image-ของ-os-ทเราตองการ">3. ดึง Image ของ OS ที่เราต้องการ</h4>
+<p>การจะใช้งาน docker ได้ เราต้องมี Image ของ OS ที่เราต้องการก่อน โดยหากต้องการดึง Image OS ของ Archlinux ทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หากต้องการใช้ Ubuntu ก็สามารถดึงได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หากเราต้องการตรวจสอบว่าใน Host ของเรามี Image อะไรให้ใช้ได้บ้างสามารถทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="4-สราง-container-เพอใชงาน">4. สร้าง Container เพื่อใช้งาน</h4>
+<p>เมื่อเรามี Image ของ OS ที่เราต้องการแล้ว เราจะสามารถสร้างระบบจำลองได้ โดยระบบจำลองที่สร้างจาก Image นั้น เราจะเรียกว่า Container ครับ โดยเราจะทำการทดลองสร้าง Container แบบ interactive กันดูดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าจะเข้าสู่ prompt เพื่อรับคำสั่ง ซึ่งขณะนี้เป็นการรับคำสั่งจาก Container ที่เราสร้างมานั่นเอง และจะมีพารามิเตอร์ที่เกี่ยวข้องคือ</p>
+<p>run เป็นคำสั่งของ docker เพื่อทำการสร้าง Container</p>
+<p>-i หมายถึงทำงานแบบ interactive</p>
+<p>-t หมายถึงให้สร้าง psudo terminal ขึ้นมารับคำสั่งซึ่งมักจะใช้คู่กับ -i ครับ</p>
+<p>&ndash;name test หมายถึงตั้งชื่อ Container ของเราว่า test ครับ</p>
+<p>&ndash;hostname หมายถึงตั้งชื่อ hostname ของเราว่า test ครับ</p>
+<p>&ndash;p 2222:22 คือการ map port ของ Host หมายเลข 2222 ให้เข้าไปยัง port 22 ของ Guest ครับ</p>
+<p>base/archlinux:latest หมายถึงชื่อของ image ที่เราใช้</p>
+<p>และสุดท้าย /bin/bash คือคำสั่งที่เรียกใช้งานคือ bash shell นั่นเองครับ</p>
+<p>ในขั้นนี้เราสามารถลง package ต่าง ๆ ที่เราต้องการลงใน Container ได้ตามปกติครับ เช่น อยากลงเวบ server หรือแอปต่าง ๆ เป็นต้นครับ และเมื่อเราพิมพ์ exit ก็จะออกจาก Container และจบการทำงานของ Container ครับ และเมื่อเรากลับสู่ Host เราสามารถดู รายการ Container ที่เราสร้างไว้ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>พารามิเตอร์ -a หมายถึงให้แสดง Container ทุกตัว รวมทั้งตัวที่หยุดทำงานแล้ว โดยปกติคำสั่ง docker ps จะแสดงเฉพาะ Container ที่กำลังทำงานอยู่เท่านั้น เมื่อ Container เราหยุดทำงานแลัว เราสามารถทำการ start ให้ Container เราทำงานอีกครั้งได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตอนนี้เราสามารถดูว่า Container เราทำงานอยู่รึป่าวดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในขณะนี้ Container ที่ชื่อ test กำลังทำงานอยู่ แต่ไม่ได้อยู่ในโหมด interactive ซึ่งเราสามารถดูหน้า console ของตัว Container ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หากเราต้องการเข้าควบคุมหน้า console เราสามารถทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราก็สามารถเข้าควบคุมหน้า console ได้ทันทีครับ และหากเราต้องการลบ Container ทิ้ง เราต้อง stop Container ตัวนั้นก่อนแล้วจึงลบด้วยคำสั่ง docker rm ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="5-การ-commit-container-เพอสรางเปน-image">5. การ Commit Container เพื่อสร้างเป็น Image</h4>
+<p>เมื่อเราสร้าง Container แล้ว หากเราต้องการบันทึกเป็น Image เราสามารถทำการ Commit Container ให้เป็น Image ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่งข้างต้นเป็นการ Commit Container ที่ชื่อ test ไปเป็น Image ชื่อ test และมี tag ชื่อ v1 ครับ และหากต้องการลบ Image ทิ้งเราสามารถทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Image ที่ชื่อ test และมี tag เป็น v1 ก็จะลบออกไปจาก Host แล้วครับ บทความนี้เป็นเพียงจุดเริ่มต้นนะครับ ยังมีคำสั่งที่เกี่ยวข้องอีกเยอะครับ สามารถหาข้อมูลเพิ่มเติมได้ที่ <a href="https://www.docker.com/">https://www.docker.com/</a> ครับ</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

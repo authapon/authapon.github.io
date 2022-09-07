@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การ Deploy Web Application ที่พัฒนาด้วย Flask ใน Apache2&#43;Gunicorn ใน Ubuntu 12.04</h2>
+        <h3>Monday, 14 January 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/python')">python</button> 
+        
+        <br><br><div><p>ช่วงนี้ผมอยู่ในระหว่างการพัฒนาระบบสารสนเทศตัวใหม่ ซึ่งผมใช้ <a href="http://flask.pocoo.org/">Flask</a> เป็น Framework ในการพัฒนา และทำการ Deploy โดยใช้ <a href="http://httpd.apache.org/">Apache2</a> เป็น Front-end Web Server และใช้ <a href="http://gunicorn.org/">Gunicorn</a> เป็น WSGI Server ซึ่งต้องมีการปรับแต่งค่าต่าง ๆ เพื่อให้สามารถใช้งานได้ โดยมีขั้นตอนดังนี้ครับ</p>
+<h4 id="1-ตดตง-flask">1. ติดตั้ง Flask</h4>
+<p>พัฒนาระบบ Web Application ด้วย Flask Framework โดยผมได้ทำการติดตั้ง python-flask ในระบบปฏิบัติการ <a href="http://www.ubuntu.com/">Ubuntu</a> 12.04 ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ผมสมมุติว่าได้พัฒนา Web Application เป็นโปรแกรม Hello World โดยเก็บไว้ใน /home/user/webapp/hello.py ดังนี้นะครับ</p>
+<p><strong>File : hello.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello World !!&#34;</span>
+</span></span></code></pre></div><h4 id="2-ตดตง-gunicorn">2. ติดตั้ง Gunicorn</h4>
+<p>เพื่อใช้เป็น WSGI Server ในการรัน Web Application ของเราครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เนื่องจากว่าโปรแกรม Gunicorn จะทำงานเมื่อเราสั่งผ่าน Command Line จึงอาจจะไม่สะดวก ถ้าหากมีการรีบูตเซิร์ฟเวอร์ใหม่ เมื่อมีการบำรุงรักษา เพื่อให้ Gunicorn ทำงานเองทุกครั้งที่รีบูตเซิร์ฟเวอร์ จึงได้ทำการเขียน Script ลงในไฟล์ /etc/rc.local ดังนี้ครับ</p>
+<p><strong>File : rc.local</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh -e
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>cd /home/user/webapp
+</span></span><span style="display:flex;"><span>gunicorn -w <span style="color:#ae81ff">2</span> -b 127.0.0.1:8800 -k gevent -D --max-requests <span style="color:#ae81ff">500</span> hello:app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exit <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>โดย -w จะเป็นการกำหนดตัว worker ที่ใช้ทำงาน ซึ่งจะมีสูตรดังนี้</p>
+<pre><code>worker = จำนวน Core * 2 + 1
+</code></pre>
+<p>แต่โดยส่วนตัวผมมักจะกำหนดให้เป็น จำนวน core * 2 จะไม่บวกหนึ่ง</p>
+<p>ส่วน -b จะเป็นการกำหนด Host ที่จะตอบสนอง โดยกรณีนี้เราจะใช้ Apache2 เป็น Front-end Web Server ซึ่งอยู่ใน localhost เดียวกัน จึงกำหนดให้รับการตอบสนองที่ localhost หรือ 127.0.0.1 เท่านั้น แต่หากจะใช้ Gunicorn เป็น Front-end Web Server เลย ก็ให้กำหนด Host เป็น 0.0.0.0 ส่วน :8800 เป็นหมายเลขพอร์ตที่ใช้</p>
+<p>-k คือการกำหนดอัลกอริทึมในการตอบสนองของ WSGI Server ของเรา ซึ่งผมเลือกใช้ gevent</p>
+<p>-D คือกำหนดให้ Gunicorn ทำงานในโหมด deamon ซึ่งจะทำงานอยู่เบื้องหลัง ไม่แสดงผลลัพธ์ใด ๆ ออกทาง console</p>
+<p>&ndash;max-requests เป็นการกำหนดให้ worker รับการตอบสนองกี่ครั้ง จึงจะทำการ restart worker ขึ้นมาใหม่ ซึ่งผมแนะนำว่าควรตั้งไว้ เพื่อแก้ไขปัญหาหน่วยความจำรั่วครับ ซึ่งไม่ควรจะน้อยเกินไป ในกรณีของผมได้ตั้งไว้ที่ 500 ครับ hello:app คือโปรแกรม Web Application ของเราครับ ซึ่งอยู่ในไฟล์ hello.py และในออปเจค app ครับ</p>
+<h4 id="3-ตดตง-apache2">3. ติดตั้ง Apache2</h4>
+<p>โดยปกติไม่มีความจำเป็นต้องติดตั้ง <a href="https://secure.php.net/">PHP5</a> แต่เนื่องจากผมลงเผื่อไว้ สำหรับการจัดการบางอย่างเช่น ต้องการใช้ phpmyadmin ด้วยเป็นต้น จึงทำการติดตั้ง Apache2 พร้อมทั้ง PHP5 แล้วทำการเปิดโมดูล ProxyPass ให้กับ Apache2 ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตอนนี้ Apache2 เราก็พร้อมที่จะทำหน้าที่เป็น Front-end Web Server ให้กับโปรแกรม Gunicorn แล้วครับ ขั้นตอนต่อไปคือ แก้ไขไฟล์ /etc/apache2/sites-available/default หรือสร้างไฟล์สำหรับไซต์ใหม่ก็ได้นะครับ โดยภายในไฟล์จะมีการปรับแต่งที่สำคัญดังนี้ครับ</p>
+<p><strong>File : /etc/apache2/sites-available/default</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apacheconf" data-lang="apacheconf"><span style="display:flex;"><span><span style="color:#f92672">&lt;VirtualHost</span> <span style="color:#e6db74">*:80</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        ServerAdmin webmaster@localhost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        DocumentRoot <span style="color:#e6db74">/var/www</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        Alias /static /home/user/webapp/static</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;proxy</span> <span style="color:#e6db74">balancer://unicornservers</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:8800
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/proxy&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  ProxyPass /static !</span>
+</span></span><span style="display:flex;"><span>  ProxyPass / balancer://unicornservers/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / balancer://unicornservers/
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost <span style="color:#66d9ef">on</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;proxy</span> <span style="color:#e6db74">*</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    Order deny,allow
+</span></span><span style="display:flex;"><span>    Allow from <span style="color:#66d9ef">all</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/proxy&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/VirtualHost&gt;</span>
+</span></span></code></pre></div><p>เพียงเท่านี้ Web Application ของเราก็พร้อมทำงานแล้ว :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

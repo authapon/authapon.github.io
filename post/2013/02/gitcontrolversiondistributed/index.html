@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>Git โปรแกรมสำหรับทำ control version แบบ distributed อันทรงพลัง</h2>
+        <h3>Wednesday, 27 February 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในการพัฒนาซอฟท์แวร์ในลักษณะที่เป็นทีมเวิร์คหรือพัฒนาเดี่ยวก็ตาม ควรจะต้องมีระบบสำหรับเก็บตัว sourcecode ที่เราได้พัฒนาขึ้น ซึ่งสามารถที่จะปรับปรุง sourcecode ในลักษณะเป็น revision ได้ รวมทั้งมีคุณสมบัติในการรวม sourcecode จากนักพัฒนาหลาย ๆ คนมาเป็น sourcecode หนึ่งเดียวกันได้ ซึ่งระบบที่ตอบโจทย์เหล่านี้ได้คือระบบ control version นั่นเอง โดยระบบ control version ที่นิยมกันก็จะมี cvs, svn, <a href="https://www.mercurial-scm.org/">mercurial</a>, <a href="http://bazaar.canonical.com/en/">bazaar</a> รวมทั้ง <a href="https://git-scm.com/">git</a> ซึ่งเป็นระบบที่ผมจะกล่าวถึงในบทความนี้ครับ</p>
+<p>repository ภายนอกสำหรับ git ที่น่าสนใจก็มีหลายตัวครับ ที่ผมจะแนะนำคือ <a href="https://bitbucket.org/">bitbucket</a>, <a href="https://github.com/">github</a>, <a href="https://about.gitlab.com/">gitlab</a>, gitorious และ sourceforge ครับ ทดลองกันดูได้นะครับ</p>
+<h4 id="1-เรมตนใช-git">1. เริ่มต้นใช้ git</h4>
+<p>สำหรับ <a href="http://www.ubuntu.com/">ubuntu</a> เราต้องลง git ก่อนครับ ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นให้กำหนดข้อมูลสำหรับผู้ใช้ git ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-สราง-local-repository">2. สร้าง local repository</h4>
+<p>สมมุติว่าผมได้สร้าง repository ภายนอกที่ bitbucket ชื่อ hello ไว้แล้วนะครับ ซึ่งเป็น repository ว่าง ๆ เท่านั้น จากนั้นผมจะทำการสร้าง sourcecode เป็นไฟล์ชื่อ hello.c ในเครื่องของตัวเองดังนี้นะครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตอนนี้เรามี sourcecode ตั้งต้นแล้ว จากนั้นเราก็ทำการสร้าง local repository และทำการเพิ่มไฟล์เข้าสู่ repository แล้วทำการ commit ไฟล์ จากนั้นก็กำหนด remote repository และสุดท้ายก็ทำการ push ไฟล์เข้าไปเก็บยัง remote repository ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในการ push ไฟล์เข้าสู่ repository นั้น เราจะใช้คำสั่ง git push origin master โดย origin คือชื่อของ remote repository ที่เราตั้งเอาไว้ คือ <a href="https://authapon@bitbucket.org/authapon/hello.git">https://authapon@bitbucket.org/authapon/hello.git</a> ซึ่งเราได้สร้างไว้เป็น repoistory ว่าง ๆ ที่ bitbucket ส่วน master คือ branch หลักที่เราใช้เก็บ sourcecode นั่นเอง</p>
+<h4 id="3-การ-clone-repository-การตรวจสอบสถานะไฟล-การเพมไฟล-และการลบไฟล">3. การ clone repository, การตรวจสอบสถานะไฟล์, การเพิ่มไฟล์ และการลบไฟล์</h4>
+<p>เราจำลองเหตุการณ์ว่า เราได้ย้ายไปทำงานที่เครื่องอื่น การที่เราจะทำการไข sourcecode ของเราได้นั่น เราต้องทำการ clone ตัว sourcecode ของเรามาจาก repository ก่อน ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากคำสั่งข้างต้น จะเป็นการ clone ตัว sourcecode ของเรามายังโฟล์เดอร์ hello นั่นเอง ซึ่งเราก็จะทำการแก้ไขตัว sourcecode ของเรา โดยการเข้าไปยังโฟล์เดอร์ hello จากนั้นเราจึงแก้ไข sourcecode ของเราตังตัวอย่างนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดยในส่วนที่เป็นสีส้มคือส่วนที่เราได้แก้ไขเพิ่มเติมเข้าไปครับ</p>
+<p>ขณะนี้ได้มี sourcecode ของเราบางส่วนได้ถูกแก้ไข ซึ่งเราสามารถตรวจสอบได้ด้วยคำสั่ง git status ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่ามีการแสดงข้อความว่ามีไฟล์ hello.c ได้ถูก modified หรือถูกแก้ไขเปลี่ยนแปลงนั่นเอง ซึ่งสถานะต่าง ๆ ของไฟล์ sourcecode นั่นจะมีได้หลายรูปแบบ เช่น ไฟล์ใหม่ที่ยังไม่ได้ดึงเข้ามายัง local repository หรือไฟล์ไหนที่ถูกลบออกไปจาก local repository โดยเราจะจำลองเหตุการณ์ว่า เราได้มีการสร้างไฟล์ใหม่เข้ามายัง local repository โดยเราจะสร้างไฟล์ที่ชื่อ adding.c เข้ามายัง local repository ของเราดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : adding.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อเราตรวจสอบสถานะของไฟล์เราจะได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าไฟล์ adding.c จะถูกแสดงว่าเป็น Untracked files ซึ่งหมายถึงไฟล์นี้ไม่ได้ถูกผนวกเข้าสู่ระบบ local repository ของเรานั่นเอง ขั้นตอนต่อมาเราจึงต้องทำการนำไฟล์ใหม่นี้เข้าสู่ระบบ และเมื่อเสร็จแล้วจึงทำการ commit และ push ไฟล์ต่อไปดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในการลบไฟล์ออกจาก local repository ของเรา ทำได้โดยคำสั่ง git rm ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าได้มีการแสดงสถานะ deleted ว่ามีไฟล์ adding.c ได้ถูกลบออกจาก local repository</p>
+<p>จากนั้นเราจึงทำการ commit ความเปลี่ยนแปลงนี้และ push เข้าสู่ repository ภายนอกของเราดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="4-การ-pull">4. การ pull</h4>
+<p>ในกรณีที่เราทำการแก้ไข sourcecode จากคอมพิวเตอร์หลาย ๆ เครื่อง หรืออาจจะมีการพัฒนาระบบกันหลาย ๆ คน เราจะเกิดปัญหาเรื่องของการที่ sourcecode ของในที่ละที่ หรือในของแต่ละคนนั้น ไม่ update หรือไม่รู้ว่าอันไหน update กว่ากัน ซึ่งเราสามารถแก้ไขปัญหาได้ด้วยการ pull โดยเราสมมุติว่าได้มีการแก้ไข sourcecode จากเครื่องส่วนตัว โดยการ clone มาไว้ในโฟล์เดอร์ hello ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นสมมุติว่าผมแก้ไขเสร็จก็ commit และ push ไปเก็บยัง repository แล้ว ผมเกิดไปที่ทำงานและทำการแก้ไข sourcecode จากเครื่องที่ทำงาน ผมก็สามารถ clone มายังเครื่องที่ทำงานได้ ซึ่งผมสมมุติว่า clone ไปยังโฟล์เดอร์ hello2 และทำการแก้ไข sourcecode ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราได้แก้ไขไฟล์ hello.c เพิ่มเติมในส่วนที่เป็นสีส้ม จากนั้นเราก็ทำการ commit และ push ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นผมก็กลับมาที่บ้าน และต้องการแก้ไข sourcecode จากเครื่องคอมพิวเตอร์ส่วนตัว ซึ่งผมเคย clone ไว้แล้วที่โฟล์เดอร์ hello แต่ sourcecode ตัวนี้ไม่ใช่ตัวล่าสุดแล้ว ผมสามารถทำการ pull ความเปลี่ยนแปลงของ sourcecode ได้และทำการ update ความเปลี่ยนแปลงของ sourcecode ได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราได้ใช้คำสั่ง git pull เพื่อดึงความเปลี่ยนแปลงที่เกิดขึ้นมายัง repository ของเรา โดยในส่วนที่เป็นสีส้ม จะเป็นข้อความที่แจ้งความเปลี่ยนแปลงใน sourcecode ของเรา จากนั้นก็ทำการแก้ไข sourcecode และ commit และ push ต่อไปดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : hello.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="5-การ-merge">5. การ merge</h4>
+<p>ในการพัฒนาซอฟท์แวร์เป็นทีมนั้น จะมีโปรแกรมเมอร์หลายคนกำลังทำงานกับ sourcecode เดียวกัน เพียงแต่อาจจะแก้ไข sourcecode กันคนละ module ซึ่งเมื่อมีการ push ไปยัง repository นั้นบางครั้งอาจจะต้องมีการ merge เกิดขึ้น เนื่องจาก sourcecode ที่ตนเอง clone มานั้น ไม่ได้เป็น sourcecode รุ่นล่าสุดแล้ว ระหว่างที่เราทำการแก้ไข sourcecode เรานั้น อาจจะมีโปรแกรมเมอร์คนอื่นได้ push ก่อนหน้าเราไปแล้ว ฉะนั้น เราจะต้องทำการ pull ความเปลี่ยนแปลงมาที่ local repository ก่อน แล้วจึงทำการ merge จากนั้นค่อย commit และ push ต่อไปได้</p>
+<p>สมมุติเหตุการณ์ว่ามีโปรแกรมเมอร์ A ได้ clone repository มาและทำการเพิ่มไฟล์ adding.c เข้ามาดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : adding.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ขณะเดียวกันโปรแกรมเมอร์ B ได้ทำการ clone repository มาเช่นเดียวกันและทำการเพิ่มไฟล์ sub.c ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>File : sub.c</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นโปรแกรมเมอร์ A ได้ทำการ commit และ push ตัว sourcecode เข้าสู่ repository ตามปกติดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หลังจากนั้น เมื่อโปรแกรมเมอร์ B จะทำการ commit และ push บ้างก็จะเกิดเหตุการณ์ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โปรแกรมเมอร์ B จะไม่สามารถ push ได้ เนื่องจาก sourcecode ใน repository นั้น ใหม่กว่า clone ของโปรแกรมเมอร์ A ดังนั้นโปรแกรมเมอร์ B จะต้องทำการ pull ความเปลี่ยนแปลงมาก่อน หากไม่มีความขัดแย้ง git จะทำการ merge ให้ทั้นที จากนั้นเราจึงทำการ push อีกครั้งดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="6-การ-tag">6. การ tag</h4>
+<p>ในการพัฒนาซอฟท์แวร์นั้นเมื่อทำไปจนถึงจุดนึงแล้ว อาจจะมีการตัดสินหมายเลขรุ่นหรือ version ขึ้น เราสามารถที่จะ tag จุดนั้นเอาไว้ว่าเป็น sourcecode รุ่นอะไร เผื่อว่าเมื่อเราพัฒนาไปเรื่อย ๆ แล้ว เราอาจจะอยากดู sourcecode รุ่นเก่า ๆ มาดูเพื่อเปรียบเทียบจุดประสงค์อื่นใดก็ได้ โดยการ tag ทำได้ดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าเราใช้คำสั่ง git tag แล้วตามด้วยข้อความที่เราต้องการ เพื่อทำการ tag จุดนี้ไว้ หลังจากนั้นจึงทำการ push tag ต่อไป</p>
+<p>เราสามารถที่จะทำการ checkout ไปยัง tag ใดก็ได้ ด้วยคำสั่งดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>และเราสามารถลบ tag ได้ดังคำสั่งต่อไปนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="7-การ-branch">7. การ branch</h4>
+<p>เมื่อมีการพัฒนาซอฟท์แวร์ไปถึงจุดนึง อาจจะเกิดความต้องการเปลี่ยนแปลงโครงสร้างหรือแนวคิดบางอย่างขึ้น โดยบางครั้งเป็นเพียงการทดสอบแนวคิด จึงอาจจะมีการต้องการแยกพัฒนาซอฟท์แวร์แยกไปอีกทางนึงซึ่งมี sourcecode ไปในแนวทางอื่น แต่ต้องการเก็บตัว sourcecode ใหม่นี้ร่วมกับ sourcecode เดิม เช่น เราอาจจะพัฒนาโปรแกรมประมวลผลกีฬาซึ่งทำงานบนวินโดว์ แต่เราต้องการทำรุ่นสำหรับทำงานบนมือถือด้วย หรือทำงานบนลีนุกซ์ด้วย เป็นต้น โดยจะมี sourcecode ส่วนหนึ่งที่แตกต่างออกไปจากต้นฉบับ เราจะเรียกกรณีนี้ว่าการ branch นั่นเอง</p>
+<p>โดยการ branch นั้น sourcecode ทั้งสองชุด จะอยู่ใน repository เดียวกันได้ โดย sourcecode ต้นฉบับจะถือว่าอยู่ใน branch master ส่วน sourcecode ที่แยกไป จะสามารถตั้งชื่อ branch ได้ตามต้องการ</p>
+<p>สมมุติเหตุการณ์ว่าเราจะสร้าง branch ใหม่สำหรับ mobile version เราจะเริ่มด้วยการ clone repository เดิมมาก่อน จากนั้นจึงกำหนด branch ขึ้น แล้วทำการการ push branch กลับไปยัง repository นั่นเอง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราสามารถ checkout ไปยัง branch ใด ๆ ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราสามารถเปลี่ยนชื่อ branch ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในกรณีนี้เราจะเปลี่ยนชื่อ branch ได้เฉพาะในเครื่องเราเท่านั้นครับ กรณีต่อไปเป็นการลบ branch เราสามารถทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>หากต้องการลบ branch ที่เป็น remote เราทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สุดท้ายการ merge branch เข้าด้วยกัน สามารถทำได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เอาล่ะครับ ก็พอสังเขปนะครับ ขอเพิ่มอีกนิดนะครับ ในการเก็บไฟล์ sourcecode บางครั้งก็มีไฟล์ที่เกิดจากการแก้ไขไฟล์ เช่น .bak เป็นต้น เราต้องการให้ Git ทำการไม่สนใจไฟล์เหล่านี้ เราสามารถทำได้โดย สร้างไฟล์ .gitignore แล้วใส่ pattern ของรูปแบบไฟล์ที่ไม่ต้องการได้ เช่น</p>
+<p><strong>File : .gitignore</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>สำหรับลิ้งค์ที่อธิบายเกี่ยวกับการใช้ Git ที่ดีใช้ได้ ผมแนะนำให้อ่านเพิ่มเติมได้ที่ <a href="http://www.vogella.com/articles/Git/article.html">Git Tutorial</a> นะครับ หวังว่าคงเป็นประโยชน์บ้างนะครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

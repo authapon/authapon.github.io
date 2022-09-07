@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การทำ Vitualization แบบ HVM ด้วย Xen บน Ubuntu 13.04</h2>
+        <h3>Saturday, 14 September 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในการทำ Virtualization (VM) นั้นมีหลายเทคโนโลยีและหลายค่าย แต่คราวนี้ผมจะแนะนำ Xen ซึ่งสามารถทำ VM ที่มีประสิทธิภาพด้วย Hardware-assisted Virtualization (HVM) ที่มีประสิทธิภาพ โดยจะทำ HVM ได้นั้นอาจจะต้องมีการปรับแต่งค่าใน bios ให้มีการ enable ความสามารถในส่วนนี้ก่อนนะครับ จึงจะสามารถทำ VM แบบ HVM ได้ โดยในครั้งนี้ผมจะแสดงวิธีการทำ VM บนระบบ <a href="http://www.ubuntu.com/">Ubuntu</a> 13.04 นะครับโดยมีขั้นตอนต่าง ๆ ดังนี้ครับ</p>
+<h4 id="1-สราง-bridge-interface-สำหรบ-xen">1. สร้าง bridge interface สำหรับ Xen</h4>
+<p>เริ่มต้นในกรณีที่เรายังไม่เคยสร้าง bridge interface มาก่อนก็จะต้องลง package สำหรับการสร้าง bridge ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นถ้าหากเครื่อง Host ของเรามีการตั้งค่าเครือข่ายผ่าน DHCP เราก็จะทำการปรับแต่งไฟล์ /etc/network/interfaces ดังนี้ครับ</p>
+<p><strong>File: /etc/network/interfaces</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>แต่หากเครื่อง Host ของเรามีการตั้งค่าทางเครือข่ายแบบ static เราก็สามารถปรับแต่งไฟล์ /etc/network/interfaces ได้ดังนี้ครับ</p>
+<p><strong>File: /etc/network/interfaces</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-ลง-package-สำหรบ-xen">2. ลง package สำหรับ Xen</h4>
+<p>ขั้นตอนต่อไปเป็นการลง package ที่จำเป็นสำหรับ Xen ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นเราจะทำการ reboot ระบบใหม่เพื่อบูตเข้าสู่ kernel ที่รองรับการทำงานของ Xen Hypervisor โดยใน Ubuntu 13.04 นั้น Grub Menu จะไม่แสดงให้เราเลือก Kernel ได้ในตอนบูต เราจึึงต้องทำการปรับแต่ง Grub ให้แสดงเมนูเลือก Kernel โดยการแก้ไขไฟล์ /etc/default/grub ดังนี้ครับ</p>
+<p><strong>File: /etc/default/grub</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดยเราจะแก้บรรทัด GRUB_DEFAULT จากเดิม 0 ให้เป็น 2 เพราะเราต้องการให้ Grub เลือกเมนูที่ 3 เป็นค่า default ซึ่งเป็นการเลือกบูตเข้าสู่ Kernel ที่รองรับ Xen Herpervisor และ GRUB_HIDDEN_TIMEOUT เราใส่ตัว comment (#) ไว้เพื่อให้ Grub ทำการแสดงเมนูให้เราดูนั่นเองครับ เมื่อแก้ไฟล์เสร็จแล้วก็ทำการ update-grub ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นก็ทำการ reboot ระบบครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="3-ทำการสราง-vm">3. ทำการสร้าง VM</h4>
+<p>ขั้นตอนต่อไปเราจะทำการสร้าง VM ขึ้นมา โดยเราจะทำการติดตั้ง Ubuntu 13.04 server ลงใน VM ตัวนี้ โดยเราจะสร้างโฟลเดอร์สำหรับ VM ตัวนี้ขึ้นมาในชื่อ ubuntu และทำการนำไฟล์ ubuntu-13.04-server-amd64.iso มาวางในโฟลเดอร์ ubuntu นี้ เพื่อใช้ติดตั้งตัว ubuntu และทำการสร้างไฟล์จำลองขนาด 5G เพื่อจำลองเป็นฮาร์ดดิส ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>คำสั่ง dd เป็นคำสั่งในการสร้างไฟล์จำลองที่ชื่อ disk1 และมีขนาด 5G นั่นเองครับ และขั้นตอนต่อไปจะเป็นการสร้างไฟล์ config สำหรับ VM ของเรา โดยผมจะสร้างไฟล์ชื่อ ubuntu.cfg และจะกำหนดให้ VM ของเรา มีแรมขนาด 1G และมีจำนวน CPU 2 ตัว และเชื่อมต่อกับไฟล์ ubuntu-13.04-server-amd64.iso ในลักษณะ CDROM และเชื่อมต่อกับไฟล์ disk1 ในลักษณะฮาร์ดดิสก้อนแรก และเราสามารถเข้าถึงหน้าจอ console ได้โดยผ่าน vnc เราจะสามารถกำหนดรายละเอียดดังกล่าวในไฟล์ ubuntu.cfg ได้ดังนี้ครับ</p>
+<p><strong>File: ubuntu.cfg</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ในส่วนที่เป็นสีส้มคือส่วนที่เราทำการปรับแต่งโดยในหัวข้อ builder จะหมายถึง VM ของเราเป็นแบบ hvm หัวข้อ name จะหมายถึงชื่อของ VM ของเรา หัวข้อ memory จะเป็นการกำหนดขนาดของแรมโดยมีหน่วยเป็น MB หัวข้อ vcpus จะเป็นการกำหนดจำนวน cpu ให้กับ VM ของเรา หัวข้อ vif เป็นการกำหนดการเชื่อมต่อเครือข่ายของเรา โดยผมจะให้ VM ของเราเชื่อมต่อแบบ bridge network ไปยัง bridge interface ของ Host โดยตรงครับ หัวข้อ disk จะเป็นการกำหนดฮาร์ดดิสต่าง ๆ ให้กับ VM ของเรา หัวข้อ vnc เป็นการกำหนดให้เราดูหน้า console ผ่านโปรโตคอล VNC และสุดท้ายหัวข้อ boot จะเป็นการกำหนดลำดับการบูตครับ โดยเราจะให้บูต VM ผ่านไดร์ฟ D ที่เชื่อมต่อกับไฟล์ติดตั้ง ubuntu เพื่อเราจะได้ทำการติดตั้ง ubuntu ใน VM ของเราได้ครับ</p>
+<p>เมื่อเราได้ไฟล์ ubuntu.cfg แล้ว เราก็พร้อมจะสร้าง VM แล้วครับ โดยเราสามารถตรวจสอบว่ามี VM ทำงานอยู่ในเครื่อง Host ของเราอยู่รึเปล่าได้ดังคำสั่ง xm list ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าในตอนแรกเราจะเห็นว่ามี Domain-0 เพียงตัวเดียว ซึ่ง Domain-0 นั้นจะหมายถึงตัว Host ของเรานั่นเอง จากนั้นเราก็จะทำการสร้าง VM ของเราด้วยคำสั่ง xm create ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตอนนี้ VM ของเราทำงานแล้วครับ เราสามารถตรวจดูว่ามี VM ทำงานอยู่จริงรึเปล่า เราก็ดูด้วย xm list ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราจะเห็นว่ามี VM ที่ชื่อ Ubuntu เพิ่มเข้ามา แสดงว่า VM ของเราได้ทำงานอยู่ในเครื่อง Host ของเราแล้วครับ และเราสามารถเข้าไปจัดการในหน้า console โดยผ่านโปรโตคอล VNC ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เราก็จะสามารถเข้าไปดำเนินการต่าง ๆ ในตัว VM ของเราได้เลยครับ ถ้าหากไม่มี vncviewer ก็ทำการลง package vncviewer ได้เลยครับ เมื่อดำเนินการติดตั้ง ubuntu ลงใน VM เรียบร้อยแล้ว เราก็ทำการ shutdown ตัว VM ของเรา ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อ shutdown แล้ว เราก็ทำการแก้ไขไฟล์ ubuntu.cfg อีกครั้ง โดยในส่วนของ disk ก็จะแก้ให้เหลือแต่ disk1 และในหัวข้อ boot แก้ให้เหลือแต่ c เพื่อให้การบูตครั้งต่อไปเป็นการบูตจากไดร์ฟ C นั่นเอง หลังจากนั้นก็ทำการสร้างตัว VM อีกครั้งด้วยคำสั่ง xm create จากนั้นตัว VM ของเราก็จะพร้อมใช้งานแล้วครับ</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

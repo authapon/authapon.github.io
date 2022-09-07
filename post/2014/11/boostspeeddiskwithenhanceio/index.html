@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การเพิ่มประสิทธิภาพ Disk I/O ด้วยระบบ EnhanceIO</h2>
+        <h3>Wednesday, 26 November 2014</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในการใช้งาน Linux เป็น Desktop หรือ เป็นพวก Database Server นั้น จะมีการติดต่อกับ Disk I/O (Hard Disk) ค่อนข้างมาก ทำให้ระบบมีการทำงานที่ช้าลง แต่เราสามารถเพิ่มประสิทธิภาพของ Disk I/O ได้ด้วยการทำ Disk Cache โดยอาจจะใช้ พวก SSD หรือแม้กระทั่ง Ramdisk มาใช้เป็น Disk Cache เพื่อให้ Hard Disk มีการทำงานที่ดีขึ้นได้ ดังนี้ครับ</p>
+<h4 id="1-ลง-package-ทจำเปน">1. ลง package ที่จำเป็น</h4>
+<p>เริ่มต้นเราต้องทำการลง <a href="https://aur.archlinux.org/packages/enhanceio-dkms-git/">enhanceio-dkms-git</a> ซึ่งจะอยู่ใน Arch User Repository (AUR) และทำการสร้าง package จากภายนอก แต่การจะสร้าง package จากภายนอกได้นั้น เราต้องลง package base-devel ก่อนดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นจึงทำการดาวน์โหลด enhanceio-dkms-git และทำการสร้าง package ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>การติดตั้ง package ก็เรียบร้อย</p>
+<h4 id="2-ทำการสราง-ramdisk">2. ทำการสร้าง RamDisk</h4>
+<p>ขั้นตอนต่อไปจะทำการสร้าง Ramdisk โดยขนาดตามความต้องการ โดยผมจะสร้าง Ramdisk ขนาด 2G โดยให้ mount กับ /cache จึงแก้ไขไฟล์ /etc/fstab ดังนี้ครับ</p>
+<p><strong>File : /etc/fstab</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อทำการ reboot เครื่องใหม่ เราจะได้ Ramdisk ขนาด 2G ซึ่ง mount กับ /cache นั่นเอง</p>
+<h4 id="3-กำหนด-script-etcrclocal">3. กำหนด script /etc/rc.local</h4>
+<p>กำหนดให้ระบบรัน script /etc/rc.local ทุกครั้งที่ start โดยดูได้จากบทความ การสร้างไฟล์ /etc/rc.local บน Archlinux จากนั้นจึงทำการแก้ไขไฟล์ /etc/rc.local ดังนี้</p>
+<p><strong>File : /etc/rc.local</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>cd /cache
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/zero of<span style="color:#f92672">=</span>xcache bs<span style="color:#f92672">=</span>2000M count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>losetup /dev/loop0 xcache
+</span></span><span style="display:flex;"><span>eio_cli create -s /dev/loop0 -d /dev/sda1 -c c1
+</span></span></code></pre></div><p>ในไฟล์ /etc/rc.local จะมีการสร้างไฟล์ xcache มีขนาด 2000M และทำการสร้าง Loop Device ไปยัง /etc/loop0 และใช้คำสั่ง eio_cli เพื่อกำหนดให้ /dev/loop0 เป็น Disk Cache และ /etc/sda1 เป็นพาทิชั่นที่จะถูกเร่งประสิทธิภาพ และมีชื่อ Cache Name ชื่อ c1 นั่นเอง เมื่อทำการ reboot เครื่องใหม่ระบบ Disk Cache ก็จะพร้อมทำงาน โดยเราสามารถตรวจสอบได้ด้วยคำสั่งดังนี้</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เรียบร้อยครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

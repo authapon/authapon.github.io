@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>โปรแกรมเก็บ Proxy Log แบบใช้ Multiprocessing Pool</h2>
+        <h3>Saturday, 26 October 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/python')">python</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>คราวก่อนผมได้ทดลองสร้างโปรแกรมเก็บ Proxy Log ด้วย <a href="https://www.python.org/">Python</a> ซึ่งใช้เทคนิคการสร้าง Process มารับงานแล้วสร้าง Thread มารับงานต่อ (บทความคราวก่อน) ครั้งนี้ผมได้ทดลองสร้าง Proxy Log ใหม่ด้วยเทคนิคการสร้าง Process Pool เลยอยากโพสเก็บไว้ดูวันหลังอีกดังนี้ครับ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> prctl
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> MySQLdb <span style="color:#66d9ef">as</span> mdb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> multiprocessing <span style="color:#f92672">import</span> cpu_count, Pool
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;172.16.9.100&#34;</span>
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">8899</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dbHost <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;172.16.9.100&#34;</span>
+</span></span><span style="display:flex;"><span>dbUser <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proxy&#34;</span>
+</span></span><span style="display:flex;"><span>dbPasswd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proxy-secret-password&#34;</span>
+</span></span><span style="display:flex;"><span>dbName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proxy&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">log</span>(cur, data, addr):
+</span></span><span style="display:flex;"><span>  dat <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>split()
+</span></span><span style="display:flex;"><span>  query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;insert into log (`proxy`,`epoch`,`log`) values (&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;)&#34;</span> <span style="color:#f92672">%</span> (addr, dat[<span style="color:#ae81ff">0</span>], data,)
+</span></span><span style="display:flex;"><span>  cur<span style="color:#f92672">.</span>execute(query)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker</span>(data, addr):
+</span></span><span style="display:flex;"><span>  dd <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>decode(encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;UTF-8&#39;</span>)
+</span></span><span style="display:flex;"><span>  d <span style="color:#f92672">=</span> dd<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  con <span style="color:#f92672">=</span> mdb<span style="color:#f92672">.</span>connect(dbHost, dbUser, dbPasswd, dbName, charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf8&#39;</span>, use_unicode<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>  cur <span style="color:#f92672">=</span> con<span style="color:#f92672">.</span>cursor(mdb<span style="color:#f92672">.</span>cursors<span style="color:#f92672">.</span>DictCursor)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> d:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    log(cur, i, addr)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  con<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">serve</span>():
+</span></span><span style="display:flex;"><span>  cpu <span style="color:#f92672">=</span> cpu_count()<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  prctl<span style="color:#f92672">.</span>set_proctitle(<span style="color:#e6db74">&#34;Worker&#34;</span>)
+</span></span><span style="display:flex;"><span>  pool <span style="color:#f92672">=</span> Pool(processes<span style="color:#f92672">=</span>cpu)
+</span></span><span style="display:flex;"><span>  prctl<span style="color:#f92672">.</span>set_proctitle(<span style="color:#e6db74">&#34;Boss&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  s <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_DGRAM)
+</span></span><span style="display:flex;"><span>  s<span style="color:#f92672">.</span>bind((ip,port))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    data, addr <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>recvfrom(<span style="color:#ae81ff">10000</span>)
+</span></span><span style="display:flex;"><span>    pool<span style="color:#f92672">.</span>apply_async(worker, (data, addr[<span style="color:#ae81ff">0</span>], ))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>fork()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> p <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>  serve()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Fork pid = </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> p)
+</span></span></code></pre></div></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

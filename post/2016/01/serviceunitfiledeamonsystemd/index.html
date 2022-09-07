@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การสร้าง service unit file สำหรับกำหนด deamon ง่าย ๆ ใน systemd</h2>
+        <h3>Thursday, 21 January 2016</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในการพัฒนาระบบสารสนเทศที่ใช้ภาษาพวก static type มักจะต้อง compile แล้วสั่ง run จาก command line ซึ่งเวลาจะใช้งานจริงที่อาจจะต้องมีการ stop, start หรือ restart ระบบ อาจจะค่อนข้างยุ่งยาก เพราะเราต้องทำการ kill process และทำการ run ใหม่อีกครั้ง ใน Linux ที่ใช้ systemd เราสามารถสร้าง service unit file ให้กับงานของเราได้ และสามารถทำการ stop, start หรือ restart ผ่านคำสั่ง systemctl แบบง่าย ๆ ได้ โดยมีขั้นตอนดังนี้ครับ</p>
+<h4 id="1-สราง-service-unit-file">1. สร้าง service unit file</h4>
+<p>สมมุติว่าระบบของเราเมื่อจะใช้งานจะเป็นไฟล์ binary ที่ชื่อ eservice ซึ่งเวลาเราใช้งานเราจะเข้าไปยัง folder ที่มี binary นั้นแล้วสั่ง run โดย ./eservice และเวลาจะปิดระบบ เราก็ต้องหาหมายเลขโปรเซสและทำการ kill ซึ่งยุ่งยาก เราสามารถสร้าง service unit file ซึ่งเป็น text ไฟล์ธรรมดา ไว้ในโฟล์เดอร์ /usr/lib/systemd/system และมีชื่อไฟล์เป็น eservice.service โดยมีเนื้อหาดังนี้ครับ</p>
+<p><strong>File : /usr/lib/systemd/system/eservice.service</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Unit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Description</span><span style="color:#f92672">=</span><span style="color:#e6db74">eservice service</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">After</span><span style="color:#f92672">=</span><span style="color:#e6db74">syslog.target</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">After</span><span style="color:#f92672">=</span><span style="color:#e6db74">network.target</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># After=mysqld.service</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># After=postgresql.service</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># After=memcached.service</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># After=redis.service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Service]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">simple</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">User</span><span style="color:#f92672">=</span><span style="color:#e6db74">eservice</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Group</span><span style="color:#f92672">=</span><span style="color:#e6db74">eservice</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WorkingDirectory</span><span style="color:#f92672">=</span><span style="color:#e6db74">/home/eservice</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ExecStart</span><span style="color:#f92672">=</span><span style="color:#e6db74">/home/eservice/eservice</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Restart</span><span style="color:#f92672">=</span><span style="color:#e6db74">always</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Environment</span><span style="color:#f92672">=</span><span style="color:#e6db74">USER=eservice HOME=/home/eservice</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Install]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
+</span></span></code></pre></div><h4 id="2-สงงานผาน-systemctl">2. สั่งงานผ่าน systemctl</h4>
+<p>หลังจากสร้างไฟล์ unit service แล้ว เราสร้างสั่งงานผ่านคำสั่ง systemctl ได้เหมือนกับระบบทั่วไปดังนี้ครับ</p>
+<p>Start Service</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Stop Service</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Restart Service</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Auto Start Service when boot up</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Cancel Auto Start Service when boot up</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>การจัดการระบบก็จะง่ายขึ้นเยอะเลยครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การ Deploy Web Application ที่พัฒนาด้วย Bottle ใน Apache2&#43;Gevent ใน Ubuntu 12.04</h2>
+        <h3>Monday, 18 February 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/python')">python</button> 
+        
+        <br><br><div><p>คราวที่แล้วผมได้เขียนบทความเกี่ยวการพัฒนาระบบสารสนเทศด้วย <a href="http://flask.pocoo.org/">Flask</a> กับ <a href="http://gunicorn.org/">Gunicorn</a> ซึ่งผมได้ทำการศึกษาเกี่ยวกับ Framework ในภาษา <a href="http://www.python.org/">Python</a> เพิ่มเติม ก็พบว่ามี Framework ตัวนึงที่น่าสนใจมาก ๆ ซึ่งมีประสิทธิภาพสูงและมีเสถียรภาพมาก ๆ นั้นก็คือ <a href="http://bottlepy.org/">Bottle</a> ครับและเมื่อนำมาใช้คู่กับ WSGI Server อย่าง <a href="http://www.gevent.org/">Gevent</a> แล้ว จะสามารถรองรับงานได้อย่างมหาศาลเลยทีเดียว โดยมีขั้นตอนดังนี้ครับ</p>
+<h4 id="1-ตดตง-bottle-และ-gevent-ดงนครบ">1. ติดตั้ง Bottle และ Gevent ดังนี้ครับ</h4>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ผมสมมุติว่าได้พัฒนา Web Application เป็นโปรแกรม hello world โดยเก็บไว้ใน /home/user/webapp/hello.py ดังนี้ครับ</p>
+<p><strong>File : hello.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gevent <span style="color:#f92672">import</span> monkey; monkey<span style="color:#f92672">.</span>patch_all()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bottle <span style="color:#f92672">import</span> route, run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hi</span>():
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;hello world !!!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>run(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;127.0.0.1&#39;</span>,port<span style="color:#f92672">=</span><span style="color:#ae81ff">8800</span>,debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,server<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gevent&#39;</span>)
+</span></span></code></pre></div><p>ในบรรทัดสุดท้ายจะเป็นการรันระบบโดยกำหนดให้รอรับฟังการเรียกจาก IP 127.0.0.1 ที่พอร์ต 8800 และใช้ WSGI Server เป็น Gevent ครับ</p>
+<h4 id="2-แกไข-etcrclocal">2. แก้ไข /etc/rc.local</h4>
+<p>ให้ทำการรันโปรแกรมของเราโดยอัตโนมัติเมื่อเปิดเครื่องดังนี้ครับ</p>
+<p><strong>File : rc.local</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh -e
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>cd /home/user/webapp
+</span></span><span style="display:flex;"><span>python hello.py &amp;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exit <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><h4 id="3-ตดตง-apache2">3. ติดตั้ง Apache2</h4>
+<p>เพื่อเป็น Front-end web Server โดยปกติไม่มีความจำเป็นต้องติดตั้ง <a href="https://secure.php.net/">PHP5</a> แต่เนื่องจากผมลงเผื่อไว้ สำหรับการจัดการบางอย่างเช่น ต้องการใช้ <a href="https://www.phpmyadmin.net/">phpmyadmin</a> ด้วยเป็นต้น จึงทำการติดตั้ง <a href="https://httpd.apache.org/">Apache2</a> พร้อมทั้ง PHP5 แล้วทำการเปิดโมดูล ProxyPass ให้กับ Apache2 ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ตอนนี้ Apache2 ของเราก็พร้อมจะเป็น Front-end Web Server แล้วครับ จากนั้นขั้นตอนต่อไปคือ แก้ไขไฟล์ /etc/apache2/sites-available/default หรือสร้างไฟล์สำหรับไซต์ใหม่ก็ได้นะครับ โดยภายในไฟล์จะมีการปรับแต่งที่สำคัญดังนี้ครับ</p>
+<p><strong>File : default</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apacheconf" data-lang="apacheconf"><span style="display:flex;"><span><span style="color:#f92672">&lt;VirtualHost</span> <span style="color:#e6db74">*:80</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        ServerAdmin webmaster@localhost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        DocumentRoot <span style="color:#e6db74">/var/www</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        Alias /static /home/user/webapp/static</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;proxy</span> <span style="color:#e6db74">balancer://geventserv</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:8800
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/proxy&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  ProxyPass /static !</span>
+</span></span><span style="display:flex;"><span>  ProxyPass / balancer://geventserv/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / balancer://geventserv/
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost <span style="color:#66d9ef">on</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;proxy</span> <span style="color:#e6db74">*</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    Order deny,allow
+</span></span><span style="display:flex;"><span>    Allow from <span style="color:#66d9ef">all</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/proxy&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/VirtualHost&gt;</span>
+</span></span></code></pre></div><p>เพียงเท่านี้ Web Application ของเราก็พร้อมทำงานแล้ว :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

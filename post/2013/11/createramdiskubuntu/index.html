@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การสร้าง Ram Disk ในระบบ Ubuntu</h2>
+        <h3>Monday, 25 November 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>Ram Disk คือการนำหน่วยความจำหลัก ซึ่งก็คือ Ram มาสร้างหรือจำลองให้เป็นหน่วยความสำรอง หรือ Disk Drive นั่นเอง ซึ่งประโยชน์ก็เพื่อใช้เป็นที่พักข้อมูลหรือใช้เป็นส่วนการ caching ของระบบบางอย่าง ซึ่งการใช้ Ram มาสร้างเป็น Ram Disk นั้นจะให้ความเร็วในการอ่านเขียนไฟล์ข้อมูลได้อย่างรวดเร็วชนิดที่ผียังหลอกไม่ทันกันเลยทีเดียว ซึ่งในระบบ <a href="http://www.ubuntu.com/">Ubuntu</a> หรือ Linux ทั่วไปก็สามารถสร้าง Ram Disk ได้อย่างง่ายดาย โดยในการสร้าง Ram Disk จะมี 2 แบบ ให้เลือก คือ ramfs และ tmpfs โดยความแตกต่างกันนั้นคือ ramfs จะสร้าง Ram Disk โดยข้อมูลจะอยู่ใน Ram เท่านั้น และไม่สามารถกำหนดขอบเขตของ Ram Disk ได้ ซึ่งหากมีการเขียนข้อมูลเกินขนาดของ Ram แล้ว ระบบจะค้างและล่มไปเลยครับ ส่วน tmpfs นั้น จะเป็น Ram Disk ที่ข้อมูลจะอยู่ใน Ram เช่นกัน แต่หาก Ram มีการใช้งานไม่พอ อาจจะทำให้ข้อมูลย้ายจาก Ram ไปอยู่ใน Swap Memory ได้ และ tmpfs จะสามารถกำหนดขนาดของ Ram Disk ได้ครับ ซึ่งวิธีการสร้างนั้นก็ง่ายมาก ดังนี้ครับ</p>
+<h4 id="1-การสราง-ram-disk-แบบชวคราว">1. การสร้าง Ram Disk แบบชั่วคราว</h4>
+<p>การสร้าง Ram Disk แบบชั่วคราว เราสามารถสร้างได้ด้วยคำสั่ง mount ง่าย ๆ ครับ โดยผมจะสร้าง Ram Disk ไปยังโฟล์เดอร์ /cache เราสามารถสร้าง Ram Disk แบบ ramfs ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>ส่วนการสร้าง Ram Disk แบบ tmpfs นั้น หากผมต้องการจะทำการสร้าง Ram Disk ขนาด 2G เราสามารถสร้างได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เพียงเท่านี้ เราก็จะได้ Ram Disk มาใช้อย่างง่ายดายครับ แต่เมื่อเราปิดเครื่อง Ram Disk ของเราก็จะหายไปครับ หากต้องการใช้ใหม่ก็ต้องทำการสร้างกันใหม่ครับ และเมื่อเราสร้าง Ram Disk แล้ว เราจะยกเลิกการใช้งาน เราก็สามารถยกเลิก Ram Disk ได้ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เพียงเท่านี้ Ram Disk ของเราก็จะถูกยกเลิกไปแล้วครับ</p>
+<h4 id="2-การสราง-ram-disk-แบบถาวร">2. การสร้าง Ram Disk แบบถาวร</h4>
+<p>ในการสร้าง Ram Disk แบบถาวรนั้น จะหมายถึง Ram Disk ของเรา เมื่อมีการเปิดเครื่องใหม่ ระบบก็จะสร้าง Ram Disk ให้ใช้ทุกครั้งที่เปิดเครื่อง แต่ข้อมูลทั้งหมดเมื่อปิดเครื่องก็จะหายไปหมดเช่นเดียวกัน เนื่องจากข้อมูลนั้นอยู่ใน Ram ครับ ในการสร้าง Ram Disk แบบถาวร เราสามารถสร้างโดยไปแก้ไขไฟล์ /etc/fstab โดยในการสร้าง Ram Disk ทั้งแบบ ramfs และแบบ tmpfs เราสามารถทำได้ดังนี้ครับ</p>
+<p><strong>File : /etc/fstab</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อเราบูตเครื่องใหม่ เราก็จะได้ Ram Disk ให้ใช้แล้วครับ</p>
+<h4 id="3-การทดสอบความเรวของ-ram-disk">3. การทดสอบความเร็วของ Ram Disk</h4>
+<p>เรามาทำการทดสอบความเร็วในการทำงานของ Ram Disk ทั้งสองแบบ เมื่อเทียบกับการใช้งาน HDD จริงกันดูครับ โดยผมได้สร้างโปรแกรมภาษา Python ให้ทำการเขียนข้อมูลลงในฐานข้อมูล <a href="https://www.sqlite.org/">SQLite</a> จำนวน 100,000 เรคคอร์ด แล้วนำเวลาที่ใช้มาแสดง โดยโปรแกรมมีรายละเอียดดังนี้ครับ</p>
+<p><strong>File : tx.py</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sqlite3<span style="color:#f92672">,</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dbname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tx.db&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dbc</span>(sql):
+</span></span><span style="display:flex;"><span>  con <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>connect(dbname)
+</span></span><span style="display:flex;"><span>  db <span style="color:#f92672">=</span> con<span style="color:#f92672">.</span>cursor()
+</span></span><span style="display:flex;"><span>  db<span style="color:#f92672">.</span>execute(sql)
+</span></span><span style="display:flex;"><span>  con<span style="color:#f92672">.</span>commit()
+</span></span><span style="display:flex;"><span>  con<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>t1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>dbc(<span style="color:#e6db74">&#34;create table if not exists data (data text)&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100000</span>):
+</span></span><span style="display:flex;"><span>  dbc(<span style="color:#e6db74">&#34;insert into data values (&#39;data&#39;)&#34;</span>)
+</span></span><span style="display:flex;"><span>t2 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>td <span style="color:#f92672">=</span> t2 <span style="color:#f92672">-</span> t1
+</span></span><span style="display:flex;"><span>print <span style="color:#e6db74">&#34;time uses &#34;</span>,td
+</span></span></code></pre></div><p>โดยผลลัพธ์จากการทดลองบน HDD, ramfs และ tmpfs ได้ผลดังนี้ครับ</p>
+<p><strong>HDD</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>ramfs</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>tmpfs</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่า ตอนใช้ HDD จะใช้เวลา 16654.4391341 วินาที หรือ 4 ชั่วโมง 37 นาที 34 วินาที ในขณะที่ ramfs และ tmpfs ใช้เวลาเพียง 13 วินาทีเท่านั้นครับ</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

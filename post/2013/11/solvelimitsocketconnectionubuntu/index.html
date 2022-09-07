@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การเพิ่มขีดจำกัดในการเปิด Socket Connection ใน Ubuntu</h2>
+        <h3>Tuesday, 19 November 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>ผมได้พัฒนาระบบตัวหนึ่ง ซึ่งจะต้องรองรับการเปิด Socket จำนวนมาก แล้วก็เจอปัญหาว่า <strong>error: [Errno 24] Too many open files</strong> เนื่องจากระบบได้จำกัดจำนวนการเปิดไฟล์จำนวนมาก ซึ่งรวมไปถึงการเปิด Socket ด้วยครับ ดังตัวอย่างนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดยเราสามารถไปเพิ่มขีดจำกัดในการเปิดไฟล์ให้เพิ่มขึ้นได้ดังนี้ครับ</p>
+<h4 id="1-ตรวจสอบการจำกดในการเปดไฟล">1. ตรวจสอบการจำกัดในการเปิดไฟล์</h4>
+<p>เราสามารถตรวจสอบว่า ขณะนี้ระบบของเรา มีขีดจำกัดในการเปิดไฟล์ไว้เท่าไหร่ ดังคำสั่งต่อไปนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าจะมีขีดจำกัดเพียงแค่ 1024 เท่านั้น ทำให้ระบบของเราไม่สามารถรองรับงานในกรณีที่มีการเปิด socket จำนวนที่มากกว่า 1024 ได้ครับ</p>
+<h4 id="2-แกไขไฟล-etcsecuritylimitsconf">2. แก้ไขไฟล์ /etc/security/limits.conf</h4>
+<p>เมื่อเราต้องการเพิ่มขีดจำกัดในการเปิดไฟล์ให้มากขึ้น เพื่อให้ระบบของเรารองรับ socket connection จำนวนมาก ๆ ได้ เราสามารถทำได้โดยไปแก้ไขไฟล์ /etc/security/limits.conf ดังนี้ครับ</p>
+<p><strong>File : /etc/security/limits.conf</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จะเห็นว่าเราจะทำการกำหนด limit ในการการเปิดไฟล์ไว้ที่ 50000 ในผู้ใช้ทั้งหมดและ root เนื่องจาก root ไม่ได้รวมใน * ด้วย จึงต้องกำหนดแยกมาอีกชุดนึงครับ จากนั้นก็ทำการ reboot ระบบใหม่ และใช้คำสั่ง ulimit -n ตรวจสอบดูอีกครั้งว่าได้มีการเพิ่มขีดจำกัดแล้ว ก็เป็นอันจบพิธีครับ</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การปรับแต่ง Squid3 ให้มีประสิทธิภาพมากขึ้นสำหรับงาน Caching Server</h2>
+        <h3>Tuesday, 23 December 2008</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>ระบบ Proxy หรือ Caching system เป็นระบบที่มีความสำคัญสำหรับการช่วยเร่งความเร็วในการเปิดเวบไซต์ต่าง ๆ
+สำหรับองค์กรที่มีผู้ใช้เครือข่ายจำนวนมาก มีโปรแกรม opensource ที่นิยมนำมาทำเป็น proxy server คือ โปรแกรม
+<a href="http://www.squid-cache.org/">squid3</a> ซึ่งเมื่อนำโปรแกรม squid มาลงแล้วนั้นอาจจะต้องมีการปรับแต่งค่าต่าง ๆ ให้เหมาะสมกับฮาร์ดแวร์ของเรา
+เพื่อให้มีประสิทธิภาพมากที่สุด โดยการปรับแต่งระบบสำหรับการทำ proxy นั้นมีการปรับค่าต่าง ๆ ซึ่งผมให้ความสนใจ
+ดังนี้ครับ</p>
+<h4 id="1-พาตชนสำหรบทำการ-caching">1. พาติชั่นสำหรับทำการ Caching</h4>
+<p>ถ้าเป็นไปได้ควรแยกพาติชั่นสำหรับทำการ caching แยกออกจากพาติชั่นของระบบครับ ใน Linux นั้น พาติชั่นที่เหมาะ
+จะใช้ทำ caching ควรจะใช้ file system ชนิด reiserFS ครับ รองลงมาก็ ext3 อันนี้ผมอ่านจากในอินเตอร์เน็ตนะ
+ครับ รายละเอียดมันซับซ้อนว่าทำไมถึงเร็วกว่า ผมขอละเหตุผลตรงนี้เลยละกันครับ โดยผมสมมุติว่า ผมได้เตรียม
+พาติชั่น /dev/sdb1 สำหรับทำ caching ไว้ ผมก็ต้องทำการฟอร์แมตให้เป็น reiserFS ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นไปแก้ในไฟล์ /etc/fstab เพื่อให้ระบบรู้จักพาติชั่นนี้ครับ โดยผมจะกำหนดให้ชื่อ /cache ดังนี้ครับ</p>
+<p><strong>File : /etc/fstab</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2ทำการปรบแตงไฟล-etcsquid3squidconf-ใหเหมาะสมกบเครอง-proxy-ของเรา">2.ทำการปรับแต่งไฟล์ /etc/squid3/squid.conf ให้เหมาะสมกับเครื่อง proxy ของเรา</h4>
+<p>โดยจะมีพารามิเตอร์สำหรับการปรับแต่งที่ผมสนใจดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>cache_dir เป็นพารามิเตอร์สำหรับกำหนดไดเรคทอรี่ที่ใช้ทำการ caching โดย ufs จะเป็นไฟล์ฟอร์แมตในการเก็บ
+ข้อมูลของ squid ซึ่งมีหลายแบบแต่ผมก็ใช้แบบเดิม ต่อมา /cache คือให้เก็บที่ไดเร็คทอรี่อะไร ถัดมา 100000 คือ
+ขนาดของ caching มีหน่วยเป็น Mb โดยมีคำแนะนำว่าให้กำหนดไม่เกิน 80 % ของขนาดของไดเร็คทอรี่ที่เป็น caching
+ส่วนเลข 16 และ 256 เป็นการกำหนดการสร้างไดเรคทอรี่ L1 และ L2 สำหรับเก็บข้อมูล cache ซึ่งผมมักจะไม่เปลี่ยน</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>http_port เป็นการกำหนดพอร์ตสำหรับการทำ proxy ซึ่งค่าปกติคือพอร์ต 3128 แต่ผมกำหนดให้เป็นพอร์ต 8080</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>cache_mem เป็นการกำหนดขนาดของหน่วยความจำหลัก(RAM) สำหรับการ caching ซึ่งการกำหนดค่านี้เราต้อง
+พิจารณาหน่วยความจำหลักที่มีและขนาดของ cache_dir ที่เรากำหนด โดยใน squid จะทำการจองหน่วยความจำ
+สำหรับการจัดการ cache_dir ขนาด 1Gb ต่อหน่วยความจำหลัก 10Mb ถ้าเรากำหนด cache_dir ขนาด 100G
+มันต้องใช้หน่วยความจำหลักขนาด 100*10 Mb = 1Gb ถ้าผมมีหน่วยความจำหลักขนาด 2 G และ OS ใช้ไปซัก
+256 Mb ผมจะมีหน่วยความจำหลักสำหรับ caching ประมาณ 2Gb - 1Gb - 256Mb = 768M ซึ่งการปรับแต่งตรง
+นี้ผมมักจะไม่ปรับมาก เพราะกลัวมีปัญหาเรื่องหน่วยความจำครับ เลยตั้งไว้ที่ 32Mb ก่อน</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>maximum_object_size_in_memory เป็นการกำหนดขนาดของ object ที่ใหญ่สุดที่จะเก็บในหน่วยความจำหลัก
+ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>memory_replacement_policy เป็นการกำหนดว่าให้นำ object ออกจากหน่วยความจำหลักนั้น ใช้วิธีการใดใน
+การพิจารณา ซึ่งปกติจะเป็น lru แต่เค้าแนะนำว่าควรใช้ heap LFUDA จะดีกว่า ซึ่งเป็นวิธีพิจารณาเก็บ object ที่
+popular มากที่สุดไว้ ส่วน object ไหนที่ไม่ pop ก็ให้เอามันออกซะ อิอิ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>cache_replacement_policy เป็นการพิจารณาในการนำ object ออกจาก cache_dir ครับ โดยมีวิธีเช่นเดียวกับ
+memory_replacement_policy ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>maximum_object_size เป็นขนาดของ object ที่ใหญ่ที่สุดที่จะเก็บใน cache_dir ครับ ถ้าเราตั้ง cache_dir
+ไว้เยอะก็อาจจะตั้งค่า maximum_object_size ไว้ใหญ่ขึ้นได้ เพื่อการดาวน์โหลดไฟล์ขนาดใหญ่จะได้เร็วขึ้นใน
+กรณีที่หลาย ๆ คนโหลดไฟล์ขนาดใหญ่บ่อย ๆ และซ้ำ ๆ กันครับ</p>
+<p>เอาละครับ แค่นี้ก็พอช่วยให้ระบบ proxy มีประสิทธิภาพมากขึ้นแล้วครับ ซึ่งในรายละเอียดการปรับแต่งนั้น
+ยังมีความซับซ้อนอีกเยอะให้ปรับแต่งครับ โดยอาจจะเข้าไปศึกษาเพิ่มเติมได้ที่ลิงค์ข้างล่างนี้ได้เลยครับ :)</p>
+<p><a href="http://www.squid-cache.org/">http://www.squid-cache.org/</a></p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

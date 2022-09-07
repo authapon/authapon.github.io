@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การลงระบบ X Windows และ Cinnamon Desktop ใน Archlinux</h2>
+        <h3>Sunday, 24 August 2014</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในระบบ Linux นั้นจะมี Desktop ให้เลือกใช้มากมาย แต่วันนี้ผมจะมาแนะนำ Desktop ที่ผมชอบ ซึ่งก็คือ <a href="http://cinnamon.linuxmint.com/">Cinnamon</a> เนื่องจากเป็น Desktop ที่เรียบง่าย ปรับแต่งความสวยงามได้ตามความชอบ โดยเริ่มง่าย ๆ ดังนี้ครับ</p>
+<h4 id="1-ลง-package-ทเกยวของ">1. ลง package ที่เกี่ยวข้อง</h4>
+<p>เราต้องลง package ที่เกี่ยวข้องกับ X Windows, Cinnamon Desktop, fonts และ โปรแกรมที่ใช้ ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-แกไขไฟล-etcx11xinitxinitrc">2. แก้ไขไฟล์ /etc/X11/xinit/xinitrc</h4>
+<p>จากนั้นเราก็ทำการแก้ไขไฟล์ /etc/X11/xinit/xinitrc ดังนี้ครับ</p>
+<p><strong>File : /etc/X11/xinit/xinitrc</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#twm &amp;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#xclock -geometry 50x50-1+1 &amp;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#xterm -geometry 80x50+494+51 &amp;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#xterm -geometry 80x20+494-0 &amp;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#exec xterm -geometry 80x66+0+0 -name login</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exec cinnamon-session
+</span></span></code></pre></div><h4 id="3-ทำการเรยก-cinnamon-desktop">3. ทำการเรียก Cinnamon Desktop</h4>
+<p>เมื่อเราทำการลง package และปรับแต่งไฟล์ xinitrc แล้ว เราก็สามารถเข้าสู่ โหมด Desktop ได้ด้วยคำสั่ง startx ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เพียงเท่านี้ เราก็เข้าสู่โหมด Desktop แล้วครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

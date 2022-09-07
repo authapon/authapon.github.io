@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>POUND Reverse-Proxy and Load-Balancer อันแข็งแกร่งและความเร็วเหนือนรก</h2>
+        <h3>Monday, 11 March 2013</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <br><br><div><p>ในการพัฒนา Web Application ด้วยเทคโนโลยี WSGIServer นั้น โดยปกติมักจะมี Front-end Webserver เพื่อเป็นตัวกระจายโหลด โดยในบทความอื่น ๆ ของผม จะมีการนำ <a href="https://httpd.apache.org/">Apache Web Server</a> มาทำเป็นตัวกระจายโหลด ซึ่งตัว Apache นั้นจะเป็น Web Server แบบหนักและมีความสามารถอื่น ๆ มากมาย แต่เราเอามาใช้เพียงเป็นตัวกระจายโหลด จึงเหมือนกับขี่ช้างจับตั๊กแตน ทำให้การรองรับโหลดของระบบเราไม่สูงเท่าที่ควร ผมจึงแนะนำ <a href="http://www.apsis.ch/pound/">POUND</a> ซึ่งเป็น Reverse Proxy และ Load Balancer มาทำเป็น Front-end ให้กับ WSGIServer ซึ่งจะทำให้ระบบของเรารองรับโหลดได้ดียิ่งขึ้น โดยการใช้งานใน <a href="http://www.ubuntu.com/">Ubuntu</a> นั้น มีขั้นตอนดังนี้ครับ</p>
+<h4 id="1-ตดตง-pound">1. ติดตั้ง POUND</h4>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-ปรบแตงใหเปน-load-balancer-และรองรบ-virtual-host">2. ปรับแต่งให้เป็น Load Balancer และรองรับ Virtual Host</h4>
+<p>ขั้นตอนต่อไปเป็นการปรับแต่งให้ POUND นั้นทำงานโดยอัตโนมัติ และปรับแต่งให้ทำงานเป็นตัวกระจายโหลด และรองรับการทำ Virtual Host ไปด้วย โดยเราจะทำการแก้ไขไฟล์ /etc/default/pound โดยแก้ไขข้อความ startup=0 ให้เป็น startup=1 เพื่อให้เมื่อมีการรีบูตเครื่องแล้ว POUND จะทำงานโดยอัตโนมัติ</p>
+<p><strong>File : /etc/default/pound</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นก็แก้ไขไฟล์ /etc/pound/pound.cfg เพื่อทำการปรับแต่งให้เป็นตัวกระจายโหลด โดยสมมุติว่ามี WSGIServer จำนวน 3 ตัว ทำงานเป็น Back End อยู่ที่เครื่อง 127.0.0.1 และรอรับงานที่พอร์ต 8990 8991 และ 8992 โดยให้รองรับ Virtual Host ชื่อ <a href="https://www.data.com">www.data.com</a> เราสามารถดำเนินการได้ดังนี้ครับ</p>
+<p><strong>File : /etc/pound/pound.cfg</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>จากนั้นจึงทำการ start pound ขึ้นมาด้วยคำสั่ง</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เท่านี้ระบบของเราก็พร้อมทำงานแล้วครับ :)</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

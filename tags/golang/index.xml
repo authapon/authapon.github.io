@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on </title>
+    <link>https://authapon.github.io/tags/golang/</link>
+    <description>Recent content in golang on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Oct 2016 14:03:10 +0700</lastBuildDate><atom:link href="https://authapon.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>การสร้าง Iterator Function ด้วย Channel ใน Golang</title>
+      <link>https://authapon.github.io/post/2016/10/golangiterator/</link>
+      <pubDate>Wed, 12 Oct 2016 14:03:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/10/golangiterator/</guid>
+      <description>&lt;p&gt;ในภาษารุ่นใหม่ มักจะมีคุณสมบัติในการสร้าง Iterator Function หรือในบางภาษาจะเรียกว่า Generator เพื่อใช้สำหรับการเข้าถึงข้อมูลเป็นชุดด้วยการวนลูปและประมวลผล ใน &lt;a href=&#34;https://golang.org/&#34;&gt;Golang&lt;/a&gt; ก็สามารถสร้าง Iterator Function ได้ แต่ต้องมีการใช้ Channel มาช่วยในการผลิต Iterator โดยผมได้เขียน code ตัวอย่างไว้ สำหรับผู้ที่สนใจดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเปรียบเทียบประสิทธิภาพ web service แบบง่าย ๆ ระหว่าง Rust, Crystal, Dlang, Nim และ Golang</title>
+      <link>https://authapon.github.io/post/2016/09/comparewebservice/</link>
+      <pubDate>Sun, 18 Sep 2016 15:20:15 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/09/comparewebservice/</guid>
+      <description>&lt;p&gt;เนื่องจากได้เริ่มศึกษาภาษารุ่นใหม่เข้าตัวนึงคือ &lt;a href=&#34;https://crystal-lang.org/&#34;&gt;Crystal&lt;/a&gt; ซึ่งเป็นภาษาที่ได้แรงบันดาลใจในด้าน syntax จากภาษา &lt;a href=&#34;https://www.ruby-lang.org/en/&#34;&gt;Ruby&lt;/a&gt; ที่มีรูปแบบภาษาที่น่าใช้ อ่านง่าย และแรงบันดาลใจด้าน concurrency แบบ &lt;a href=&#34;https://en.wikipedia.org/wiki/Communicating_sequential_processes&#34;&gt;CSP&lt;/a&gt; จากภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; กระนั้นแล้ว ขอทำการทดลองนิด ๆ หน่อย ๆ เพื่อดูว่าภาษา Crystal นี่ ประสิทธิภาพเจ๋งแค่ไหน โดยผมได้นำภาษา &lt;a href=&#34;https://www.rust-lang.org/en-US/&#34;&gt;Rust&lt;/a&gt;, ภาษา &lt;a href=&#34;https://dlang.org/&#34;&gt;D&lt;/a&gt; และภาษา &lt;a href=&#34;http://nim-lang.org/&#34;&gt;Nim&lt;/a&gt; เข้าร่วมทดสอบด้วย โดยมีการทดลองดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทดลอง Native Coroutines ของ Python เมื่อนำมาเทียบกับ Goroutines ในภาษา Go</title>
+      <link>https://authapon.github.io/post/2016/02/nativecoroutinepythongoroutine/</link>
+      <pubDate>Mon, 08 Feb 2016 14:16:20 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2016/02/nativecoroutinepythongoroutine/</guid>
+      <description>&lt;p&gt;ในการพัฒนาระบบสารสนเทศในปัจจุบัน มีความต้องการความสามารถที่จะทำงานได้อย่างต่อเนื่อง หรือที่เรียกว่ามี Concurrent สูง ๆ ซึ่งเทคนิคที่นิยมใช้ในปัจจุบันคือการเขียนโปรแกรมแบบ Asynchronous ใน &lt;a href=&#34;https://www.python.org/&#34;&gt;Python&lt;/a&gt; จะมีการเขียนโปรแกรมแบบ Asynchronous โดยการใช้ Coroutines ส่วนในภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; จะใช้สิ่งที่เรียกว่า Goroutines ซึ่งผมได้ทดลองเขียนโค้ดตัวอย่างเพื่อเปรียบเทียบ การเขียนโปรแกรมแบบ Asynchronous ของทั้งสองภาษาดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การทดลองใช้ Goroutine และ Channel ใน Golang</title>
+      <link>https://authapon.github.io/post/2015/11/goroutinechannelgolang/</link>
+      <pubDate>Sun, 29 Nov 2015 17:12:10 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2015/11/goroutinechannelgolang/</guid>
+      <description>&lt;p&gt;วันนี้ผมได้ทดลองเกี่ยวกับความสามารถด้าน Concurrency ในภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Golang&lt;/a&gt; ที่ออกแบบการทำงานในลักษณะคล้าย ๆ Thread แต่มีความง่ายและเบากว่า Thread ปกติ ที่เรียกว่า Goroutine และมีการสื่อสารกันผ่านสิ่งที่เรียกว่า Channel ผมเลยตั้งโจทย์ให้สร้าง Goroutine ขึ้นมาซัก 10 Goroutine ให้ผลิตข้อมูลตัวเลข 0 - 999 แบบสุ่ม แล้วส่งให้โปรแกรมหลักนำมาแสดงผล ซึ่ง code โปรแกรมมีดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ทดสอบการใช้ Cookie Session ใน Negroni</title>
+      <link>https://authapon.github.io/post/2015/07/cookiesessionnegroni/</link>
+      <pubDate>Fri, 17 Jul 2015 12:44:05 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2015/07/cookiesessionnegroni/</guid>
+      <description>&lt;p&gt;การใช้ Cookie ในเวบแอป เป็นเรื่องที่ปกติมาก ๆ และใช้บ่อย ๆ เลยอยากเขียนตัวอย่างการใช้งาน Cookie Session แบบง่าย ๆ ที่ใช้ร่วมกับ &lt;a href=&#34;https://github.com/codegangsta/negroni&#34;&gt;Negroni&lt;/a&gt; ดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>การเปรียบเทียบประสิทธิภาพเวบระหว่าง PHP, D lang และ Go lang</title>
+      <link>https://authapon.github.io/post/2015/04/comparephpdlanggolang/</link>
+      <pubDate>Mon, 13 Apr 2015 17:56:26 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2015/04/comparephpdlanggolang/</guid>
+      <description>&lt;p&gt;ช่วงนี้อยู่ในช่วงพัฒนาระบบใหม่ ๆ จึงอยากจะหาภาษาใหม่ ๆ ที่มีประสิทธิภาพสูง ๆ รองรับงานใหญ่ ๆ ได้ จึงได้ทำการทดลองสร้างเวบที่หาค่า Fibonucci(20) แล้วแสดงผลออกมา และวัดประสิทธิภาพในการทำงานออกมา โดยผมได้ทดลองกับภาษายอดนิยม &lt;a href=&#34;https://secure.php.net/&#34;&gt;PHP&lt;/a&gt; กับภาษาเกิดใหม่ที่น่าสนใจคือ ภาษา &lt;a href=&#34;http://dlang.org/&#34;&gt;D&lt;/a&gt; และภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; โดยมีการทดลองดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

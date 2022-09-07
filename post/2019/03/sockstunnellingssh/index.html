@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การสร้าง Socks Tunnelling ด้วย SSH ใน Linux</h2>
+        <h3>Saturday, 2 March 2019</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/network')">network</button> 
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ในระบบ Linux จะมีโปรแกรมสำหรับการรีโมทเข้าใช้งานเครื่องอื่นในระยะไกลได้ ซึ่งโปรแกรมยอดนิยมจะเป็น SSH นั่นเอง โดยตัวโปรแกรม SSH นั้นจะมี feature ให้เราสามารถสร้าง Socks Tunnelling ได้ เพื่อเราจะสามารถใช้งานอินเตอร์เน็ตได้อย่างปลอดภัยมากขึ้น หากเราต้องต่อใช้งานในเครือข่ายที่ไม่ปลอดภัย โดยเราจะสามารถสร้างได้ดังนี้ครับ</p>
+<h3 id="1-เรยกใช-ssh-เพอสราง-socks-tunnelling">1. เรียกใช้ SSH เพื่อสร้าง Socks Tunnelling</h3>
+<p>เราสามารถเรียกใช้ SSH เพื่อทำการสร้าง Socks Tunnelling ง่าย ๆ จากคำสั่งดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>โดย พารามิเตอร์ต่าง ๆ มีความหมายดังนี้ครับ</p>
+<p>-D คือ สร้าง Socks Tunnelling โดยใช้พอร์ตหมายเลข 9077</p>
+<p>-f คือ ให้ทำการสร้างโปรเซสเพื่อทำงานเบื้องหลัง</p>
+<p>-C คือ ให้ทำการบีบอัดข้อมูลก่อนส่ง เพื่อประหยัดแบนวิทด์</p>
+<p>-q คือ ให้ทำงานแบบเงียบ ๆ ไม่มีการแจ้งข้อความใดใดระหว่างทำงาน</p>
+<p>-N คือ การบอก SSH ว่าไม่มีคำสั่งใด ๆ เรียกทำงานอีกหลังการสร้าง Tunnel สำเร็จแล้ว</p>
+<p><a href="mailto:authapon@example.com">authapon@example.com</a> คือ ชื่อผู้ใช้และโฮสที่เราจะสร้าง Tunnel ไปหานั่นเองครับ</p>
+<h3 id="2-เรยกใช-browser-ผาน-socks-tunnelling">2. เรียกใช้ Browser ผ่าน Socks Tunnelling</h3>
+<p>หลังจากสร้าง Socks Tunneling แล้ว เราก็กำหนดค่าการใช้งาน Proxy ให้กับ Browser ที่เราเลือกใช้ โดยผมสมมุติว่าผมใช้ Google Chrome เป็น Internet Browser โดยผมจะทำการเรียกใช้งานผ่าน command line ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>เมื่อ Google Chrome ทำงานขึ้น ข้อมูลทั้งหมดที่เราเรียกใช้งานจะผ่าน SSH Tunnelling ไปยังโฮสที่เราติดต่อไปทั้งหมดโดยมีการเข้ารหัสข้อมูลทั้งหมด ซึ่งจะทำให้การใช้งานอินเตอร์เน็ตของเรามีความปลอดภัยมากขึ้นนั่นเองครับ</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

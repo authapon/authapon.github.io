@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>                                                                                                                                   
+    <html>
+        <head>
+            <title>It's me.</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" href="https://authapon.github.io/main.css" />
+            <link rel="stylesheet" href="https://authapon.github.io/styles/monokai.css">
+        </head>
+    <body>
+    
+    <script type="text/javascript">
+    var sc_project=11978914; 
+    var sc_invisible=1; 
+    var sc_security="daf9dd5b"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - StatCounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/11978914/0/daf9dd5b/1/"
+    alt="Web Analytics Made Easy -
+    StatCounter"></a></div></noscript>
+    
+    <script src="https://authapon.github.io/highlight.pack.js"></script>
+
+
+
+<div class="main-contain">
+    <div class="main-pic"></div>
+    <div class="main-content"><div style="padding: 2rem;">
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+        <hr>
+        <h2>การแปลงไฟล์เสียง Flac ไปเป็น MP3 แบบคุณภาพสูง</h2>
+        <h3>Wednesday, 19 November 2014</h3>
+        
+        <button type="button" class="tagsbt" onclick="window.open('https:\/\/authapon.github.io\/tags/linux')">linux</button> 
+        
+        <br><br><div><p>ผมได้ทดลองแปลงไฟล์เสียงคุณภาพสูง Flac ไปเป็น MP3 แบบคุณภาพสูงในระบบ <a href="https://www.archlinux.org/">Archlinux</a> แบบง่าย ๆ โดยสามารถทำได้ดังนี้ครับ</p>
+<h4 id="1-ลง-package-ทจำเปน">1. ลง package ที่จำเป็น</h4>
+<p>เราต้องลง package ที่จำเป็นในการแปลงไฟล์เสียงคือ ffmpeg และลง package ที่ช่วยที่ทำงานแบบขนานได้สำหรับเครื่องหลาย CPU คือ parallel ดังนี้ครับ</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-สราง-script-สำหรบการแปลงไฟล">2. สร้าง script สำหรับการแปลงไฟล์</h4>
+<p>เราสร้างไฟล์ mp3.sh สำหรับการแปลงไฟล์ดังนี้</p>
+<p><strong>File : mp3.sh</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>parallel -j4 ffmpeg -i <span style="color:#f92672">{}</span> -qscale:a <span style="color:#ae81ff">0</span> <span style="color:#f92672">{</span>.<span style="color:#f92672">}</span>.mp3 ::: *.flac
+</span></span></code></pre></div><p>จากนั้นในการใช้งานก็เพียงเรียก script นี้ตอนอยู่ในโฟล์เดอร์ที่ต้องการ script ก็จะทำการแปลงไฟล์ Flac ทั้งหมดให้เป็น MP3 ครับ</p></div>
+        <br><hr>
+        <h1><a href="https://authapon.github.io/">Home</a> | <a href="#" onclick="history.back();">Back</a></h1>
+    </div></div>
+</div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>                                                                                                                                        
+</html>
+

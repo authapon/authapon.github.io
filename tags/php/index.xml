@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on </title>
+    <link>https://authapon.github.io/tags/php/</link>
+    <description>Recent content in php on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2015 17:56:26 +0700</lastBuildDate><atom:link href="https://authapon.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>การเปรียบเทียบประสิทธิภาพเวบระหว่าง PHP, D lang และ Go lang</title>
+      <link>https://authapon.github.io/post/2015/04/comparephpdlanggolang/</link>
+      <pubDate>Mon, 13 Apr 2015 17:56:26 +0700</pubDate>
+      
+      <guid>https://authapon.github.io/post/2015/04/comparephpdlanggolang/</guid>
+      <description>&lt;p&gt;ช่วงนี้อยู่ในช่วงพัฒนาระบบใหม่ ๆ จึงอยากจะหาภาษาใหม่ ๆ ที่มีประสิทธิภาพสูง ๆ รองรับงานใหญ่ ๆ ได้ จึงได้ทำการทดลองสร้างเวบที่หาค่า Fibonucci(20) แล้วแสดงผลออกมา และวัดประสิทธิภาพในการทำงานออกมา โดยผมได้ทดลองกับภาษายอดนิยม &lt;a href=&#34;https://secure.php.net/&#34;&gt;PHP&lt;/a&gt; กับภาษาเกิดใหม่ที่น่าสนใจคือ ภาษา &lt;a href=&#34;http://dlang.org/&#34;&gt;D&lt;/a&gt; และภาษา &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; โดยมีการทดลองดังนี้ครับ&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
